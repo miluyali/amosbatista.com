@@ -1,7 +1,8 @@
 {
   "name": "my-app",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "start": "nuxt"
   },
   "dependencies": {
     "nuxt": "^1.4.0"
