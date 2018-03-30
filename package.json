@@ -14,9 +14,8 @@
   },
   "config": {
    "nuxt": {
-     "host": "http://amosbatista-com.umbler.net",
+     "host": "amosbatista-com.umbler.net",
      "port": "3000"
    }
-  },
-
+  }
 }
