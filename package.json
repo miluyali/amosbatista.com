@@ -11,5 +11,12 @@
 
   "dependencies": {
     "nuxt": "^1.4.0"
-  }
+  },
+  "config": {
+   "nuxt": {
+     "host": "http://amosbatista-com.umbler.net",
+     "port": "3000"
+   }
+  },
+
 }
