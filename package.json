@@ -4,19 +4,12 @@
   "scripts": {
 	"dev": "nuxt",
 	"build": "nuxt build",
-  "prod": "nuxt start",
+  "prod": "HOST=amosbatista-com.umbler.net PORT=3000 nuxt start",
 	"start": "npm run build && npm run prod",
 	"generate": "nuxt generate"
   },
 
   "dependencies": {
     "nuxt": "^1.4.0"
-  },
-  "config": {
-   "nuxt": {
-     "host": "http://amosbatista-com.umbler.net",
-     "port": "3000"
-   }
-  },
-
+  }
 }
