@@ -1,0 +1,66 @@
+<script>
+
+    import post from '../components/post-title.vue'
+    import box from '../components/box.vue'
+    import topic from '../components/topic.vue'
+    import pgHeader from '../components/pageHeader.vue'
+    import myLink from '../components/myLink.vue'
+
+    export default {
+
+        components: {
+            post, box, pgHeader, topic, myLink
+        },
+
+        props: ['title'],
+
+        data: function () {
+            return {}
+        }
+    }
+
+</script>
+
+<template>
+
+    <div class="portfolio-layout">
+        
+        <pg-header />
+
+        <box>
+            <div class="title">
+                <post :title="title" resume="" />
+            </div>
+
+            <div class="topics">
+
+                <topic title="O que é?">
+                    <slot name="whatsIsThis" />
+                </topic>
+
+                <topic title="A Necessidade">
+                    <slot name="necessity" />
+                </topic>
+
+                <topic title="Concorrentes">
+                    <slot name="competitor" />
+                </topic>
+
+                <topic title="O conceito">
+                    <slot name="concept" />
+                </topic>
+
+                <topic title="O desenvolvimento">
+                    <slot name="development" />
+                </topic>
+            </div>
+        </box>
+    </div>
+</template>
+
+
+
+<style lang="less">
+
+
+</style>

@@ -6,7 +6,7 @@
             return {}
         },
 
-        props: ['title', 'content']
+        props: ['title']
     }
 
 </script>
@@ -16,7 +16,10 @@
     
     <div class="topic">
         <h3 class="title">{{title}}</h3>
-        <p class="content">{{content}}</p>
+        <p class="content">
+            <slot>
+            </slot>
+        </p>
     </div>
 
 </template>
@@ -36,12 +39,10 @@
             font-family: @title-font;
             text-transform: uppercase;
             color: @color-primary-light;
-            text-align: center;
+            padding-left: 20px;
         }
         .content{
-            font-family: @base-font;
             padding-left: 10px;
-            color: @color-primary;
             margin: 0;
         }
 
