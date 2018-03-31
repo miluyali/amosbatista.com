@@ -1,15 +1,16 @@
 {
   "name": "my-app",
-
   "scripts": {
-	"dev": "nuxt",
-	"build": "nuxt build",
-  "prod": "HOST=0.0.0.0 PORT=3000 nuxt start",
-	"start": "npm run build && npm run prod",
-	"generate": "nuxt generate"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "prod": "HOST=0.0.0.0 PORT=3000 nuxt start",
+    "start": "npm run build && npm run prod",
+    "generate": "nuxt generate"
   },
-
   "dependencies": {
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "node-less": "^1.0.0",
     "nuxt": "^1.4.0"
   }
 }
