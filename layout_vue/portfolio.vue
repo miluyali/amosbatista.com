@@ -5,14 +5,15 @@
     import topic from '../components/topic.vue'
     import pgHeader from '../components/pageHeader.vue'
     import myLink from '../components/myLink.vue'
+    import vueMeta from '../components/meta.vue'
 
     export default {
 
         components: {
-            post, box, pgHeader, topic, myLink
+            post, box, pgHeader, topic, myLink, vueMeta
         },
 
-        props: ['title'],
+        props: ['title', 'description'],
 
         data: function () {
             return {}
@@ -24,6 +25,8 @@
 <template>
 
     <div class="portfolio-layout">
+
+        <vue-meta :title="title" :description="description" :url="title" />
         
         <pg-header />
 

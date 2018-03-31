@@ -29,7 +29,7 @@
 
     <div class="container">
         
-        <layout :posts="portfolios"/>
+        <layout title="Portfolios" :posts="portfolios" description="Veja em detalhes os maiores projetos que participei" />
     </div>
 </template>
 

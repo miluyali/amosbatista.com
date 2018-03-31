@@ -4,6 +4,7 @@
     import postTitle from '../components/post-title.vue'
     import myLink from '../components/myLink.vue'
     import pgHeader from '../components/pageHeader.vue'
+    import vueMeta from '../components/meta.vue'
 
     export default {
         
@@ -11,9 +12,9 @@
             return {}
         },
 
-        props: ['posts'],
+        props: ['posts', 'title', 'description', "url"],
 
-        components: { postTitle, box, myLink, pgHeader }
+        components: { postTitle, box, myLink, pgHeader, vueMeta }
     }
 
 </script>
@@ -22,6 +23,8 @@
 
     <div class="two-col-layout">
         
+        <vue-meta :title="title" :description="description" :url="url" />
+
         <pg-header />
 
         <box>

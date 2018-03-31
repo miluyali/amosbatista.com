@@ -11,7 +11,7 @@
             return {}
         },
 
-        props: ['links', 'title', 'description'],
+        props: ['links', 'title', 'description', 'thumbnail', "url"],
 
         components: { titleParagraph, box, myLink, vueMeta }
     }
@@ -22,7 +22,12 @@
 
     <div class="six-col-layout">
         
-        <vue-meta :title="title" :description="description" />
+        <vue-meta 
+            :title="title" 
+            :description="description" 
+            :thumbnail="thumbnail"
+            type="website"
+            :url="url" />
 
         <div class="big-link box">
 
@@ -30,7 +35,13 @@
             </slot>
         </div>
 
-        <a class="big-link box" v-for="post in links"  :key="post.url" :href="post.url">
+        <div class="big-link box outro">
+
+            <slot name="home-outro">
+            </slot>
+        </div>
+
+        <a class="big-link box hover-box" v-for="post in links"  :key="post.url" :href="post.url">
                 
             <title-paragraph :content="post.title" />
         </a>
@@ -43,7 +54,8 @@
 <style lang="less">
     
     @import '../assets/variables.less';
-    @box-size: 250px;
+    @import '../assets/mixin.less';
+    @box-size: 225px;
 
     .six-col-layout{
 
@@ -61,6 +73,20 @@
 
             .comment-chars{
                 color: @color-secundary;
+            }
+        }
+
+        .outro{
+            padding: 0;
+            width: calc(@box-size+20px);
+        }
+
+        .hover-box{
+            .transiction();
+
+            &:hover{
+                .shadow(9px);
+                background-color: @color-base-clear;
             }
         }
     }

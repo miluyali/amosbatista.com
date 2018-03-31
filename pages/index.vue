@@ -1,8 +1,14 @@
-<template>
+,<template>
 	
 	<div class="container">
         
-        <layout :links="links" title="Home" description="Site pessoal, de projetos e portfólios.">
+        <layout 
+            :links="links" 
+            title="Home" 
+            description="Site pessoal, de projetos e portfólios." 
+            thumbnail="thumbnails/home.jpg"
+            url=""
+        >
 
             <h1 class="title" slot="home-header">
                 <span class="comment-chars">
@@ -10,6 +16,10 @@
                 </span>
                 Amós Batista
             </h1>
+
+            <div class="animation" slot="home-outro">
+                <animation />
+            </div>
         </layout>
     </div>
 </template>
@@ -18,21 +28,37 @@
 	import post from '../components/post-title.vue'
     import box from '../components/box.vue'
     import layout from '../layout_vue/6colLayout.vue'
+    import animation from '../components/animatedBg_linesToCenter.vue'
 
 	export default {
 	  data: () => {
 	  	return {
 	  		links: [
+                {
+                    title: "Sobre",
+                    description: "",
+                    url: "/about"
+                },
+                {
+                    title: "Blog",
+                    description: "",
+                    url: "/blog"
+                },
                	{
                 	title: "Portfolio",
                     description: "",
                     url: "/portfolio"
-               	}
+               	},
+                {
+                    title: "Galeria",
+                    description: "",
+                    url: "/gallery"
+                }
             ]
         }
 	  },
 	  components: {
-		post, box, layout
+		post, box, layout, animation
       }
 	}
 </script>
@@ -57,6 +83,11 @@
 
     .comment-chars{
         color: @color-secundary;
+    }
+
+    .animation{
+        width: 100%;
+        height: 100%;
     }
 
 </style>

@@ -1,3 +1,7 @@
 .shadow(@heigth: 1px){
-	box-shadow: 0px @heigth 3px 0px @color-box-shadow;
+	box-shadow: 0px @heigth calc(@heigth+3px) calc(@heigth - 1px) @color-box-shadow;
+}
+
+.transiction(@tempo: 0.5s){
+	transition: all ease @tempo;
 }
