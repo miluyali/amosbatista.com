@@ -1,30 +1,36 @@
 <template>
-	<div>
-		<title-paragraph content="Hello World" />
-	</div>
+	
+	<div class="container">
+        
+        <layout :links="links" title="Home" description="Site pessoal, de projetos e portfólios." />
+    </div>
 </template>
 
 <script>
-	import titleParagraph from '../components/title-paragraph.vue'
+	import post from '../components/post-title.vue'
+    import box from '../components/box.vue'
+    import layout from '../layout_vue/6colLayout.vue'
 
 	export default {
 	  data: () => {
-	    return { name: 'world' }
+	  	return {
+	  		links: [
+                {
+                	title: "Amós Batista",
+                    description: "",
+                    url: "/"
+               	},
+               	{
+                	title: "Portfolios",
+                    description: "",
+                    url: "/portfolio"
+               	}
+            ]
+        }
 	  },
 	  components: {
-		titleParagraph,
-      },
-	  head: {
-		  meta: [
-		    { charset: 'utf-8' },
-		    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-		    { name: 'og:title', content: 'Teste de página home' },
-		    { name: 'og:description', content: 'Primeira página como vue deploy' },
-		  ],
-		  link: [
-		    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' }
-		  ]
-		}
+		post, box, layout
+      }
 	}
 </script>
 
