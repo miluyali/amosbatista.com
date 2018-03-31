@@ -1,7 +1,7 @@
 <script>
 
     import box from '../components/box.vue'
-    import postTitle from '../components/post-title.vue'
+    import titleParagraph from '../components/title-paragraph.vue'
     import myLink from '../components/myLink.vue'
     import vueMeta from '../components/meta.vue'
 
@@ -13,7 +13,7 @@
 
         props: ['links', 'title', 'description'],
 
-        components: { postTitle, box, myLink, vueMeta }
+        components: { titleParagraph, box, myLink, vueMeta }
     }
 
 </script>
@@ -24,14 +24,16 @@
         
         <vue-meta :title="title" :description="description" />
 
-        <div class="big-link" v-for="post in links"  :key="post.url">
-            <box>
-                <my-link :url="post.url">
-                    
-                    <post-title :title="post.title" :resume="post.resume" />
-                </my-link>
-            </box>
+        <div class="big-link box">
+
+            <slot name="home-header">
+            </slot>
         </div>
+
+        <a class="big-link box" v-for="post in links"  :key="post.url" :href="post.url">
+                
+            <title-paragraph :content="post.title" />
+        </a>
     </div>
 
 </template>
@@ -41,15 +43,21 @@
 <style lang="less">
     
     @import '../assets/variables.less';
+    @box-size: 250px;
 
     .six-col-layout{
 
         .big-link{
-            max-width: 150px;
-            height: 150px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            width: @box-size;
+            height: @box-size;
             float: left;
-            padding: 15px;
-            margin: 0 10px 0 0;
+            padding-left: 20px;
+            
+            margin: 10px 10px 0 0;
 
             .comment-chars{
                 color: @color-secundary;

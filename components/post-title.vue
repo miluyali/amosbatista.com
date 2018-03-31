@@ -49,7 +49,6 @@
             font-family: @base-font;
             padding-left: 20px;
             color: @color-secundary;
-            font-size: 75%;
             margin: 10px 0 0 0;
         }
     }

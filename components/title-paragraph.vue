@@ -40,6 +40,7 @@
             margin: 0;
             line-height: 1;
             color: @color-primary;
+            font-size: 200%;
         }
     }
 
