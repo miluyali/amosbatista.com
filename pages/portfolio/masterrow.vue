@@ -30,7 +30,6 @@
 
 <template>
     <div class="container">
-        <img src="/thumbnails/masterrow-logo.jpg">
         <portfolio-post title="Masterrow" :meta="meta">
 
             <div class="paragraph" slot="whatsIsThis">
