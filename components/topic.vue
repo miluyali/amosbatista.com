@@ -16,10 +16,10 @@
     
     <div class="topic">
         <h3 class="title">{{title}}</h3>
-        <p class="content">
+        <div class="content">
             <slot>
             </slot>
-        </p>
+        </div>
     </div>
 
 </template>

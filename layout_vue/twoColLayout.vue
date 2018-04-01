@@ -12,7 +12,7 @@
             return {}
         },
 
-        props: ['posts', 'title', 'description', "url"],
+        props: ['posts', 'meta'],
 
         components: { postTitle, box, myLink, pgHeader, vueMeta }
     }
@@ -23,7 +23,7 @@
 
     <div class="two-col-layout">
         
-        <vue-meta :title="title" :description="description" :url="url" />
+        <vue-meta :meta="meta" />
 
         <pg-header />
 

@@ -12,11 +12,28 @@
 
         data: function () {
             return {
+                meta: {
+                    title: "Portfolio",
+                    description: "Veja em detalhes os maiores projetos que participei",
+                    thumbnail: "thumbnails/portfolio.jpg",
+                    url: "/portfolio",
+                    type: "list"
+                },
                 portfolios: [
                     {
-                        title: "Masterrow",
+                        title: "MasterRow",
                         resume: "Ferramenta escrita em puro JavaScript para criação de tabelas dinâmicas",
                         url: "/portfolio/masterrow"
+                    },
+                    {
+                        title: "Angular MasterRow",
+                        resume: "Todos os recursos do Masterrow, disponível para projetos Angular 1.X",
+                        url: "/portfolio/angularmasterrow"
+                    },
+                    {
+                        title: "Meu Website",
+                        resume: "Conheça a história e todos os recursos por trás deste site.",
+                        url: "/portfolio/website"
                     }
                 ]
             }
@@ -29,7 +46,7 @@
 
     <div class="container">
         
-        <layout title="Portfolios" :posts="portfolios" description="Veja em detalhes os maiores projetos que participei" />
+        <layout :meta="meta" :posts="portfolios" />
     </div>
 </template>
 

@@ -13,7 +13,7 @@
             post, box, pgHeader, topic, myLink, vueMeta
         },
 
-        props: ['title', 'description'],
+        props: ['title', 'description', 'meta'],
 
         data: function () {
             return {}
@@ -26,7 +26,7 @@
 
     <div class="portfolio-layout">
 
-        <vue-meta :title="title" :description="description" :url="title" />
+        <vue-meta :meta="meta" />
         
         <pg-header />
 

@@ -4,10 +4,7 @@
         
         <layout 
             :links="links" 
-            title="Home" 
-            description="Site pessoal, de projetos e portfólios." 
-            thumbnail="thumbnails/home.jpg"
-            url=""
+            :meta="meta"
         >
 
             <h1 class="title" slot="home-header">
@@ -33,6 +30,13 @@
 	export default {
 	  data: () => {
 	  	return {
+            meta: {
+                title: "Amós Batista",
+                description: "Site pessoal, de projetos e portfólios.",
+                thumbnail: "thumbnails/home.jpg",
+                url: "",
+                type: "home"
+            },
 	  		links: [
                 {
                     title: "Sobre",

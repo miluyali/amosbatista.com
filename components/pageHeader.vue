@@ -18,7 +18,7 @@
 
 <template>
     
-    <a class="page-header" href="/#/">
+    <a class="page-header" href="/">
         <box>
             <h1 class="header">
                 <span class="comment-chars">

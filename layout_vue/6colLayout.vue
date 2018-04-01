@@ -8,10 +8,11 @@
     export default {
         
         data: function () {
-            return {}
+            return {
+            }
         },
 
-        props: ['links', 'title', 'description', 'thumbnail', "url"],
+        props: ['links', 'meta'],
 
         components: { titleParagraph, box, myLink, vueMeta }
     }
@@ -22,12 +23,7 @@
 
     <div class="six-col-layout">
         
-        <vue-meta 
-            :title="title" 
-            :description="description" 
-            :thumbnail="thumbnail"
-            type="website"
-            :url="url" />
+        <vue-meta :meta="meta" />
 
         <div class="big-link box">
 

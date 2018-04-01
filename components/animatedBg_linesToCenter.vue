@@ -67,15 +67,14 @@
                                 var newPoint = pointObj(limits.canvasWidth, Math.floor(Math.random() * limits.canvasHeight), direction, color); break;
                         }
 
-                        
                         return newPoint;
-
                     }
 
                     return {
                         start: function(){
 
                             var lineProgressionSize = 1;
+                            var animationlInterval = 15;
 
                             // Resizing the canvas to the container limits
                             limits = {
@@ -100,8 +99,16 @@
                             var pointList = [];
 
                             pointList.push(generatePointToStart('up'));
+                            pointList.push(generatePointToStart('up'));
+                            pointList.push(generatePointToStart('up'));
+                            pointList.push(generatePointToStart('down'));
+                            pointList.push(generatePointToStart('down'));
                             pointList.push(generatePointToStart('down'));
                             pointList.push(generatePointToStart('left'));
+                            pointList.push(generatePointToStart('left'));
+                            pointList.push(generatePointToStart('left'));
+                            pointList.push(generatePointToStart('right'));
+                            pointList.push(generatePointToStart('right'));
                             pointList.push(generatePointToStart('right'));
 
                             // Start the interaction
@@ -135,7 +142,7 @@
 
                                 });
 
-                            }, 60 );
+                            }, animationlInterval );
                         },
 
                         stopAndClear: function(){
