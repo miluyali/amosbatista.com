@@ -41,11 +41,11 @@
 	      			{ property: 'og:description', content: this.meta.description},
 	      			{ 
 	      				property: 'og:url', 
-	      				content: 'http://amosbatista.com/' + this.meta.url
+	      				content: 'http://amosbatista.com' + this.meta.url
 	      			},
 	      			{ 
 	      				property: 'og:image', 
-	      				content: 'http://amosbatista.com/static/' + this.meta.thumbnail
+	      				content: '/' + this.meta.thumbnail
 	      			},
 	      			{ 
 	      				property: 'og:type', content: this.meta.detailTypes.og
@@ -56,11 +56,11 @@
 	      			{ property: 'twitter:description', content: this.meta.description},
 	      			{ 
 	      				property: 'twitter:url', 
-	      				content: 'http://amosbatista.com/' + this.meta.url
+	      				content: 'http://amosbatista.com' + this.meta.url
 	      			},
 	      			{ 
 	      				property: 'twitter:image', 
-	      				content: '/static/' + this.meta.thumbnail
+	      				content: '/' + this.meta.thumbnail
 	      			},
 	      			{ 
 	      				property: 'twitter:type', content: this.meta.detailTypes.twitter
