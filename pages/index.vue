@@ -31,7 +31,7 @@
 	  data: () => {
 	  	return {
             meta: {
-                title: "Amós Batista",
+                title: "",
                 description: "Site pessoal, de projetos e portfólios.",
                 thumbnail: "thumbnails/home.jpg",
                 url: "",
