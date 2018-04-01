@@ -37,7 +37,7 @@
 				titleTemplate: '%s | amosBatista.com',
 				meta: [
 	      			{ property: 'fb:app_id', content: "212560042661168"},
-	      			{ property: 'og:title', content: this.meta.title + ' - Amós Batista'},
+	      			{ property: 'og:title', content: this.meta.title},
 	      			{ property: 'og:description', content: this.meta.description},
 	      			{ 
 	      				property: 'og:url', 
@@ -52,7 +52,7 @@
 	      			},
 
 	      			/* Twitter */
-	      			{ property: 'twitter:title', content: this.meta.title + ' - Amós Batista'},
+	      			{ property: 'twitter:title', content: this.meta.title},
 	      			{ property: 'twitter:description', content: this.meta.description},
 	      			{ 
 	      				property: 'twitter:url', 
