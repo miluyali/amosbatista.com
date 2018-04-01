@@ -45,7 +45,7 @@
 	      			},
 	      			{ 
 	      				property: 'og:image', 
-	      				content: '/' + this.meta.thumbnail
+	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
 	      			},
 	      			{ 
 	      				property: 'og:type', content: this.meta.detailTypes.og
@@ -60,7 +60,7 @@
 	      			},
 	      			{ 
 	      				property: 'twitter:image', 
-	      				content: '/' + this.meta.thumbnail
+	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
 	      			},
 	      			{ 
 	      				property: 'twitter:type', content: this.meta.detailTypes.twitter

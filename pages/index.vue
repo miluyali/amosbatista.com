@@ -31,7 +31,7 @@
 	  data: () => {
 	  	return {
             meta: {
-                title: "",
+                title: "Home",
                 description: "Site pessoal, de projetos e portfólios.",
                 thumbnail: "thumbnails/home.jpg",
                 url: "",
@@ -82,7 +82,7 @@
         margin: 0;
         line-height: 1;
         color: @color-primary;
-        font-size: 350%;
+        font-size: 200%;
     }
 
     .comment-chars{
