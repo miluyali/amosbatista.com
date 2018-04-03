@@ -120,7 +120,7 @@ export async function setContext(app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"BLOG_URL":"http://localhost/wordpress/index.php/wp-json/wp/v2"}
+      env: {"BLOG_URL":"http://amosbatista-wordpress-com.umbler.net/index.php/wp-json/wp/v2"}
     }
     // Only set once
     if (context.req) app.context.req = context.req

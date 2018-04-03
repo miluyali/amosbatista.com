@@ -2,7 +2,7 @@
 
     import post from '~/components/post-title.vue'
     import box from '~/components/box.vue'
-    import layout from '~/layout_vue/postList.vue'
+    import layout from '~/layout_vue/blogPost.vue'
     import req from 'axios'
 
     export default {
@@ -10,28 +10,28 @@
         asyncData: function(params){
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
-                    '_embed': 1
+                    '_embed': 1,
+                    'slug': 'ola-mundo'
                 }
             })
                 .then(function(res) {
-                    let posts = res.data.map (function(item){
-                        return {
-                            title: item.title.rendered,
-                            url: 'blog/' + item.slug,
-                            resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
-                            thumbnail: item._embedded["wp:featuredmedia"][0] != undefined 
-                                ? item._embedded["wp:featuredmedia"][0].source_url
-                                : ''
-                        };
-                    });
-                    return {posts}
+                    let content = res.data[0];
+                    let post = {
+                        title: content.title.rendered,
+                        description: content.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
+                        thumbnail: content._embedded["wp:featuredmedia"][0] != undefined 
+                            ? content._embedded["wp:featuredmedia"][0].source_url
+                            : ''
+                    };
+                        
+                    return {post}
                 })
                 .catch( function (err){
                     return {
-                        posts: [
+                        post: [
                         {
-                            title: "Erro na geração da lista",
-                            resume: "O erro é " + err,
+                            title: "Erro na geração do post",
+                            description: "O erro é " + err,
                             url: "/",
                             thumbnail: "/thumbnails/home.jpg"
                         },]
@@ -46,11 +46,11 @@
         data: function () {
             return {
                 meta: {
-                    title: "Blog",
-                    description: "Acompanhe todas as minhas postagens aqui.",
-                    thumbnail: "thumbnails/portfolio.jpg",
-                    url: "/blog",
-                    type: "list"
+                    title: post.title,
+                    description: post.description,
+                    thumbnail: post.thumbnail,
+                    url: "/blog/",
+                    type: "post"
                 },
                 /*posts: [
                     {
@@ -82,7 +82,8 @@
 
     <div class="container">
         
-        <layout :meta="meta" :posts="posts" />
+        <layout :meta="meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" />
+        <!-- <layout :meta="meta" title="post.title" description="post.description" thumbnail="post.thumbnail" /> -->
     </div>
 </template>
 
