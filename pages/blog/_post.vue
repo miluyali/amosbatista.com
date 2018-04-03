@@ -19,11 +19,12 @@
                     let post = {
                         title: content.title.rendered,
                         description: content.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
-                        thumbnail: content._embedded["wp:featuredmedia"][0] != undefined 
+                        thumbnail: content._embedded["wp:featuredmedia"][0] != undefined
                             ? content._embedded["wp:featuredmedia"][0].source_url
-                            : ''
+                            : '',
+                        content: content.content.rendered
                     };
-                        
+
                     return {post}
                 })
                 .catch( function (err){
@@ -81,8 +82,8 @@
 <template>
 
     <div class="container">
-        
-        <layout :meta="meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" />
+
+        <layout :meta="meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
         <!-- <layout :meta="meta" title="post.title" description="post.description" thumbnail="post.thumbnail" /> -->
     </div>
 </template>

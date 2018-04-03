@@ -5,16 +5,17 @@
     import myLink from '../components/myLink.vue'
     import pgHeader from '../components/pageHeader.vue'
     import vueMeta from '../components/meta.vue'
+    import linkStyle from '../components/external-link-style.vue'
 
     export default {
-        
+
         data: function () {
             return {}
         },
 
         props: ['posts', 'meta'],
 
-        components: { postTitle, box, myLink, pgHeader, vueMeta }
+        components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle }
     }
 
 </script>
@@ -22,8 +23,10 @@
 <template>
 
     <div class="two-col-layout">
-        
+
         <vue-meta :meta="meta" />
+
+        <link-style />
 
         <pg-header />
 
@@ -67,7 +70,7 @@
                 .item{
                     width: 45%;
                     float: left;
-                }            
+                }
             }
         }
     }
