@@ -6,7 +6,7 @@
 		head: function () {
 
 			/* Types:
-				home / list / post / 
+				home / list / post /
 			*/
 			if(this.meta.type == "home"){
 
@@ -39,37 +39,37 @@
 	      			{ property: 'fb:app_id', content: "212560042661168"},
 	      			{ property: 'og:title', content: this.meta.title},
 	      			{ property: 'og:description', content: this.meta.description},
-	      			{ 
-	      				property: 'og:url', 
+	      			{
+	      				property: 'og:url',
 	      				content: 'http://amosbatista.com' + this.meta.url
 	      			},
-	      			{ 
-	      				property: 'og:image', 
+	      			{
+	      				property: 'og:image',
 	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
 	      			},
-	      			{ 
+	      			{
 	      				property: 'og:type', content: this.meta.detailTypes.og
 	      			},
 
 	      			/* Twitter */
 	      			{ property: 'twitter:title', content: this.meta.title},
 	      			{ property: 'twitter:description', content: this.meta.description},
-	      			{ 
-	      				property: 'twitter:url', 
+	      			{
+	      				property: 'twitter:url',
 	      				content: 'http://amosbatista.com' + this.meta.url
 	      			},
-	      			{ 
-	      				property: 'twitter:image', 
+	      			{
+	      				property: 'twitter:image',
 	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
 	      			},
-	      			{ 
+	      			{
 	      				property: 'twitter:type', content: this.meta.detailTypes.twitter
 	      			}
 				]
 			}
 		}
 	}
-	
+
 </script>
 
 <template>

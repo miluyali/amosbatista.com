@@ -23,20 +23,33 @@
                             ? content._embedded["wp:featuredmedia"][0].source_url
                             : '',
                         content: content.content.rendered
+                    }
+                    post.meta = {
+                        title: post.title,
+                        description: post.description,
+                        thumbnail: post.thumbnail,
+                        url: "/blog/",
+                        type: "post"
                     };
 
                     return {post}
                 })
                 .catch( function (err){
-                    return {
-                        post: [
-                        {
-                            title: "Erro na geração do post",
-                            description: "O erro é " + err,
-                            url: "/",
-                            thumbnail: "/thumbnails/home.jpg"
-                        },]
+                    let post = {
+                        title: "Erro na geração do post",
+                        description: "O erro é " + err,
+                        url: "/",
+                        thumbnail: "/thumbnails/home.jpg"
                     }
+
+                    post.meta = {
+                        title: post.title,
+                        description: post.description,
+                        thumbnail: post.thumbnail,
+                        url: "/blog/",
+                        type: "post"
+                    }
+                    return { post }
                 })
         },
 
@@ -45,35 +58,7 @@
         },
 
         data: function () {
-            return {
-                meta: {
-                    title: post.title,
-                    description: post.description,
-                    thumbnail: post.thumbnail,
-                    url: "/blog/",
-                    type: "post"
-                },
-                /*posts: [
-                    {
-                        title: "Meu Site 2.0",
-                        resume: "Conheça todo o trampo que levei aqui",
-                        url: "/blog/url1",
-                        thumbnail: "/thumbnails/home.jpg"
-                    },
-                    {
-                        title: "Será que devemos ser policamente corretos",
-                        resume: "Qual a vantagem de sermos bons com os outros?",
-                        url: "/portfolio/angularmasterrow",
-                        thumbnail: "/thumbnails/portfolio.jpg"
-                    },
-                    {
-                        title: "Não tenho idéia do que escrever, e agora?",
-                        resume: "Como criar mesmo nas horas mais improváveis.",
-                        url: "/portfolio/website",
-                        thumbnail: "/thumbnails/home.jpg"
-                    }
-                ]*/
-            }
+            return {}
         }
     }
 
@@ -82,9 +67,7 @@
 <template>
 
     <div class="container">
-
-        <layout :meta="meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
-        <!-- <layout :meta="meta" title="post.title" description="post.description" thumbnail="post.thumbnail" /> -->
+        <layout :meta="post.meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
     </div>
 </template>
 
