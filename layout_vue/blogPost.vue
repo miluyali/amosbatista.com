@@ -12,7 +12,7 @@
             postTitle, box, pgHeader, vueMeta, linkStyle
         },
 
-        props: ['title', 'description', 'thumbnail', 'meta', "content"],
+        props: ['title', 'description', 'thumbnail', 'metadata', "content"],
 
         data: function () {
             return {}
@@ -25,7 +25,7 @@
 
     <div class="blog-post-layout">
 
-        <vue-meta :meta="meta" />
+        <vue-meta :metadata="metadata" />
 
         <link-style />
 

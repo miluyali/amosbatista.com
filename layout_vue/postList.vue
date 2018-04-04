@@ -13,7 +13,7 @@
             return {}
         },
 
-        props: ['posts', 'meta'],
+        props: ['posts', 'metadata'],
 
         components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle }
     }
@@ -24,7 +24,7 @@
 
     <div class="post-list-layout">
 
-        <vue-meta :meta="meta" />
+        <vue-meta :metadata="metadata" />
 
         <link-style />
 

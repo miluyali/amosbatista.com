@@ -19,7 +19,7 @@
                             title: item.title.rendered,
                             url: 'blog/' + item.slug,
                             resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
-                            thumbnail: item._embedded["wp:featuredmedia"][0] != undefined 
+                            thumbnail: item._embedded["wp:featuredmedia"][0] != undefined
                                 ? item._embedded["wp:featuredmedia"][0].source_url
                                 : ''
                         };
@@ -45,7 +45,7 @@
 
         data: function () {
             return {
-                meta: {
+                metadata: {
                     title: "Blog",
                     description: "Acompanhe todas as minhas postagens aqui.",
                     thumbnail: "thumbnails/portfolio.jpg",
@@ -81,8 +81,8 @@
 <template>
 
     <div class="container">
-        
-        <layout :meta="meta" :posts="posts" />
+
+        <layout :metadata="metadata" :posts="posts" />
     </div>
 </template>
 

@@ -8,6 +8,7 @@
     export default {
 
         asyncData: function(params){
+            console.log ("teste requisição");
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1,
@@ -16,40 +17,40 @@
             })
                 .then(function(res) {
                     let content = res.data[0];
-                    let post = {
+                    let postData = {
                         title: content.title.rendered,
                         description: content.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
                         thumbnail: content._embedded["wp:featuredmedia"][0] != undefined
                             ? content._embedded["wp:featuredmedia"][0].source_url
                             : '',
-                        content: content.content.rendered
+                        content: '<p>Durante a criação, <a href=\"https://medium.com/amsbatista\">criei uma conta na Medium</a>, onde comecei a contar o passo a passo de todo o processo de criação. Como hostear a página, como controlar o código-fonte usando <a href=\"https://git-scm.com/\">GIT</a>, prototipando o projeto, etc...</p>'
                     }
-                    post.meta = {
-                        title: post.title,
-                        description: post.description,
-                        thumbnail: post.thumbnail,
+                    let metadata = {
+                        title: postData.title,
+                        description: postData.description,
+                        thumbnail: postData.thumbnail,
                         url: "/blog/",
                         type: "post"
                     };
 
-                    return {post}
+                    return {postData, metadata}
                 })
                 .catch( function (err){
-                    let post = {
+                    let postData = {
                         title: "Erro na geração do post",
                         description: "O erro é " + err,
                         url: "/",
-                        thumbnail: "/thumbnails/home.jpg"
+                        thumbnail: "/thumbnails/home.jpg",
                     }
 
-                    post.meta = {
-                        title: post.title,
-                        description: post.description,
-                        thumbnail: post.thumbnail,
+                    let metadata = {
+                        title: postData.title,
+                        description: postData.description,
+                        thumbnail: postData.thumbnail,
                         url: "/blog/",
                         type: "post"
                     }
-                    return { post }
+                    return { postData, metadata }
                 })
         },
 
@@ -67,7 +68,7 @@
 <template>
 
     <div class="container">
-        <layout :meta="post.meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
+        <layout :metadata="metadata" :title="postData.title" :description="postData.description" :thumbnail="postData.thumbnail" :content="postData.content" />
     </div>
 </template>
 

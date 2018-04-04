@@ -1,69 +1,68 @@
 <script>
 	export default {
 		props: [
-			'meta'
+			'metadata'
 		],
 		head: function () {
-
 			/* Types:
 				home / list / post /
 			*/
-			if(this.meta.type == "home"){
+			if(this.metadata.type == "home"){
 
-				this.meta.detailTypes = {
+				this.metadata.detailTypes = {
 					og: "website",
 					twitter: "summary_large_image"
 				}
 			}
 
-			if(this.meta.type == "list"){
+			if(this.metadata.type == "list"){
 
-				this.meta.detailTypes = {
+				this.metadata.detailTypes = {
 					og: "website",
 					twitter: "summary"
 				}
 			}
 
-			if(this.meta.type == "post"){
+			if(this.metadata.type == "post"){
 
-				this.meta.detailTypes = {
+				this.metadata.detailTypes = {
 					og: "article",
 					twitter: "summary_large_image"
 				}
 			}
 
 			return {
-				title: this.meta.title,
+				title: this.metadata.title,
 				titleTemplate: '%s | amosBatista.com',
 				meta: [
 	      			{ property: 'fb:app_id', content: "212560042661168"},
-	      			{ property: 'og:title', content: this.meta.title},
-	      			{ property: 'og:description', content: this.meta.description},
+	      			{ property: 'og:title', content: this.metadata.title},
+	      			{ property: 'og:description', content: this.metadata.description},
 	      			{
 	      				property: 'og:url',
-	      				content: 'http://amosbatista.com' + this.meta.url
+	      				content: 'http://amosbatista.com' + this.metadata.url
 	      			},
 	      			{
 	      				property: 'og:image',
-	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
+	      				content: 'http://amosbatista.com/' + this.metadata.thumbnail
 	      			},
 	      			{
-	      				property: 'og:type', content: this.meta.detailTypes.og
+	      				property: 'og:type', content: this.metadata.detailTypes.og
 	      			},
 
 	      			/* Twitter */
-	      			{ property: 'twitter:title', content: this.meta.title},
-	      			{ property: 'twitter:description', content: this.meta.description},
+	      			{ property: 'twitter:title', content: this.metadata.title},
+	      			{ property: 'twitter:description', content: this.metadata.description},
 	      			{
 	      				property: 'twitter:url',
-	      				content: 'http://amosbatista.com' + this.meta.url
+	      				content: 'http://amosbatista.com' + this.metadata.url
 	      			},
 	      			{
 	      				property: 'twitter:image',
-	      				content: 'http://amosbatista.com/' + this.meta.thumbnail
+	      				content: 'http://amosbatista.com/' + this.metadata.thumbnail
 	      			},
 	      			{
-	      				property: 'twitter:type', content: this.meta.detailTypes.twitter
+	      				property: 'twitter:type', content: this.metadata.detailTypes.twitter
 	      			}
 				]
 			}
