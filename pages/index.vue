@@ -38,11 +38,11 @@
                 type: "home"
             },
 	  		links: [
-                {
+                /*{
                     title: "Sobre",
                     description: "",
                     url: "/about"
-                },
+                },*/
                 {
                     title: "Blog",
                     description: "",
@@ -53,11 +53,11 @@
                     description: "",
                     url: "/portfolio"
                	},
-                {
+                /*{
                     title: "Galeria",
                     description: "",
                     url: "/gallery"
-                }
+                }*/
             ]
         }
 	  },

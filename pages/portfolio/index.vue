@@ -24,7 +24,7 @@
                         title: "MasterRow",
                         resume: "Ferramenta escrita em puro JavaScript para criação de tabelas dinâmicas",
                         url: "/portfolio/masterrow"
-                    },
+                    }/*,
                     {
                         title: "Angular MasterRow",
                         resume: "Todos os recursos do Masterrow, disponível para projetos Angular 1.X",
@@ -34,7 +34,7 @@
                         title: "Meu Website",
                         resume: "Conheça a história e todos os recursos por trás deste site.",
                         url: "/portfolio/website"
-                    }
+                    }*/
                 ]
             }
         }

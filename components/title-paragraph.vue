@@ -3,19 +3,21 @@
     export default {
 
         data: function () {
-            return {}
+            return {
+                whiteColorClass: this.isColorReverted ? ' white-title' : ''
+            }
         },
 
-        props: ['content']
+        props: ['content', 'isColorReverted']
     }
 
 </script>
 
 
 <template>
-    
+
     <div class="title-paragraph">
-        <h2 class="title-paragraph-h">{{content}}</h2>
+        <h2 :class="'title-paragraph-h' + whiteColorClass">{{content}}</h2>
     </div>
 
 </template>
@@ -41,6 +43,10 @@
             line-height: 1;
             color: @color-primary;
             font-size: 200%;
+        }
+
+        .white-title{
+            color: @color-base;
         }
     }
 

@@ -9,11 +9,11 @@
             titleParagraph, box
         },
 
-        props: ['title', 'resume'],
+        props: ['title', 'resume', 'isColorReverted'],
 
         data () {
             return {
-
+                whiteColorClass: this.isColorReverted ? ' white-title' : ''
             }
         }
     }
@@ -21,25 +21,25 @@
 </script>
 
 <template>
-    
-    
-    
-        <div class="post-title">
-            <title-paragraph :content="title" />
+
+
+
+        <div :class="'post-title' + whiteColorClass">
+            <title-paragraph :content="title" :is-color-reverted="isColorReverted" />
 
             <p class="post-title-resume">
                 {{ resume }}
             </p>
-        
+
         </div>
-    
+
 
 </template>
 
 
 
 <style lang="less">
-    
+
     @import "../assets/variables.less";
 
     .post-title{
@@ -50,6 +50,14 @@
             padding-left: 20px;
             color: @color-secundary;
             margin: 10px 0 0 0;
+        }
+    }
+
+    .white-title{
+        color: @color-base;
+
+        .post-title-resume{
+            color: @color-base;
         }
     }
 

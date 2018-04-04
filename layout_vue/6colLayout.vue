@@ -4,9 +4,10 @@
     import titleParagraph from '../components/title-paragraph.vue'
     import myLink from '../components/myLink.vue'
     import vueMeta from '../components/meta.vue'
+    import linkStyle from '../components/external-link-style.vue'
 
     export default {
-        
+
         data: function () {
             return {
             }
@@ -14,7 +15,7 @@
 
         props: ['links', 'meta'],
 
-        components: { titleParagraph, box, myLink, vueMeta }
+        components: { titleParagraph, box, myLink, vueMeta, linkStyle }
     }
 
 </script>
@@ -22,8 +23,10 @@
 <template>
 
     <div class="six-col-layout">
-        
+
         <vue-meta :meta="meta" />
+
+        <link-style />
 
         <div class="big-link box">
 
@@ -38,7 +41,7 @@
         </div>
 
         <a class="big-link box hover-box" v-for="post in links"  :key="post.url" :href="post.url">
-                
+
             <title-paragraph :content="post.title" />
         </a>
     </div>
@@ -48,7 +51,7 @@
 
 
 <style lang="less">
-    
+
     @import '../assets/variables.less';
     @import '../assets/mixin.less';
     @box-size: 225px;
@@ -64,7 +67,7 @@
             height: @box-size;
             float: left;
             padding-left: 20px;
-            
+
             margin: 10px 10px 0 0;
 
             .comment-chars{

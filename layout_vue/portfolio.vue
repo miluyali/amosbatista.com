@@ -6,11 +6,12 @@
     import pgHeader from '../components/pageHeader.vue'
     import myLink from '../components/myLink.vue'
     import vueMeta from '../components/meta.vue'
+    import linkStyle from '../components/external-link-style.vue'
 
     export default {
 
         components: {
-            post, box, pgHeader, topic, myLink, vueMeta
+            post, box, pgHeader, topic, myLink, vueMeta, linkStyle
         },
 
         props: ['title', 'description', 'meta'],
@@ -27,7 +28,9 @@
     <div class="portfolio-layout">
 
         <vue-meta :meta="meta" />
-        
+
+        <link-style />
+
         <pg-header />
 
         <box>

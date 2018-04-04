@@ -8,15 +8,19 @@
     export default {
 
         asyncData: function(params){
-            return req.get(process.env.BLOG_URL + '/posts')
+            return req.get(process.env.BLOG_URL + '/posts', {
+                params: {
+                    '_embed': 1
+                }
+            })
                 .then(function(res) {
                     let posts = res.data.map (function(item){
                         return {
                             title: item.title.rendered,
-                            url: item.link,
+                            url: 'blog/' + item.slug,
                             resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
-                            thumbnail: item._links["wp:featuredmedia"] != undefined 
-                                ? item._links["wp:featuredmedia"][0].href
+                            thumbnail: item._embedded["wp:featuredmedia"][0] != undefined 
+                                ? item._embedded["wp:featuredmedia"][0].source_url
                                 : ''
                         };
                     });
@@ -43,7 +47,7 @@
             return {
                 meta: {
                     title: "Blog",
-                    description: "Acomnpanhe todas as minhas postagens aqui.",
+                    description: "Acompanhe todas as minhas postagens aqui.",
                     thumbnail: "thumbnails/portfolio.jpg",
                     url: "/blog",
                     type: "list"

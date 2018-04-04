@@ -6,6 +6,7 @@ Vue.use(Router)
 const _a7f2937c = () => import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */).then(m => m.default || m)
 const _58b22b7e = () => import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */).then(m => m.default || m)
 const _2e4911e4 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
+const _0eacc06f = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
 const _e5641d76 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
@@ -80,6 +81,11 @@ export function createRouter () {
 			path: "/portfolio/masterrow",
 			component: _2e4911e4,
 			name: "portfolio-masterrow"
+		},
+		{
+			path: "/blog/:post",
+			component: _0eacc06f,
+			name: "blog-post"
 		},
 		{
 			path: "/",
