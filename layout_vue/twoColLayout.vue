@@ -24,7 +24,7 @@
 
     <div class="two-col-layout">
 
-        <vue-meta :meta="meta" />
+        <vue-meta :metadata="meta" />
 
         <link-style />
 
