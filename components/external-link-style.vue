@@ -1,8 +1,5 @@
 <script>
     export default {
-        props: [
-            'meta'
-        ],
         head: function () {
 
             return {

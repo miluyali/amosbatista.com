@@ -99,6 +99,10 @@
                 width: 95%;
                 margin: auto;
                 text-indent: 20px;
+
+                a{
+                    text-decoration: underline;
+                }
             }
         }
     }

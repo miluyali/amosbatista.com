@@ -11,7 +11,7 @@
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1,
-                    'slug': 'ola-mundo'
+                    'slug': params.post
                 }
             })
                 .then(function(res) {

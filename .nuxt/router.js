@@ -3,11 +3,11 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _3bb9a2f8 = () => import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */).then(m => m.default || m)
-const _6b7ee708 = () => import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */).then(m => m.default || m)
-const _7fa2c3e2 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
-const _44c938b1 = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
-const _f018507a = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _a7f2937c = () => import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */).then(m => m.default || m)
+const _58b22b7e = () => import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */).then(m => m.default || m)
+const _2e4911e4 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
+const _0eacc06f = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
+const _e5641d76 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
 
@@ -69,27 +69,27 @@ export function createRouter () {
     routes: [
 		{
 			path: "/blog",
-			component: _3bb9a2f8,
+			component: _a7f2937c,
 			name: "blog"
 		},
 		{
 			path: "/portfolio",
-			component: _6b7ee708,
+			component: _58b22b7e,
 			name: "portfolio"
 		},
 		{
 			path: "/portfolio/masterrow",
-			component: _7fa2c3e2,
+			component: _2e4911e4,
 			name: "portfolio-masterrow"
 		},
 		{
 			path: "/blog/:post",
-			component: _44c938b1,
+			component: _0eacc06f,
 			name: "blog-post"
 		},
 		{
 			path: "/",
-			component: _f018507a,
+			component: _e5641d76,
 			name: "index"
 		}
     ],
