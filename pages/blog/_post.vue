@@ -33,7 +33,7 @@
                         thumbnail: content._embedded["wp:featuredmedia"][0] != undefined
                             ? content._embedded["wp:featuredmedia"][0].source_url
                             : '',
-                        content: contentCleaner(content.content.rendered)
+                        /*content: contentCleaner(content.content.rendered)*/
                     }
                     post.meta = {
                         title: post.title,
@@ -80,7 +80,6 @@
     <div class="container">
         
         <layout :metadata="post.meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
-        }
     </div>
 </template>
 
