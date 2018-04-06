@@ -4,10 +4,12 @@
     import box from '~/components/box.vue'
     import layout from '~/layout_vue/blogPost.vue'
     import req from 'axios'
+    import sanitize from 'sanitize-html'
 
     export default {
 
-        asyncData: function(params){
+        asyncData: function({params}){
+
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1,
@@ -15,25 +17,29 @@
                 }
             })
                 .then(function(res) {
-                    let content = res.data[0]
+                    var content = res.data[0]
 
-                    let contentCleaner = function(_content){
-                        let _newContent = '';
+                    var contentCleaner = function(_content){
+                        var _newContent = '';
 
                         for(var _contentChar = 0; _contentChar < _content.length; _contentChar++){
-                            _newContent = _newContent + _content.charAt(_contentChar).replace(String.fromCharCode(160), ' ');
+                            _newContent = _newContent + _content
+                                .charAt(_contentChar)
+                                .replace(String.fromCharCode(160), ' ')
+                                .replace('...', '&#8230;');
+
                         }
 
                         return _newContent;
                     };
 
-                    let post = {
+                    var post = {
                         title: content.title.rendered,
                         description: content.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
                         thumbnail: content._embedded["wp:featuredmedia"][0] != undefined
                             ? content._embedded["wp:featuredmedia"][0].source_url
                             : '',
-                        /*content: contentCleaner(content.content.rendered)*/
+                        content: contentCleaner(sanitize(content.content.rendered))
                     }
                     post.meta = {
                         title: post.title,
@@ -46,7 +52,7 @@
                     return {post}
                 })
                 .catch( function (err){
-                    let post = {
+                    var post = {
                         title: "Erro na geração do post",
                         description: "O erro é " + err,
                         url: "/",
