@@ -45,7 +45,7 @@
                         title: post.title,
                         description: post.description,
                         thumbnail: post.thumbnail,
-                        url: "/blog/",
+                        url: "/blog/" + params.post,
                         type: "post"
                     };
 
@@ -55,7 +55,7 @@
                     var post = {
                         title: "Erro na geração do post",
                         description: "O erro é " + err,
-                        url: "/",
+                        url: "/blog/" + params.post,
                         thumbnail: "/thumbnails/home.jpg"
                     }
 
@@ -63,7 +63,7 @@
                         title: post.title,
                         description: post.description,
                         thumbnail: post.thumbnail,
-                        url: "/blog/",
+                        url: "/blog/" + params.post,
                         type: "post"
                     }
                     return { post }

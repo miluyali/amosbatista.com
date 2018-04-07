@@ -7,11 +7,12 @@
     import myLink from '../components/myLink.vue'
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
+    import facebookApp from '../components/facebook-app.vue'
 
     export default {
 
         components: {
-            post, box, pgHeader, topic, myLink, vueMeta, linkStyle
+            post, box, pgHeader, topic, myLink, vueMeta, linkStyle, facebookApp
         },
 
         props: ['title', 'description', 'meta'],
@@ -28,6 +29,8 @@
     <div class="portfolio-layout">
 
         <vue-meta :metadata="meta" />
+
+        <facebook-app />
 
         <link-style />
 

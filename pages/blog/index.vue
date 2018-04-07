@@ -7,7 +7,7 @@
 
     export default {
 
-        asyncData: function(params){
+        asyncData: function({params}){
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1
@@ -32,7 +32,7 @@
                         {
                             title: "Erro na geração da lista",
                             resume: "O erro é " + err,
-                            url: "/",
+                            url: "/blog",
                             thumbnail: "/thumbnails/home.jpg"
                         },]
                     }

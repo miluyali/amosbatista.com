@@ -5,6 +5,7 @@
     import myLink from '../components/myLink.vue'
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
+    import facebookApp from '../components/facebook-app.vue'
 
     export default {
 
@@ -15,7 +16,7 @@
 
         props: ['links', 'meta'],
 
-        components: { titleParagraph, box, myLink, vueMeta, linkStyle }
+        components: { titleParagraph, box, myLink, vueMeta, linkStyle, facebookApp }
     }
 
 </script>
@@ -25,6 +26,8 @@
     <div class="six-col-layout">
 
         <vue-meta :metadata="meta" />
+
+        <facebook-app />
 
         <link-style />
 

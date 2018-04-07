@@ -5,11 +5,12 @@
     import pgHeader from '../components/pageHeader.vue'
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
+    import facebookApp from '../components/facebook-app.vue'
 
     export default {
 
         components: {
-            postTitle, box, pgHeader, vueMeta, linkStyle
+            postTitle, box, pgHeader, vueMeta, linkStyle, facebookApp
         },
 
         props: ['title', 'description', 'thumbnail', 'metadata', "content"],
@@ -26,6 +27,8 @@
     <div class="blog-post-layout">
 
         <vue-meta :metadata="metadata" />
+        
+        <facebook-app />
 
         <link-style />
 
