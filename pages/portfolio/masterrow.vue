@@ -18,7 +18,7 @@
                 meta: {
                     title: "Masterrow - Tabelas dinâmicas em puro JavaScript",
                     description: "MasterRow é um plug-in feito em JavaScript para a criação de tabelas dinâmicas.",
-                    thumbnail: "thumbnails/masterrow-logo.jpg",
+                    thumbnail: "http://amosbatista.com/thumbnails/masterrow-logo.jpg",
                     url: "/portfolio/masterrow",
                     type: "post"
                 },

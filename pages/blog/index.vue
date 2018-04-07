@@ -33,7 +33,7 @@
                             title: "Erro na geração da lista",
                             resume: "O erro é " + err,
                             url: "/blog",
-                            thumbnail: "/thumbnails/home.jpg"
+                            thumbnail: "http://amosbatista.com/thumbnails/home.jpg"
                         },]
                     }
                 })

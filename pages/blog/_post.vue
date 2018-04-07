@@ -56,7 +56,7 @@
                         title: "Erro na geração do post",
                         description: "O erro é " + err,
                         url: "/blog/" + params.post,
-                        thumbnail: "/thumbnails/home.jpg"
+                        thumbnail: "http://amosbatista.com/thumbnails/home.jpg"
                     }
 
                     post.meta = {
