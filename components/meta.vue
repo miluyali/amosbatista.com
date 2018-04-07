@@ -51,18 +51,18 @@
 	      			},
 
 	      			/* Twitter */
-	      			{ property: 'twitter:title', content: this.metadata.title},
-	      			{ property: 'twitter:description', content: this.metadata.description},
+	      			{ name: 'twitter:title', content: this.metadata.title},
+	      			{ name: 'twitter:description', content: this.metadata.description},
 	      			{
-	      				property: 'twitter:url',
+	      				name: 'twitter:url',
 	      				content: 'http://amosbatista.com' + this.metadata.url
 	      			},
 	      			{
-	      				property: 'twitter:image',
+	      				name: 'twitter:image',
 	      				content: this.metadata.thumbnail
 	      			},
 	      			{
-	      				property: 'twitter:type', content: this.metadata.detailTypes.twitter
+	      				name: 'twitter:type', content: this.metadata.detailTypes.twitter
 	      			}
 				]
 			}
