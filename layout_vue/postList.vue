@@ -7,6 +7,7 @@
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
     import facebookApp from '../components/facebook-app.vue'
+    import pgFooter from '../components/pageFooter.vue'
 
     export default {
 
@@ -16,7 +17,7 @@
 
         props: ['posts', 'metadata'],
 
-        components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle, facebookApp }
+        components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle, facebookApp, pgFooter }
     }
 
 </script>
@@ -49,6 +50,9 @@
                 </a>
             </li>
         </ul>
+
+        <pg-footer />
+        
     </div>
 
 </template>

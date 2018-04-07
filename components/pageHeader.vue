@@ -18,18 +18,20 @@
 
 <template>
     
-    <a class="page-header" href="/">
+    <header class="page-header">
         <box>
             <h1 class="header">
-                <span class="comment-chars">
-                    //
-                </span>
-                <span class="header-content">
-                    Amós Batista
-                </span>
+                <a class="link" href="/">
+                    <span class="comment-chars">
+                        //
+                    </span>
+                    <span class="header-content">
+                        Amós Batista
+                    </span>
+                </a>
             </h1>
         </box>
-    </a>
+    </header>
 
 </template>
 

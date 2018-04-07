@@ -6,11 +6,12 @@
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
     import facebookApp from '../components/facebook-app.vue'
+    import pgFooter from '../components/pageFooter.vue'
 
     export default {
 
         components: {
-            postTitle, box, pgHeader, vueMeta, linkStyle, facebookApp
+            postTitle, box, pgHeader, vueMeta, linkStyle, facebookApp, pgFooter
         },
 
         props: ['title', 'description', 'thumbnail', 'metadata', "content"],
@@ -34,25 +35,31 @@
 
         <pg-header />
 
-        <div class="post-top box">
+        <article class="post">
 
-            <div class="thumbnail-cover" />
+            <div class="post-top box">
 
-            <img class="thumbnail-image" :src="thumbnail" />
+                <div class="thumbnail-cover" />
 
-            <div class="content">
+                <img class="thumbnail-image" :src="thumbnail" />
 
-                <post-title :title="title" :resume="description" is-color-reverted="true" />
+                <div class="content">
+
+                    <post-title :title="title" :resume="description" is-color-reverted="true" />
+                </div>
+
             </div>
 
-        </div>
+            <div class="post-content box">
 
-        <div class="post-content box">
-
-            <div class="content" v-html="content">
-                Aqui deveria vir o conteúdo do post, se desse tudo certo :(
+                <div class="content" v-html="content">
+                    Aqui deveria vir o conteúdo do post, se desse tudo certo :(
+                </div>
             </div>
-        </div>
+
+        </article>
+
+        <pg-footer />
 
     </div>
 </template>
@@ -65,49 +72,55 @@
 
     .blog-post-layout{
 
-        .post-top{
-            height: 500px;
+        .post{
+            float: left;
             position: relative;
+            
+            .post-top{
+                height: 500px;
+                position: relative;
 
-            .thumbnail-cover{
-                .gradient();
-                z-index: -1;
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
+                .thumbnail-cover{
+                    .gradient();
+                    z-index: -1;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                .thumbnail-image{
+                    z-index: -2;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                .content{
+                    z-index: 2;
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                }
             }
 
-            .thumbnail-image{
-                z-index: -2;
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+            .post-content{
 
-            .content{
-                z-index: 2;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            }
-        }
+                .content{
+                    width: 95%;
+                    margin: auto;
+                    text-indent: 20px;
 
-        .post-content{
-
-            .content{
-                width: 95%;
-                margin: auto;
-                text-indent: 20px;
-
-                a{
-                    text-decoration: underline;
+                    a{
+                        text-decoration: underline;
+                    }
                 }
             }
         }
+
     }
 
 </style>

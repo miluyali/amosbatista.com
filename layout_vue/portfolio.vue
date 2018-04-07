@@ -8,11 +8,12 @@
     import vueMeta from '../components/meta.vue'
     import linkStyle from '../components/external-link-style.vue'
     import facebookApp from '../components/facebook-app.vue'
+    import pgFooter from '../components/pageFooter.vue'
 
     export default {
 
         components: {
-            post, box, pgHeader, topic, myLink, vueMeta, linkStyle, facebookApp
+            post, box, pgHeader, topic, myLink, vueMeta, linkStyle, facebookApp, pgFooter
         },
 
         props: ['title', 'description', 'meta'],
@@ -64,6 +65,9 @@
                 </topic>
             </div>
         </box>
+
+        <pg-footer />
+        
     </div>
 </template>
 
