@@ -30,7 +30,7 @@
     @import "../assets/variables.less";
 
     .topic{
-        /*width: 100%;*/
+        width: 90%;
         margin: 0 0 10px 0;
         padding: 10px;
         display: inline-block;

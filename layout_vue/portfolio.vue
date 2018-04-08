@@ -16,7 +16,7 @@
             post, box, pgHeader, topic, myLink, vueMeta, linkStyle, facebookApp, pgFooter
         },
 
-        props: ['title', 'description', 'meta'],
+        props: ['title', 'description', 'meta', 'repoUrl'],
 
         data: function () {
             return {}
@@ -69,7 +69,7 @@
                 </topic>
 
                 <topic title="Fonte">
-                    
+                    <slot name="source" />
                 </topic>
             </div>
         </box>

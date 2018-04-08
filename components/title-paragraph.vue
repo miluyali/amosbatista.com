@@ -43,6 +43,7 @@
             line-height: 1;
             color: @color-primary;
             font-size: 200%;
+            overflow-wrap: break-word;
         }
 
         .white-title{

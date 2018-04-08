@@ -6,11 +6,12 @@
     import pgHeader from '~/components/pageHeader.vue'
     import myLink from '~/components/myLink.vue'
     import portfolioPost from '~/layout_vue/portfolio.vue'
+    import bigLink from '~/components/bigLink.vue'
 
     export default {
 
         components: {
-            post, box, pgHeader, topic, myLink, portfolioPost
+            post, box, pgHeader, topic, myLink, portfolioPost, bigLink
         },
 
         data: function () {
@@ -101,6 +102,12 @@
                 </p>
 
             </div>
+
+            <div class="paragraph" slot="source">
+                <big-link url="https://github.com/amosbatista/MasterRow" />
+                
+            </div>
+
         </portfolio-post>
     </div>
 </template>
