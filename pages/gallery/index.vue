@@ -2,7 +2,7 @@
 
     import post from '~/components/post-title.vue'
     import box from '~/components/box.vue'
-    import layout from '~/layout_vue/postList.vue'
+    import layout from '~/layout_vue/galleryList.vue'
     import req from 'axios'
 
     export default {
@@ -11,7 +11,7 @@
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1,
-                    'categories': 4
+                    'categories': 3
                 }
             })
                 .then(function(res) {
@@ -19,6 +19,7 @@
                         return {
                             title: item.title.rendered,
                             url: 'blog/' + item.slug,
+                            resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
                             thumbnail: item._embedded["wp:featuredmedia"][0] != undefined
                                 ? item._embedded["wp:featuredmedia"][0].source_url
                                 : ''
@@ -31,6 +32,7 @@
                         posts: [
                         {
                             title: "Erro na geração da lista",
+                            resume: "O erro é " + err,
                             url: "/blog",
                             thumbnail: "http://amosbatista.com/thumbnails/home.jpg"
                         },]
@@ -45,10 +47,10 @@
         data: function () {
             return {
                 metadata: {
-                    title: "Gallery",
-                    description: "Toda minha arte aqui. Desenhos, fotos, comics, cartuns.",
+                    title: "Blog",
+                    description: "Acompanhe todas as minhas postagens aqui.",
                     thumbnail: "thumbnails/portfolio.jpg",
-                    url: "/gallery",
+                    url: "/blog",
                     type: "list"
                 },
                 /*posts: [

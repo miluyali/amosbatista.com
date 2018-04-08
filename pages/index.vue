@@ -53,11 +53,11 @@
                     description: "",
                     url: "/portfolio"
                	},
-                /*{
+                {
                     title: "Galeria",
                     description: "",
                     url: "/gallery"
-                }*/
+                }
             ]
         }
 	  },
