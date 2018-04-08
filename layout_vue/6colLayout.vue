@@ -57,6 +57,7 @@
 
     @import '../assets/variables.less';
     @import '../assets/mixin.less';
+
     @box-size: 225px;
 
     .six-col-layout{

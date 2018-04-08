@@ -51,6 +51,7 @@
 </template>
 
 <style lang="less">
+    @import '../../assets/fontawesome/fontawesome.less';
     @import '../../assets/variables.less';
     @import '../../assets/mixin.less';
     @import '../../assets/generic.less';
