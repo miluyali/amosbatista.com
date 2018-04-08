@@ -19,7 +19,7 @@
                 meta: {
                     title: "Masterrow - Tabelas dinâmicas em puro JavaScript",
                     description: "Framework feito em JavaScript para a criação de tabelas dinâmicas.",
-                    thumbnail: "http://amosbatista.com/thumbnails/masterrow-logo.jpg",
+                    thumbnail: "https://amosbatista.com/thumbnails/masterrow-logo.jpg",
                     url: "/portfolio/masterrow",
                     type: "post"
                 },

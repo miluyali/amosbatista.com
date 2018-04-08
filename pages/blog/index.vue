@@ -19,6 +19,7 @@
                         return {
                             title: item.title.rendered,
                             url: 'blog/' + item.slug,
+                            resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
                             thumbnail: item._embedded["wp:featuredmedia"][0] != undefined
                                 ? item._embedded["wp:featuredmedia"][0].source_url
                                 : ''
@@ -31,8 +32,9 @@
                         posts: [
                         {
                             title: "Erro na geração da lista",
+                            resume: err,
                             url: "/blog",
-                            thumbnail: "http://amosbatista.com/thumbnails/home.jpg"
+                            thumbnail: "https://amosbatista.com/thumbnails/home.jpg"
                         },]
                     }
                 })

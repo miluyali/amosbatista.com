@@ -33,7 +33,7 @@
             meta: {
                 title: "Home",
                 description: "Site pessoal, de projetos e portfólios.",
-                thumbnail: "http://amosbatista.com/thumbnails/home.jpg",
+                thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
                 url: "",
                 type: "home"
             },

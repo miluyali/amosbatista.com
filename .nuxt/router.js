@@ -7,6 +7,7 @@ const _a7f2937c = () => import('../pages/blog/index.vue' /* webpackChunkName: "p
 const _5768b870 = () => import('../pages/gallery/index.vue' /* webpackChunkName: "pages/gallery/index" */).then(m => m.default || m)
 const _58b22b7e = () => import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */).then(m => m.default || m)
 const _2e4911e4 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
+const _36f1adf5 = () => import('../pages/gallery/_post.vue' /* webpackChunkName: "pages/gallery/_post" */).then(m => m.default || m)
 const _0eacc06f = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
 const _e5641d76 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
@@ -87,6 +88,11 @@ export function createRouter () {
 			path: "/portfolio/masterrow",
 			component: _2e4911e4,
 			name: "portfolio-masterrow"
+		},
+		{
+			path: "/gallery/:post",
+			component: _36f1adf5,
+			name: "gallery-post"
 		},
 		{
 			path: "/blog/:post",

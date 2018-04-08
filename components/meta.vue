@@ -41,7 +41,7 @@
 	      			{ property: 'og:description', content: this.metadata.description},
 	      			{
 	      				property: 'og:url',
-	      				content: 'http://amosbatista.com' + this.metadata.url
+	      				content: 'https://amosbatista.com' + this.metadata.url
 	      			},
 	      			{
 	      				property: 'og:image',
@@ -56,7 +56,7 @@
 	      			{ name: 'twitter:description', content: this.metadata.description},
 	      			{
 	      				name: 'twitter:url',
-	      				content: 'http://amosbatista.com' + this.metadata.url
+	      				content: 'https://amosbatista.com' + this.metadata.url
 	      			},
 	      			{
 	      				name: 'twitter:image',

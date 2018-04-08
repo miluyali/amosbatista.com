@@ -15,7 +15,7 @@
                 meta: {
                     title: "Portfolio",
                     description: "Veja em detalhes os maiores projetos que participei",
-                    thumbnail: "http://amosbatista.com/thumbnails/portfolio.jpg",
+                    thumbnail: "https://amosbatista.com/thumbnails/portfolio.jpg",
                     url: "/portfolio",
                     type: "list"
                 },

@@ -2,7 +2,7 @@
 
     import post from '~/components/post-title.vue'
     import box from '~/components/box.vue'
-    import layout from '~/layout_vue/blogPost.vue'
+    import layout from '~/layout_vue/galleryPost.vue'
     import req from 'axios'
     import sanitize from 'sanitize-html'
 
@@ -13,7 +13,8 @@
             return req.get(process.env.BLOG_URL + '/posts', {
                 params: {
                     '_embed': 1,
-                    'slug': params.post
+                    'slug': params.post,
+                    'categories': 3
                 }
             })
                 .then(function(res) {
@@ -36,16 +37,16 @@
                     var post = {
                         title: content.title.rendered,
                         description: content.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
-                        thumbnail: content._embedded["wp:featuredmedia"][0] != undefined
+                        imageUrl: content._embedded["wp:featuredmedia"][0] != undefined
                             ? content._embedded["wp:featuredmedia"][0].source_url
                             : '',
-                        content: contentCleaner(sanitize(content.content.rendered))
+                        outro: contentCleaner(sanitize(content.content.rendered))
                     }
                     post.meta = {
                         title: post.title,
                         description: post.description,
-                        thumbnail: post.thumbnail,
-                        url: "/blog/" + params.post,
+                        imageUrl: post.imageUrl,
+                        url: "/gallery/" + params.post,
                         type: "post"
                     };
 
@@ -55,15 +56,15 @@
                     var post = {
                         title: "Erro na geração do post",
                         description: "O erro é " + err,
-                        url: "/blog/" + params.post,
-                        thumbnail: "https://amosbatista.com/thumbnails/home.jpg"
+                        url: "/gallery/" + params.post,
+                        imageUrl: "http://amosbatista.com/thumbnails/home.jpg"
                     }
 
                     post.meta = {
                         title: post.title,
                         description: post.description,
-                        thumbnail: post.thumbnail,
-                        url: "/blog/" + params.post,
+                        imageUrl: post.imageUrl,
+                        url: "/gallery/" + params.post,
                         type: "post"
                     }
                     return { post }
@@ -85,7 +86,7 @@
 
     <div class="container">
         
-        <layout :metadata="post.meta" :title="post.title" :description="post.description" :thumbnail="post.thumbnail" :content="post.content" />
+        <layout :metadata="post.meta" :title="post.title" :description="post.description" :imageUrl="post.imageUrl" :outro="post.outro" />
     </div>
 </template>
 

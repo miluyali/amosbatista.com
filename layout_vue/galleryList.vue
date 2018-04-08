@@ -72,12 +72,13 @@
         margin: 0 0 10px 0;
 
         .list{
-
+            float: left;
+            margin: 0;
             width: 100%;
 
             .item{
-                width: 15%;
-                margin: 0 0 10px 0;
+                width: 20%;
+                margin: 0 0 0px 0;
                 padding: 0;
 
                 .link{
@@ -88,7 +89,10 @@
 
                         .image{
                             width: 100%;
-                            height: 100%;
+                            max-width: 150px;
+                            margin: 0 auto;
+                            display: block;
+                            position: relative;
                         }
                     }
 
@@ -97,8 +101,10 @@
                         float: left;
 
                         .resume-content{
+                            margin-left: 10px;
                             font-size: 65%;
                             color: @color-secundary;
+                            font-family: @base-font;
                         }
                     }
                 }

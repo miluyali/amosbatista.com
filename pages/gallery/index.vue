@@ -18,7 +18,7 @@
                     let posts = res.data.map (function(item){
                         return {
                             title: item.title.rendered,
-                            url: 'blog/' + item.slug,
+                            url: 'gallery/' + item.slug,
                             resume: item.excerpt.rendered.replace('<p>', '').replace('</p>', ''),
                             thumbnail: item._embedded["wp:featuredmedia"][0] != undefined
                                 ? item._embedded["wp:featuredmedia"][0].source_url
@@ -33,8 +33,8 @@
                         {
                             title: "Erro na geração da lista",
                             resume: "O erro é " + err,
-                            url: "/blog",
-                            thumbnail: "http://amosbatista.com/thumbnails/home.jpg"
+                            url: "/gallery",
+                            thumbnail: "https://amosbatista.com/thumbnails/home.jpg"
                         },]
                     }
                 })
@@ -47,10 +47,10 @@
         data: function () {
             return {
                 metadata: {
-                    title: "Blog",
+                    title: "Galeria",
                     description: "Acompanhe todas as minhas postagens aqui.",
                     thumbnail: "thumbnails/portfolio.jpg",
-                    url: "/blog",
+                    url: "/gallery",
                     type: "list"
                 },
                 /*posts: [
