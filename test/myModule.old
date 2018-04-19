@@ -1,0 +1,5 @@
+export default {
+    metodoParaTestar: function (){
+        return 'KKKK e aeh man';
+    }
+}
