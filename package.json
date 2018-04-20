@@ -6,7 +6,7 @@
     "prod": "HOST=0.0.0.0 PORT=3000 nuxt start",
     "start": "npm run build && npm run prod",
     "generate": "nuxt generate",
-    "test": "mocha"
+    "test": "./node_modules/mocha/bin/mocha --require babel-register --reporter spec || exit 0"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -19,6 +19,8 @@
     "sanitize-html": "^1.18.2"
   },
   "devDependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "mocha": "^5.1.1"
   }
