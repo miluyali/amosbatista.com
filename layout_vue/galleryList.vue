@@ -77,9 +77,10 @@
             width: 100%;
 
             .item{
-                width: 20%;
-                margin: 0 0 0px 0;
+                width: 23%;
+                margin: 0 5px 0 0;
                 padding: 0;
+                float: left;
 
                 .link{
 
