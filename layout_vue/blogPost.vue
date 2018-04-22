@@ -75,10 +75,15 @@
         .post{
             float: left;
             position: relative;
+            width: 100%;
             
             .post-top{
                 height: 500px;
                 position: relative;
+                padding: 10px;
+                .boxSizingSetToBorder();
+                margin: 0 0  10px 0;
+                overflow-x: hidden; 
 
                 .thumbnail-cover{
                     .gradient();
@@ -93,7 +98,6 @@
                 .thumbnail-image{
                     z-index: -2;
                     height: 100%;
-                    width: 100%;
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -102,8 +106,8 @@
                 .content{
                     z-index: 2;
                     position: absolute;
-                    bottom: 0;
-                    width: 100%;
+                    bottom: 10px;
+                    width: 80%;
                 }
             }
 
@@ -116,6 +120,8 @@
 
                     a{
                         text-decoration: underline;
+                        text-decoration-style: dotted;
+                        word-wrap: break-word;
                     }
                 }
             }
