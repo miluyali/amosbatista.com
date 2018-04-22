@@ -47,10 +47,10 @@
         data: function () {
             return {
                 metadata: {
-                    title: "Gallery",
-                    description: "Toda minha arte aqui. Desenhos, fotos, comics, cartuns.",
+                    title: "Blog",
+                    description: "Atualizações sobre coisas que curto ou odeio.",
                     thumbnail: "thumbnails/portfolio.jpg",
-                    url: "/gallery",
+                    url: "/blog",
                     type: "list"
                 },
                 /*posts: [

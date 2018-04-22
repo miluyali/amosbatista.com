@@ -26,9 +26,12 @@
                             _newContent = _newContent + _content
                                 .charAt(_contentChar)
                                 .replace(String.fromCharCode(160), ' ')
-                                .replace('...', '&#8230;');
-
+                                .replace('...', '&#8230;')
                         }
+
+                        _newContent = _newContent
+                            .replace(/<br \/>/ig, "")
+                            .replace(/<br>/ig, "")
 
                         return _newContent;
                     };
@@ -41,6 +44,7 @@
                             : '',
                         content: contentCleaner(sanitize(content.content.rendered))
                     }
+                    
                     post.meta = {
                         title: post.title,
                         description: post.description,
