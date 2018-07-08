@@ -5,6 +5,45 @@ import checklist from '../pages/checklist_cartorio/checklist-process.js'
 import checklistLoad from '../pages/checklist_cartorio/checklist-retrieve.js'
 
 describe('checkListProcessorTest', ()=>{
+	var fullChecklistData = {
+		type: "question",
+		text: "A questionary with 2 questions",
+		answers: ["yes", "no"],
+		next: [
+			{
+				type: "task",
+				text: "Wrong step",
+				next: null
+			},
+			{
+				type: "task",
+				text: "A task with a questionary",
+				next: {
+					type: "question",
+					text: "A questionary with 3 questions",
+					answers: ["yes", "no", "maybe"],
+					next: [
+						{
+							type: "task",
+							text: "Wrong step",
+							next: null
+						},
+						{
+							type: "task",
+							text: "Correct step",
+							next: null
+						},
+						{
+							type: "task",
+							text: "Wrong step",
+							next: null
+						}
+					]
+				}
+			}
+		]
+	};
+
 	it('should return a function when receives a checklist data', ()=>{
 		var checklistData = {};
 		var checklistInstance = checklist(checklistData);
@@ -38,7 +77,7 @@ describe('checkListProcessorTest', ()=>{
 
 	it('should return null when resolve, without parameters, and it is at end of structure', ()=>{
 		var checklistData = {
-			type: "end",
+			type: "task",
 			text: "Last step",
 			next: null
 		};
@@ -88,45 +127,8 @@ describe('checkListProcessorTest', ()=>{
 	});
 
 	it('shoud return a sequence of objects, until return null, at end of structure', ()=>{
-		var checklistData = {
-			type: "question",
-			text: "A questionary with 2 questions",
-			answers: ["yes", "no"],
-			next: [
-				{
-					type: "task",
-					text: "Wrong step",
-					next: null
-				},
-				{
-					type: "task",
-					text: "A task with a questionary",
-					next: {
-						type: "question",
-						text: "A questionary with 3 questions",
-						answers: ["yes", "no", "maybe"],
-						next: [
-							{
-								type: "task",
-								text: "Wrong step",
-								next: null
-							},
-							{
-								type: "task",
-								text: "Correct step",
-								next: null
-							},
-							{
-								type: "task",
-								text: "Wrong step",
-								next: null
-							}
-						]
-					}
-				}
-			]
-		};
-		var checklistInstance = checklist(checklistData);
+		
+		var checklistInstance = checklist(fullChecklistData);
 
 		var actual = checklistInstance.resolve(1);
 
@@ -153,6 +155,57 @@ describe('checkListProcessorTest', ()=>{
 		var actual = checklistInstance.resolve();
 		expect(typeof actual.text).to.be.equal("string");
 	});
+
+	it('should return the correct processed list, when receives a checklist process, and after a few process', ()=>{
+		var checklistInstance = checklist(fullChecklistData);		
+		var expected = [
+			{
+				text: "A questionary with 2 questions",
+				isQuestion: true,
+				answer: "no"
+			}
+		];
+
+		checklistInstance.resolve(1);
+		var actual = checklistInstance.getProcessed();
+
+		expect(actual[0].text).to.be.equal(expected[0].text);
+		expect(actual[0].isQuestion).to.be.equal(expected[0].isQuestion);
+		expect(actual[0].answer).to.be.equal(expected[0].answer);
+
+		expected.push({
+			text: "A task with a questionary"
+		});
+		checklistInstance.resolve();
+		actual = checklistInstance.getProcessed();
+
+		expect(actual[0].text).to.be.equal(expected[0].text);
+		expect(actual[0].isQuestion).to.be.equal(expected[0].isQuestion);
+		expect(actual[0].answer).to.be.equal(expected[0].answer);
+
+		expect(actual[1].text).to.be.equal(expected[1].text);
+		expect(actual[1].isQuestion).to.be.equal(expected[1].isQuestion);
+
+		expected.push({
+			text: "A questionary with 3 questions",
+			isQuestion: true,
+			answer: "no"
+		});
+		checklistInstance.resolve(1);
+		actual = checklistInstance.getProcessed();
+
+		expect(actual[0].text).to.be.equal(expected[0].text);
+		expect(actual[0].isQuestion).to.be.equal(expected[0].isQuestion);
+		expect(actual[0].answer).to.be.equal(expected[0].answer);
+
+		expect(actual[1].text).to.be.equal(expected[1].text);
+		expect(actual[1].isQuestion).to.be.equal(expected[1].isQuestion);
+
+		expect(actual[2].text).to.be.equal(expected[2].text);
+		expect(actual[2].isQuestion).to.be.equal(expected[2].isQuestion);
+		expect(actual[2].answer).to.be.equal(expected[2].answer);
+
+	})
 })
 
 
