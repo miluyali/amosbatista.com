@@ -1,10 +1,13 @@
 <script>
     import vueMeta from '../../components/meta.vue'
     import linkStyle from '../../components/external-link-style.vue'
+    import checklistLoader from './checklist-retrieve.js'
+    import checklistProcessor from './checklist-process.js'
 
     export default {
         components: {vueMeta, linkStyle},
         data: function(){
+            var checklist = checklistLoader();
             return {
                 meta: {
                     title: "Checklist",
@@ -12,7 +15,14 @@
                     thumbnail: "https://amosbatista.com/thumbnails/portfolio.jpg",
                     url: "/checklist",
                     type: "post"
-                }
+                },
+                checklistTask: checklist,
+                checklistProcess: checklistProcessor(checklist)
+            }
+        },
+        computed: {
+            resolve: ()=>{
+                this.checklistTask = checklistProcessor.resolve();
             }
         }
     }
@@ -54,16 +64,18 @@
                 Análise de Conteúdo
             </p>
             <h1 class="question">
-                Ato é ético?
+                {{checklistTask.text}}
             </h1>
 
             <div class="option-line">
-                <div class="decoration">
-                    <button type="button" class="option-button yes">
-                        Sim
+                <div class="decoration" v-if="checklistTask.task != 'question'">
+                    <button type="button" class="option-button next" v-on:click="resolve()">
+                        Próximo
                     </button>
-                    <button type="button" class="option-button no">
-                        Não
+                </div>
+                <div class="decoration" v-if="checklistTask.task == 'question'">
+                    <button type="button" class="option-button next" v-for="(answer, index) in checklistTask.answer" v-on:click="resolve(index)">
+                        {{answer}}
                     </button>
                 </div>
             </div>
@@ -172,6 +184,10 @@
                     .no{
                         .borda(@no-border-color);
                         background-color: @no-color;
+                    }
+                    .next{                        
+                        .borda(@lateral-color);
+                        background-color: @lateral-color;
                     }
                 }
             }

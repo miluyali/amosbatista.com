@@ -1,5 +1,5 @@
 {
-	"name": "Análise de conteúdo",
+	"text": "Análise de conteúdo",
 	"type": "task",
 	"next": {
 		"type": "question",
@@ -17,7 +17,7 @@
 						"answers": ["Sim", "Não"],
 						"next": [
 							{
-								"name": "Não é permitido menor ou incapaz.",
+								"text": "Não é permitido menor ou incapaz.",
 								"type": "task",
 								"next": null	
 							},
@@ -27,7 +27,7 @@
 								"answers": ["Sim", "Não"],
 								"next": [
 									{
-										"name": "É obrigatório colocar preço.",
+										"text": "É obrigatório colocar preço.",
 										"type": "task",
 										"next": null	
 									},
@@ -37,12 +37,12 @@
 										"answers": ["Sim", "Não"],
 										"next": [
 											{
-												"name": "É obrigatório colocar prazo.",
+												"text": "É obrigatório colocar prazo.",
 												"type": "task",
 												"next": null
 											},
 											{
-												"name": "Questionário concluído para pessoa física.",
+												"text": "Questionário concluído para pessoa física.",
 												"type": "task",
 												"next": null	
 											}
@@ -53,7 +53,7 @@
 						]
 					},
 					{
-						"name": "Leia o contrato social e breve relato.",
+						"text": "Leia o contrato social e breve relato.",
 						"type": "task",
 						"next": {
 							"type": "question",
@@ -61,12 +61,12 @@
 							"answers": ["Sim", "Não"],
 							"next": [
 								{
-									"name": "Questionário concluído para pessoa jurídica.",
+									"text": "Questionário concluído para pessoa jurídica.",
 									"type": "task",
 									"next": null	
 								},
 								{
-									"name": "O contrato não permite.",
+									"text": "O contrato não permite.",
 									"type": "task",
 									"next": null	
 								}
@@ -76,7 +76,7 @@
 				]
 			},
 			{
-				"name": "O ato precisa ser ético",
+				"text": "O ato precisa ser ético",
 				"type": "task",
 				"next": null
 			}
