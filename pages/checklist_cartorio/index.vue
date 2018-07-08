@@ -24,18 +24,27 @@
         <link-style />
 
         <div class="divisor lateral">
+            <h2 class="answer-title">Checklist:</h2>
             <ul class="answers-list">
                <li class="answer">
-                   <span class="answer-icon yes">
+                   <span class="answer-icon">
                        <i class="fa fa-check" />
                    </span>
-                   É ato ético
+                   Análise de Conteúdo
                </li> 
                <li class="answer">
-                   <span class="answer-icon no">
-                       <i class="fa fa-times" />
-                   </span>
-                   Não é pessoa física
+                    
+                    <span class="answer-icon">
+                       <i class="fa fa-check" />
+                    </span>
+                    Ato é ético?
+                    
+                    <p class="answer-content">
+                        R: 
+                        <span>
+                            Não
+                        </span>
+                    </p>
                </li>
             </ul>
         </div>
@@ -47,6 +56,7 @@
             <h1 class="question">
                 Ato é ético?
             </h1>
+
             <div class="option-line">
                 <div class="decoration">
                     <button type="button" class="option-button yes">
@@ -76,6 +86,7 @@
     @yes-color: hsla(120, 45%, 25%, 1);
     @yes-border-color: hsla(120, 45%, 25%, 1);
     @no-color: hsla(5, 75%, 45%, 1);
+
     @no-border-color: hsla(5, 75%, 25%, 1);
     @yes-clear-color: hsla(120, 45%, 65%, 1);
     @no-clear-color: hsla(5, 75%, 65%, 1);
@@ -95,11 +106,22 @@
             float: right;
             background-color: @lateral-color;
             color: @lateral-text-color;
+            .answer-title{
+                margin: 17px 0 0 0;
+                padding: 0 10px;
+            }
             .answers-list{
                 margin: 40px 0 0 0;
                 .answer{
-                    padding: 0 10px;
+                    padding: 10px 10px 0 10px;
                     font-size: 75%;
+                    .answer-content{
+                        margin: 0;
+                        text-indent: 20px;
+                        span{
+                            font-weight: @font-heavy;
+                        }
+                    }
                     .yes{
                         color: @yes-clear-color;
                     }
@@ -118,6 +140,7 @@
                 color: @document-name-color;
                 font-weight: @font-light;
                 font-size: 80%;
+                margin: 30px 0 0 0;
             }
             .question{
                 text-align: center;
