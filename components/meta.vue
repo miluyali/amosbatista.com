@@ -31,11 +31,13 @@
 					twitter: "summary_large_image"
 				}
 			}
-
 			return {
 				title: this.metadata.title,
 				titleTemplate: '%s | amosBatista.com',
 				meta: [
+	      			{ property: 'name', content: "viewport"},
+	      			{ property: 'content', content: "width=device-width, user-scalable=no"},
+
 	      			{ property: 'fb:app_id', content: "212560042661168"},
 	      			{ property: 'og:title', content: this.metadata.title},
 	      			{ property: 'og:description', content: this.metadata.description},

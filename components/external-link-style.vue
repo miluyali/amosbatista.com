@@ -9,6 +9,10 @@
                         href: 'https://fonts.googleapis.com/css?family=Fjalla+One|Source+Serif+Pro:400,700' 
                     },
                     { 
+                        rel: 'stylesheet', 
+                        href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' 
+                    },
+                    { 
                         rel: 'favicon', href: '~/static/favicon.ico' 
                     },
                     { 

@@ -9,6 +9,7 @@ const _58b22b7e = () => import('../pages/portfolio/index.vue' /* webpackChunkNam
 const _2e4911e4 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
 const _36f1adf5 = () => import('../pages/gallery/_post.vue' /* webpackChunkName: "pages/gallery/_post" */).then(m => m.default || m)
 const _0eacc06f = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
+const _095e847c = () => import('../pages/checklist_cartorio/index.vue' /* webpackChunkName: "pages/checklist_cartorio/index" */).then(m => m.default || m)
 const _e5641d76 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
@@ -98,6 +99,11 @@ export function createRouter () {
 			path: "/blog/:post",
 			component: _0eacc06f,
 			name: "blog-post"
+		},
+		{
+			path: "/checklist:cartorio",
+			component: _095e847c,
+			name: "checklistcartorio"
 		},
 		{
 			path: "/",
