@@ -11,7 +11,7 @@ describe('checkListProcessorTest', ()=>{
 		answers: ["yes", "no"],
 		next: [
 			{
-				type: "task",
+				type: "end",
 				text: "Wrong step",
 				next: null
 			},
@@ -24,17 +24,17 @@ describe('checkListProcessorTest', ()=>{
 					answers: ["yes", "no", "maybe"],
 					next: [
 						{
-							type: "task",
+							type: "end",
 							text: "Wrong step",
 							next: null
 						},
 						{
-							type: "task",
+							type: "end",
 							text: "Correct step",
 							next: null
 						},
 						{
-							type: "task",
+							type: "end",
 							text: "Wrong step",
 							next: null
 						}
@@ -56,7 +56,7 @@ describe('checkListProcessorTest', ()=>{
 			type: "task",
 			text: "Must process to next step",
 			next: {
-				type: "task",
+				type: "end",
 				text: "This is a next step",
 				next: null
 			}
@@ -64,7 +64,7 @@ describe('checkListProcessorTest', ()=>{
 		var checklistInstance = checklist(checklistData);
 
 		var expected = {
-			type: "task",
+			type: "end",
 			text: "This is a next step",
 			next: null
 		}
@@ -75,18 +75,24 @@ describe('checkListProcessorTest', ()=>{
 		expect(actual.next).to.be.equal(expected.next);
 	});
 
-	it('should return null when resolve, without parameters, and it is at end of structure', ()=>{
+	it('should return last object when resolve, without parameters, and it is at end of structure', ()=>{
 		var checklistData = {
-			type: "task",
+			type: "end",
 			text: "Last step",
 			next: null
 		};
 		var checklistInstance = checklist(checklistData);
 
-		var expected = null
+		var expected = {
+			type: "end",
+			text: "Last step",
+			next: null
+		};
 		var actual = checklistInstance.resolve();
 
-		expect(actual).to.be.null;
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);
+		expect(actual.next).to.be.equal(expected.next);
 	});
 
 	it('should return the first element of a checklist question, when resolve, with an answer index', ()=>{
@@ -96,17 +102,17 @@ describe('checkListProcessorTest', ()=>{
 			answers: ["yes", "no", "maybe"],
 			next: [
 				{
-					type: "task",
+					type: "end",
 					text: "Correct step",
 					next: null
 				},
 				{
-					type: "task",
+					type: "end",
 					text: "Wrong step",
 					next: null
 				},
 				{
-					type: "task",
+					type: "end",
 					text: "Wrong step",
 					next: null
 				}
@@ -115,7 +121,7 @@ describe('checkListProcessorTest', ()=>{
 		var checklistInstance = checklist(checklistData);
 
 		var expected = {
-			type: "task",
+			type: "end",
 			text: "Correct step",
 			next: null
 		};
@@ -126,7 +132,7 @@ describe('checkListProcessorTest', ()=>{
 		expect(actual.next).to.be.equal(expected.next);
 	});
 
-	it('shoud return a sequence of objects, until return null, at end of structure', ()=>{
+	it('shoud return a sequence of objects, until return task of type "end", at end of structure', ()=>{
 		
 		var checklistInstance = checklist(fullChecklistData);
 
@@ -144,7 +150,7 @@ describe('checkListProcessorTest', ()=>{
 
 		actual = checklistInstance.resolve(1);
 
-		expect(actual.type).to.be.equal("task");
+		expect(actual.type).to.be.equal("end");
 		expect(actual.text).to.be.equal("Correct step");
 		expect(actual.next).to.be.null;
 	});

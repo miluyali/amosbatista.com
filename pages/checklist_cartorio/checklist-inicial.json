@@ -18,7 +18,7 @@
 						"next": [
 							{
 								"text": "Não é permitido menor ou incapaz.",
-								"type": "task",
+								"type": "end",
 								"next": null	
 							},
 							{
@@ -28,7 +28,7 @@
 								"next": [
 									{
 										"text": "É obrigatório colocar preço.",
-										"type": "task",
+										"type": "end",
 										"next": null	
 									},
 									{
@@ -38,12 +38,12 @@
 										"next": [
 											{
 												"text": "É obrigatório colocar prazo.",
-												"type": "task",
+												"type": "end",
 												"next": null
 											},
 											{
 												"text": "Questionário concluído para pessoa física.",
-												"type": "task",
+												"type": "end",
 												"next": null	
 											}
 										]
@@ -62,12 +62,12 @@
 							"next": [
 								{
 									"text": "Questionário concluído para pessoa jurídica.",
-									"type": "task",
+									"type": "end",
 									"next": null	
 								},
 								{
 									"text": "O contrato não permite.",
-									"type": "task",
+									"type": "end",
 									"next": null	
 								}
 							]
@@ -77,7 +77,7 @@
 			},
 			{
 				"text": "O ato precisa ser ético",
-				"type": "task",
+				"type": "end",
 				"next": null
 			}
 		]

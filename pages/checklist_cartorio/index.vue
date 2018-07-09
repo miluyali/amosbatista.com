@@ -20,9 +20,9 @@
                 checklistProcess: checklistProcessor(checklist)
             }
         },
-        computed: {
-            resolve: ()=>{
-                this.checklistTask = checklistProcessor.resolve();
+        methods: {
+            resolve (stepIndex){
+                this.checklistTask = this.checklistProcess.resolve(stepIndex);
             }
         }
     }
@@ -68,14 +68,19 @@
             </h1>
 
             <div class="option-line">
-                <div class="decoration" v-if="checklistTask.task != 'question'">
+                <div class="decoration" v-if="checklistTask.type == 'task'">
                     <button type="button" class="option-button next" v-on:click="resolve()">
                         Próximo
                     </button>
                 </div>
-                <div class="decoration" v-if="checklistTask.task == 'question'">
-                    <button type="button" class="option-button next" v-for="(answer, index) in checklistTask.answer" v-on:click="resolve(index)">
+                <div class="decoration" v-if="checklistTask.type == 'question'">
+                    <button type="button" class="option-button next" v-for="(answer, index) in checklistTask.answers" v-on:click="resolve(index)">
                         {{answer}}
+                    </button>
+                </div>
+                <div class="decoration" v-if="checklistTask.type == 'end'">
+                    <button type="button" class="option-button no">
+                        Checklist encerrado
                     </button>
                 </div>
             </div>

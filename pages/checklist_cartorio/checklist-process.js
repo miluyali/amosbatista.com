@@ -13,6 +13,10 @@ export default (initialChecklistdata)=>{
 	};
 	return {
 		resolve: (stepChoice)=>{
+			if(checklistData.type=="end"){
+				addToProcessed(checklistData);
+				return checklistData;
+			}
 			if(stepChoice == undefined){
 				addToProcessed(checklistData);
 				checklistData = checklistData.next;
