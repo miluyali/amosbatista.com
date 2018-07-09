@@ -8,6 +8,8 @@
         components: {vueMeta, linkStyle},
         data: function(){
             var checklist = checklistLoader();
+            var checklistProcess = checklistProcessor(checklist);
+            var checkListProcessed = checklistProcess.getProcessed();
             return {
                 meta: {
                     title: "Checklist",
@@ -17,12 +19,21 @@
                     type: "post"
                 },
                 checklistTask: checklist,
-                checklistProcess: checklistProcessor(checklist)
+                checklistProcess: checklistProcess,
+                checkListProcessed: checkListProcessed
             }
         },
         methods: {
             resolve (stepIndex){
                 this.checklistTask = this.checklistProcess.resolve(stepIndex);
+            },
+            reset (){
+                var checklist = checklistLoader();
+                var checklistProcess = checklistProcessor(checklist);
+                var checkListProcessed = checklistProcess.getProcessed();
+                this.checklistTask = checklist;
+                this.checklistProcess = checklistProcess;
+                this.checkListProcessed = checkListProcessed;
             }
         }
     }
@@ -36,32 +47,28 @@
         <div class="divisor lateral">
             <h2 class="answer-title">Checklist:</h2>
             <ul class="answers-list">
-               <li class="answer">
-                   <span class="answer-icon">
-                       <i class="fa fa-check" />
-                   </span>
-                   Análise de Conteúdo
-               </li> 
-               <li class="answer">
-                    
+               <li class="answer" v-if="checkListProcessed.length <= 0">
+                   Nenhuma etapa iniciada
+               </li>
+               <li class="answer" v-for="check in checkListProcessed">
                     <span class="answer-icon">
                        <i class="fa fa-check" />
                     </span>
-                    Ato é ético?
-                    
-                    <p class="answer-content">
+                    {{check.text}}
+                    <p class="answer-content" v-if="check.isQuestion==true">
                         R: 
                         <span>
-                            Não
+                            {{check.answer}}
                         </span>
                     </p>
-               </li>
+               </li> 
+               
             </ul>
         </div>
 
         <div class="divisor main">
             <p class="document-name">
-                Análise de Conteúdo
+                Documento: Análise de Conteúdo
             </p>
             <h1 class="question">
                 {{checklistTask.text}}
@@ -81,6 +88,12 @@
                 <div class="decoration" v-if="checklistTask.type == 'end'">
                     <button type="button" class="option-button no">
                         Checklist encerrado
+                    </button>
+                    <button type="button" class="option-button next" v-on:click="reset()">
+                        <span>
+                            <i class="fa fa-sync-alt" />
+                        </span>
+                        Reiniciar checklist
                     </button>
                 </div>
             </div>
@@ -160,11 +173,15 @@
                 margin: 30px 0 0 0;
             }
             .question{
-                text-align: center;
+                text-indent: 20px;
+                text-align: left;
                 color: @document-name-color;
                 font-weight: @font-heavy;
                 font-size: 250%;
                 height: 200px;
+                width: 75%;
+                float: right;
+                padding: 0 20px;
             }
             .option-line{
                 width: 100%;
