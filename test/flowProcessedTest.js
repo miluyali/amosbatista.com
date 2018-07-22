@@ -4,7 +4,7 @@ let expect = chai.expect
 import processedChecklist from '../pages/checklist_cartorio/process-flow/processed-list.js'
 import checklistData from "./checklistExampleData.json"
 
-describe('checkListProcessorTest', ()=>{
+describe('processedChecklistTest', ()=>{
 
 	it('should be a function', ()=>{
 		expect(typeof processedChecklist).to.be.equal('function');

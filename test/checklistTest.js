@@ -1,88 +1,79 @@
 import chai from "chai"
 let expect = chai.expect
 
-import checklist from '../pages/checklist_cartorio/process-flow/process.js'
-import checklistLoad from '../pages/checklist_cartorio/checklist-retrieve.js'
+import checklistProcessorClass from '../pages/checklist_cartorio/process-flow/process.js'
+import checklistData from "./checklistExampleData.json"
 
 describe('checkListProcessorTest', ()=>{
-	var fullChecklistData = {
-		type: "flow",
-		nodes: [
-			{
-				type: "task",
-				text: "Should review field 'Name'"
-			},
-			{
-				type: "task",
-				text: "Should review field 'Address'"
-			},
-			{
-				type: "question",
-				text: "Do he have an ID?",
-				answers: ["no", "unknown", "yes"],
-				next: [
-					{
-						type: "end",
-						text: "He must has an ID"
-					},
-					{
-						type: "end",
-						text: "You have to know"
-					},
-					{
-						type: "flow",
-						nodes: [
-							{
-								type: "task",
-								text: "Check the first digit of ID"
-							},
-							{
-								type: "task",
-								text: "Check the last digit of ID"
-							},
-							{
-								type: "question",
-								text: "Are they numbers?",
-								answers: ["yes", "unknown", "no"],
-								next: [
-									{
-										type: "task",
-										text: "Everthing is alright"
-									},
-									{
-										type: "end",
-										text: "You have to know"
-									},
-									{
-										type: "end",
-										text: "No, it's wrong"
-									}
-								]
-							}	
-						]
-					}
-				]
-			},
-			{
-				type: "task",
-				text: "Should review field 'Salary'"
-			},
-			{
-				type: "task",
-				text: "All task are done"
-			}
-		]
-	};
 
-	it('should return a function when receives a checklist data', ()=>{
-		var checklistData = {};
-		var checklistInstance = checklist(checklistData);
-
-		expect(typeof checklistInstance.resolve).to.be.equal('function');
+	it('should be a function', ()=>{
+		expect(typeof checklistProcessorClass).to.be.equal('function');
 	});
 
+	/*it('should receive a checklist, and, at resolve, must return the fisrt task', ()=>{
+		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
+		var processor = checklistProcessorClass(clonedChecklist);
 
+		var expected = {
+			"type": "task",
+			"text": "Should review field 'Name'"
+		};
+		var actual = processor.resolve();
 
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);
+
+	});*/
+
+	it('should receive a checklist, and, at resolve, must return the second task', ()=>{
+		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
+		var processor = checklistProcessorClass(clonedChecklist);
+		
+		var expected = {
+			"type": "task",
+			"text": "Should review field 'Address'"
+		};
+		var actual = processor.resolve();
+
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);
+
+	});
+
+	it('should resolve three times and return a question', ()=>{
+		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
+		var processor = checklistProcessorClass(clonedChecklist);
+		
+		var expected = {
+			"type": "question",
+			"text": "Do he have an ID?",
+			"answers": ["no", "unknown", "yes"]
+		};
+		processor.resolve();
+		var actual = processor.resolve();
+
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);
+		expect(actual.answers[0]).to.be.equal(expected.answers[0]);
+
+	});
+
+	it('should return a end task, after answer no to first question', ()=>{
+		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
+		var processor = checklistProcessorClass(clonedChecklist);
+		
+		var expected = {
+			"type": "end",
+			"text": "He must has an ID"
+		};
+		var answer = 0;
+		processor.resolve();
+		processor.resolve();
+		var actual = processor.resolve(answer);
+
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);		
+	});
 })
 
 

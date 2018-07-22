@@ -5,7 +5,7 @@ export default ()=>{
 		if(typeof item != "object") throw new TypeError("An item must be an object.");
 		if(!item.text) throw new TypeError("An item must have a 'text'.");
 		if(!item.type) throw new TypeError("An item must have a 'type'.");
-		if(item.type == "question" && !answerNumber) throw new TypeError("A question must have an answer number.");
+		if(item.type == "question" && typeof answerNumber != "number") throw new TypeError("A question must have an answer number.");
 		if(item.type == "question" && !item.answers) throw new TypeError("A question must have an 'answers'.");
 		if(item.type == "question" && !Array.isArray(item.answers)) throw new TypeError("A question 'answers' must be an array.");
 		if(item.type == "flow") throw new TypeError("A 'flow' cannot be used to processed.");
