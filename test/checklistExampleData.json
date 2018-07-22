@@ -61,7 +61,7 @@
 			"text": "Should review field 'Salary'"
 		},
 		{
-			"type": "task",
+			"type": "end",
 			"text": "All task are done"
 		}
 	]

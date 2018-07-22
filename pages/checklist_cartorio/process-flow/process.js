@@ -6,17 +6,23 @@ export default (initialChecklistdata)=>{
 	var checkToSend;
 	var flowStack = [];
 	
-	if(checklistData.type == "flow"){
-		checklistData = checklistData.nodes;
-	}	
-	if(Array.isArray(checklistData)){
-		checkToSend = checklistData.shift();
-	}
+	checklistData = checklistData.nodes;
+	checkToSend = checklistData.shift();
+	
 	return {
 		resolve: (stepChoice)=>{
 			var current;
 			var currentFlow = [];
 
+			if(flowStack.length <= 0){
+				currentFlow = checklistData;
+			}
+			else{
+				currentFlow = flowStack[flowStack.length - 1];
+			}
+
+			current = currentFlow[0];
+			
 			while(flowStack.length > 0 && currentFlow.length <= 0){
 				currentFlow = flowStack[flowStack.length - 1];
 
@@ -25,17 +31,10 @@ export default (initialChecklistdata)=>{
 				}
 			}
 
-			if(flowStack.length <= 0){
-				currentFlow = checklistData;
-			}
-
-			if(Array.isArray(currentFlow)){
-				current = currentFlow.shift();
-			}
-			
 			if(stepChoice == undefined){
 				processed.add(checkToSend);	
 				checkToSend = current;
+				currentFlow.shift();
 			}
 			else{
 				processed.add(checkToSend, stepChoice);
@@ -49,7 +48,6 @@ export default (initialChecklistdata)=>{
 					checkToSend = current.next[stepChoice];
 				}
 			}
-			
 			return checkToSend;
 		},
 		getProcessed: ()=>{

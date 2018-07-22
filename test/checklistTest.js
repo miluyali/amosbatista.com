@@ -10,21 +10,6 @@ describe('checkListProcessorTest', ()=>{
 		expect(typeof checklistProcessorClass).to.be.equal('function');
 	});
 
-	/*it('should receive a checklist, and, at resolve, must return the fisrt task', ()=>{
-		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
-		var processor = checklistProcessorClass(clonedChecklist);
-
-		var expected = {
-			"type": "task",
-			"text": "Should review field 'Name'"
-		};
-		var actual = processor.resolve();
-
-		expect(actual.type).to.be.equal(expected.type);
-		expect(actual.text).to.be.equal(expected.text);
-
-	});*/
-
 	it('should receive a checklist, and, at resolve, must return the second task', ()=>{
 		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
 		var processor = checklistProcessorClass(clonedChecklist);
@@ -155,7 +140,7 @@ describe('checkListProcessorTest', ()=>{
 		expect(actual.text).to.be.equal(expected.text);	
 	});
 
-	it('should return the next task after the last task of second flow, returnning to main flow', ()=>{
+	it('should return the next task after the last task of second flow, returning to main flow', ()=>{
 		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
 		var processor = checklistProcessorClass(clonedChecklist);
 		
@@ -171,6 +156,29 @@ describe('checkListProcessorTest', ()=>{
 		processor.resolve();
 		var answerToSecond = 0;
 		processor.resolve(answerToSecond);
+		var actual = processor.resolve();
+
+		expect(actual.type).to.be.equal(expected.type);
+		expect(actual.text).to.be.equal(expected.text);	
+	});
+
+	it('should return the last task in the main flow', ()=>{
+		var clonedChecklist =  JSON.parse(JSON.stringify(checklistData));
+		var processor = checklistProcessorClass(clonedChecklist);
+		
+		var expected = {
+			"type": "task",
+			"text": "All task are done"
+		};
+		var answerToFirst = 2;
+		processor.resolve();
+		processor.resolve();
+		processor.resolve(answerToFirst);
+		processor.resolve();
+		processor.resolve();
+		var answerToSecond = 0;
+		processor.resolve(answerToSecond);
+		processor.resolve();
 		var actual = processor.resolve();
 
 		expect(actual.type).to.be.equal(expected.type);
