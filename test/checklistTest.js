@@ -167,7 +167,7 @@ describe('checkListProcessorTest', ()=>{
 		var processor = checklistProcessorClass(clonedChecklist);
 		
 		var expected = {
-			"type": "task",
+			"type": "end",
 			"text": "All task are done"
 		};
 		var answerToFirst = 2;
