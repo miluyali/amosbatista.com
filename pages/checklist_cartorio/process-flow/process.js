@@ -4,6 +4,7 @@ export default (initialChecklistdata)=>{
 	var checklistData = initialChecklistdata;
 	var processed = Processed();
 	var checkToSend;
+	var flowStack = [];
 	
 	if(checklistData.type == "flow"){
 		checklistData = checklistData.nodes;
@@ -14,13 +15,22 @@ export default (initialChecklistdata)=>{
 	return {
 		resolve: (stepChoice)=>{
 			var current;
+			var currentFlow = [];
 
-			if(checklistData.type == "flow"){
-				checklistData = checklistData.nodes;
+			while(flowStack.length > 0 && currentFlow.length <= 0){
+				currentFlow = flowStack[flowStack.length - 1];
+
+				if(currentFlow.length <= 0){
+					flowStack.pop();
+				}
 			}
 
-			if(Array.isArray(checklistData)){
-				current = checklistData.shift();
+			if(flowStack.length <= 0){
+				currentFlow = checklistData;
+			}
+
+			if(Array.isArray(currentFlow)){
+				current = currentFlow.shift();
 			}
 			
 			if(stepChoice == undefined){
@@ -30,7 +40,14 @@ export default (initialChecklistdata)=>{
 			else{
 				processed.add(checkToSend, stepChoice);
 				current = checkToSend;
-				checkToSend = current.next[stepChoice];
+
+				if(current.next[stepChoice].type == "flow"){
+					flowStack.push(current.next[stepChoice].nodes);
+					checkToSend = current.next[stepChoice].nodes.shift();
+				}
+				else{
+					checkToSend = current.next[stepChoice];
+				}
 			}
 			
 			return checkToSend;
