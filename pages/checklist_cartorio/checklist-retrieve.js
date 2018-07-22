@@ -1,4 +1,4 @@
-import checklist from './checklist-inicial.json'
+import checklist from './process-flow/checklist-completo.json'
 export default ()=>{
 	return checklist;
 }

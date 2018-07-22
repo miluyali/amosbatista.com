@@ -1,0 +1,393 @@
+[
+	{
+		"id": 0,
+		"type": "task",
+		"text": "Análise de procuração",
+		"next": 1
+	},
+	{
+		"id": 1,
+		"type": "question",
+		"text": "Ato aparenta fraude?",
+		"answers": ["Sim","Não"],
+		"next": [2,3]
+	},
+	{
+		"id": 2,
+		"type": "task",
+		"text": "Apresentar ao tabelião",
+		"next": 4
+	},
+	{
+		"id": 3,
+		"type": "question",
+		"text": "Pessoa jurídica?",
+		"answers": ["Sim","Não"],
+		"next": [7,8]
+	},
+	{
+		"id": 4,
+		"type": "question",
+		"text": "Sociedade anônima?",
+		"answers": ["Sim","Não"],
+		"next": [6, 5]
+	},
+	{
+		"id": 5,
+		"type": "task",
+		"text": "Verificar quem assina pelo estatuto e breve relato",
+		"next": 16
+	},
+	{
+		"id": 6,
+		"type": "task",
+		"text": "Verificar quem assina pelo estatuto e breve relato",
+		"next": 14
+	},
+	{
+		"id": 7,
+		"type": "question",
+		"text": "Representantes capazes?",
+		"answers": ["Sim","Não"],
+		"next": [4,2]
+	},
+	{
+		"id": 8,
+		"type": "question",
+		"text": "Pessoa plenamente capaz?",
+		"answers": ["Sim","Não"],
+		"next": [11,9]
+	},
+	{
+		"id": 9,
+		"type": "task",
+		"text": "Colher assistência ou representação de pais, tutores ou curadores",
+		"next": 20
+	},
+	{
+		"id": 10,
+		"type": "end",
+		"text": "fim 3"
+	},
+	{
+		"id": 11,
+		"type": "question",
+		"text": "Maior de 60 anos?",
+		"answers": ["Sim","Não"],
+		"next": [12,18]
+	},
+	{
+		"id": 12,
+		"type": "task",
+		"text": "Declaração especial se poderes genéricos, ausente prazo ou irrevogabilidade",
+		"next": 18
+	},
+	{
+		"id": 13,
+		"type": "end",
+		"text": "fim 5"
+	},
+	{
+		"id": 14,
+		"type": "question",
+		"text": "Atos mencionados na procuração carecem de participação de outros órgãos?",
+		"answers": ["Sim","Não"],
+		"next": [22,15]
+	},
+	{
+		"id": 15,
+		"type": "question",
+		"text": "Poderes para alienar bens do ativo não-circulante (não somente imóveis), constituir ônus reais ou prestar garantias a obrigações de terceiros?",
+		"answers": ["Sim","Não"],
+		"next": [23,29]
+	},
+	{
+		"id": 16,
+		"type": "question",
+		"text": "Limitada?",
+		"answers": ["Sim","Não"],
+		"next": [31,17]
+	},
+	{
+		"id": 17,
+		"type": "task",
+		"text": "Passar caso ao tabelião",
+		"next": 31
+	},
+	{
+		"id": 18,
+		"type": "question",
+		"text": "Retificação de sentença de separação, divórcio ou inventário?",
+		"answers": ["Sim","Não"],
+		"next": [19,51]
+	},
+	{
+		"id": 19,
+		"type": "task",
+		"text": "Cuidado, pois hipóteses são exaustivas nas Normas",
+		"next": 51
+	},
+	{
+		"id": 20,
+		"type": "question",
+		"text": "Poderes para venda ou exorbitantes da administração ordinária?",
+		"answers": ["Sim","Não"],
+		"next": [21,11]
+	},
+	{
+		"id": 21,
+		"type": "task",
+		"text": "Exigir alvará com prazo",
+		"next": 11
+	},
+	{
+		"id": 22,
+		"type": "task",
+		"text": "Mencionar no texto que execução dos poderes dependerá da participação de tais órgãos",
+		"next": 15
+	},
+	{
+		"id": 23,
+		"type": "question",
+		"text": "Há Conselho de Administração?",
+		"answers": ["Sim","Não"],
+		"next": [24,25]
+	},
+	{
+		"id": 24,
+		"type": "task",
+		"text": "Exigir manifestação deste órgão registrada em Junta",
+		"next": 26
+	},
+	{
+		"id": 25,
+		"type": "task",
+		"text": "Exigir manifestação dos acionistas em assembléia com ata registrada",
+		"next": 26
+	},
+	{
+		"id": 26,
+		"type": "task",
+		"text": "Especificar o objeto (ex. o imóvel)",
+		"next": 27
+	},
+	{
+		"id": 27,
+		"type": "task",
+		"text": "Fazer consulta à central de indisponibilidades",
+		"next": 15
+	},
+	{
+		"id": 28,
+		"type": "task",
+		"text": "Ato deve ter prazo, exceto para poderes ad juditia",
+		"next": 41
+	},
+	{
+		"id": 29,
+		"type": "question",
+		"text": "Poderes para confessar, dar ou receber quitação ou outros exorbitantes da administração ordinária",
+		"answers": ["Sim","Não"],
+		"next": [28,30]
+	},
+	{
+		"id": 30,
+		"type": "task",
+		"text": "Especificar objeto",
+		"next": 28
+	},
+	{
+		"id": 31,
+		"type": "question",
+		"text": "Atos mencionados na procuração carecem de participação de outros órgãos?",
+		"answers": ["Sim","Não"],
+		"next": [32,33]
+	},
+	{
+		"id": 32,
+		"type": "task",
+		"text": "Mencionar no texto que execução dos poderes dependerá da participação de tais órgãos",
+		"next": 33
+	},
+	{
+		"id": 33,
+		"type": "question",
+		"text": "Poderes para oneração ou venda de imóveis?",
+		"answers": ["Sim","Não"],
+		"next": [32,34]
+	},
+	{
+		"id": 34,
+		"type": "question",
+		"text": "Contrato dispõe sobre?",
+		"answers": ["Sim","Não"],
+		"next": [35,36]
+	},
+	{
+		"id": 35,
+		"type": "task",
+		"text": "Seguir o contrato",
+		"next": 39
+	},
+	{
+		"id": 36,
+		"type": "question",
+		"text": "Objeto social é venda ou oneração de imóveis?",
+		"answers": ["Sim","Não"],
+		"next": [38,37]
+	},
+	{
+		"id": 37,
+		"type": "task",
+		"text": "Colher manifestação da maioria do capital social",
+		"next": 39
+	},
+	{
+		"id": 38,
+		"type": "task",
+		"text": "Manifestação do administrador é suficiente",
+		"next": 39
+	},
+	{
+		"id": 39,
+		"type": "question",
+		"text": "Poderes para confessar, dar ou receber quitação ou outros exorbitantes da administração ordinária?",
+		"answers": ["Sim","Não"],
+		"next": [40,41]
+	},
+	{
+		"id": 40,
+		"type": "task",
+		"text": "Especificar o objeto e fazer consulta à central de indisponibilidades, se imóvel",
+		"next": 41
+	},
+	{
+		"id": 41,
+		"type": "question",
+		"text": "Massa falida, espólio, herança jacente ou vacante, empresário ou sociedade em recuperação judicial, incapazes, sub-rogação de gravames ou outros casos que dependam de autorização judicial?",
+		"answers": ["Sim","Não"],
+		"next": [42,43]
+	},
+	{
+		"id": 42,
+		"type": "task",
+		"text": "Exigir alvará",
+		"next": 45
+	},
+	{
+		"id": 43,
+		"type": "question",
+		"text": "Órgão público outorgando?",
+		"answers": ["Sim","Não"],
+		"next": [44,45]
+	},
+	{
+		"id": 44,
+		"type": "task",
+		"text": "Atenção aos descontos dos itens 75 e 75.1 do XIII das Normas",
+		"next": 41
+	},
+	{
+		"id": 45,
+		"type": "question",
+		"text": "Fundação outorgando?",
+		"answers": ["Sim","Não"],
+		"next": [46,37]
+	},
+	{
+		"id": 46,
+		"type": "task",
+		"text": "Possível necessidade de participação do MP (itens 63 e 63.1 do XIV das Normas",
+		"next": 41
+	},
+	{
+		"id": 47,
+		"type": "question",
+		"text": "Poderes para fiança?",
+		"answers": ["Sim","Não"],
+		"next": [48,49]
+	},
+	{
+		"id": 48,
+		"type": "task",
+		"text": "Necessária anuência do cônjuge",
+		"next": 41
+	},
+	{
+		"id": 49,
+		"type": "question",
+		"text": "Poderes para alienar, hipotecar ou para praticar outros atos exorbitantes da administração ordinária?",
+		"answers": ["Sim","Não"],
+		"next": [48,50]
+	},
+	{
+		"id": 50,
+		"type": "task",
+		"text": "Especificar o objeto e o ato e retirar indisponibilidade",
+		"next": 41
+	},
+	{
+		"id": 51,
+		"type": "question",
+		"text": "Poderes para testamento?",
+		"answers": ["Sim","Não"],
+		"next": [53,52]
+	},
+	{
+		"id": 52,
+		"type": "question",
+		"text": "Poderes para casamento/declaratória de união estável?",
+		"answers": ["Sim","Não"],
+		"next": [54,57]
+	},
+	{
+		"id": 53,
+		"type": "task",
+		"text": "Não é possível outorga de procuração para prática de testamento",
+		"next": 52
+	},
+	{
+		"id": 54,
+		"type": "task",
+		"text": "Prazo máximo de 90 dias",
+		"next": 55
+	},
+	{
+		"id": 55,
+		"type": "task",
+		"text": "Procuradores de ambos os nubentes devem ser distintos",
+		"next": 56
+	},
+	{
+		"id": 56,
+		"type": "task",
+		"text": "Conflito de interesses se outro nubente é o procurador",
+		"next": 57
+	},
+	{
+		"id": 57,
+		"type": "question",
+		"text": "Poderes para inventário?",
+		"answers": ["Sim","Não"],
+		"next": [60,58]
+	},
+	{
+		"id": 58,
+		"type": "question",
+		"text": "Divórcio, separação, dissolução de união estável ou restabelecimento?",
+		"answers": ["Sim","Não"],
+		"next": [59,50]
+	},
+	{
+		"id": 59,
+		"type": "task",
+		"text": "Prazo máximo de 30 dias.",
+		"next": 57
+	},
+	{
+		"id": 60,
+		"type": "task",
+		"text": "Vedado acúmulo de funções de assistente e de procurador",
+		"next": 57
+	}
+]

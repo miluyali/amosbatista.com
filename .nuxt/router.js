@@ -7,11 +7,14 @@ const _a7f2937c = () => import('../pages/blog/index.vue' /* webpackChunkName: "p
 const _5768b870 = () => import('../pages/gallery/index.vue' /* webpackChunkName: "pages/gallery/index" */).then(m => m.default || m)
 const _58b22b7e = () => import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */).then(m => m.default || m)
 const _2e4911e4 = () => import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */).then(m => m.default || m)
-const _36f1adf5 = () => import('../pages/gallery/_post.vue' /* webpackChunkName: "pages/gallery/_post" */).then(m => m.default || m)
 const _0eacc06f = () => import('../pages/blog/_post.vue' /* webpackChunkName: "pages/blog/_post" */).then(m => m.default || m)
+const _36f1adf5 = () => import('../pages/gallery/_post.vue' /* webpackChunkName: "pages/gallery/_post" */).then(m => m.default || m)
 const _095e847c = () => import('../pages/checklist_cartorio/index.vue' /* webpackChunkName: "pages/checklist_cartorio/index" */).then(m => m.default || m)
-const _d0509c28 = () => import('../pages/checklist_cartorio/checklist-retrieve.js' /* webpackChunkName: "pages/checklist_cartorio/checklist-retrieve" */).then(m => m.default || m)
 const _6412e557 = () => import('../pages/checklist_cartorio/checklist-process.js' /* webpackChunkName: "pages/checklist_cartorio/checklist-process" */).then(m => m.default || m)
+const _d0509c28 = () => import('../pages/checklist_cartorio/checklist-retrieve.js' /* webpackChunkName: "pages/checklist_cartorio/checklist-retrieve" */).then(m => m.default || m)
+const _47687aa3 = () => import('../pages/checklist_cartorio/process-flow/process.js' /* webpackChunkName: "pages/checklist_cartorio/process-flow/process" */).then(m => m.default || m)
+const _05f31b4c = () => import('../pages/checklist_cartorio/process-flow/process-simple.js' /* webpackChunkName: "pages/checklist_cartorio/process-flow/process-simple" */).then(m => m.default || m)
+const _2ccc233f = () => import('../pages/checklist_cartorio/process-flow/processed-list.js' /* webpackChunkName: "pages/checklist_cartorio/process-flow/processed-list" */).then(m => m.default || m)
 const _e5641d76 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
@@ -93,14 +96,14 @@ export function createRouter () {
 			name: "portfolio-masterrow"
 		},
 		{
-			path: "/gallery/:post",
-			component: _36f1adf5,
-			name: "gallery-post"
-		},
-		{
 			path: "/blog/:post",
 			component: _0eacc06f,
 			name: "blog-post"
+		},
+		{
+			path: "/gallery/:post",
+			component: _36f1adf5,
+			name: "gallery-post"
 		},
 		{
 			path: "/checklist:cartorio",
@@ -108,14 +111,29 @@ export function createRouter () {
 			name: "checklistcartorio"
 		},
 		{
+			path: "/checklist:cartorio/checklist-process",
+			component: _6412e557,
+			name: "checklistcartorio-checklist-process"
+		},
+		{
 			path: "/checklist:cartorio/checklist-retrieve",
 			component: _d0509c28,
 			name: "checklistcartorio-checklist-retrieve"
 		},
 		{
-			path: "/checklist:cartorio/checklist-process",
-			component: _6412e557,
-			name: "checklistcartorio-checklist-process"
+			path: "/checklist:cartorio/process-flow/process",
+			component: _47687aa3,
+			name: "checklistcartorio-process-flow-process"
+		},
+		{
+			path: "/checklist:cartorio/process-flow/process-simple",
+			component: _05f31b4c,
+			name: "checklistcartorio-process-flow-process-simple"
+		},
+		{
+			path: "/checklist:cartorio/process-flow/processed-list",
+			component: _2ccc233f,
+			name: "checklistcartorio-process-flow-processed-list"
 		},
 		{
 			path: "/",

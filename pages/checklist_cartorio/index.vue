@@ -2,7 +2,7 @@
     import vueMeta from '../../components/meta.vue'
     import linkStyle from '../../components/external-link-style.vue'
     import checklistLoader from './checklist-retrieve.js'
-    import checklistProcessor from './checklist-process.js'
+    import checklistProcessor from './process-flow/process-simple.js'
 
     export default {
         components: {vueMeta, linkStyle},
@@ -18,7 +18,7 @@
                     url: "/checklist",
                     type: "post"
                 },
-                checklistTask: checklist,
+                checklistTask: checklist[0],
                 checklistProcess: checklistProcess,
                 checkListProcessed: checkListProcessed
             }
@@ -31,7 +31,7 @@
                 var checklist = checklistLoader();
                 var checklistProcess = checklistProcessor(checklist);
                 var checkListProcessed = checklistProcess.getProcessed();
-                this.checklistTask = checklist;
+                this.checklistTask = checklist[0];
                 this.checklistProcess = checklistProcess;
                 this.checkListProcessed = checkListProcessed;
             }
@@ -136,6 +136,7 @@
             float: right;
             background-color: @lateral-color;
             color: @lateral-text-color;
+            overflow-y: scroll;
             .answer-title{
                 margin: 17px 0 0 0;
                 padding: 0 10px;
