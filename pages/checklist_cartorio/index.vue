@@ -68,7 +68,7 @@
 
         <div class="divisor main">
             <p class="document-name">
-                Documento: Análise de Conteúdo
+                Documento: Análise de Procuração
             </p>
             <h1 class="question">
                 {{checklistTask.text}}
@@ -142,7 +142,7 @@
                 padding: 0 10px;
             }
             .answers-list{
-                margin: 40px 0 0 0;
+                margin: 40px 0;
                 .answer{
                     padding: 10px 10px 0 10px;
                     font-size: 75%;
@@ -178,8 +178,8 @@
                 text-align: left;
                 color: @document-name-color;
                 font-weight: @font-heavy;
-                font-size: 250%;
-                height: 200px;
+                font-size: 200%;
+                min-height: 200px;
                 width: 75%;
                 float: right;
                 padding: 0 20px;

@@ -298,7 +298,7 @@
 		"id": 46,
 		"type": "task",
 		"text": "Possível necessidade de participação do MP (itens 63 e 63.1 do XIV das Normas",
-		"next": 41
+		"next": 71
 	},
 	{
 		"id": 47,
@@ -318,7 +318,7 @@
 		"type": "question",
 		"text": "Poderes para alienar, hipotecar ou para praticar outros atos exorbitantes da administração ordinária?",
 		"answers": ["Sim","Não"],
-		"next": [48,50]
+		"next": [50,41]
 	},
 	{
 		"id": 50,
@@ -376,18 +376,283 @@
 		"type": "question",
 		"text": "Divórcio, separação, dissolução de união estável ou restabelecimento?",
 		"answers": ["Sim","Não"],
-		"next": [59,50]
+		"next": [59,65]
 	},
 	{
 		"id": 59,
 		"type": "task",
 		"text": "Prazo máximo de 30 dias.",
-		"next": 57
+		"next": 61
 	},
 	{
 		"id": 60,
 		"type": "task",
 		"text": "Vedado acúmulo de funções de assistente e de procurador",
-		"next": 57
+		"next": 69
+	},
+	{
+		"id": 61,
+		"type": "task",
+		"text": "Vedado acúmulo de funções de assistente e de procurador ad negotia",
+		"next": 62
+	},
+	{
+		"id": 62,
+		"type": "task",
+		"text": "Conflito de interesses para mesmo procurador, ou quando procurador é uma das partes",
+		"next": 63
+	},
+	{
+		"id": 63,
+		"type": "task",
+		"text": "Deve ser específica: nome, pensão, partilha etc",
+		"next": 64
+	},
+	{
+		"id": 64,
+		"type": "task",
+		"text": "Certidão de indisponibilidade, se houver partilha",
+		"next": 65
+	},
+	{
+		"id": 65,
+		"type": "question",
+		"text": "Poderes para representar sócio?",
+		"answers": ["Sim","Não"],
+		"next": [66,47]
+	},
+	{
+		"id": 66,
+		"type": "task",
+		"text": "Pedir contrato social ou estatuto, pois podem conter alguma exigência para representação por procurador",
+		"next": 67
+	},
+	{
+		"id": 67,
+		"type": "task",
+		"text": "Necessário ser acionista, sócio ou advogado o procurador",
+		"next": 68
+	},
+	{
+		"id": 68,
+		"type": "task",
+		"text": "Para S/A, prazo deve ser de até 1 ano (art. 126, §1o da Lei n. 6.404/76)",
+		"next": 47
+	},
+	{
+		"id": 69,
+		"type": "task",
+		"text": "Cuidado com conflito de interesses quando procurador é o mesmo para mais de um outorgante, ou quando é herdeiro/meeiro",
+		"next": 70
+	},
+	{
+		"id": 70,
+		"type": "task",
+		"text": "Retirar certidão de indisponibilidade, pois direito à sucessão aberta é imóvel",
+		"next": 58
+	},
+	{
+		"id": 71,
+		"type": "question",
+		"text": "Procuração refere-se a cotas de sociedades?",
+		"answers": ["Sim","Não"],
+		"next": [72,73]
+	},
+	{
+		"id": 72,
+		"type": "task",
+		"text": "Consultar indisponibilidades",
+		"next": 73
+	},
+	{
+		"id": 73,
+		"type": "question",
+		"text": "Procuração a advogado ou sociedade de advogados?",
+		"answers": ["Sim","Não"],
+		"next": [75,74]
+	},
+	{
+		"id": 74,
+		"type": "question",
+		"text": "Procuração envolve venda a si mesmo?",
+		"answers": ["Sim","Não"],
+		"next": [78,76]
+	},
+	{
+		"id": 75,
+		"type": "task",
+		"text": "Ver item 132 do XIV das Normas",
+		"next": 76
+	},
+	{
+		"id": 76,
+		"type": "question",
+		"text": "Procuração para audiência?",
+		"answers": ["Sim","Não"],
+		"next": [77,79]
+	},
+	{
+		"id": 77,
+		"type": "task",
+		"text": "Muitas vezes, a própria parte deve comparecer. Ver art. 334 CPC",
+		"next": 79
+	},
+	{
+		"id": 78,
+		"type": "task",
+		"text": "Preço já deve estar determinado na procuração",
+		"next": 76
+	},
+	{
+		"id": 79,
+		"type": "question",
+		"text": "Procuração para incorporação?",
+		"answers": ["Sim","Não"],
+		"next": [80,81]
+	},
+	{
+		"id": 80,
+		"type": "task",
+		"text": "Ver art. 31, §1o da Lei n. 4.591/64",
+		"next": 81
+	},
+	{
+		"id": 81,
+		"type": "question",
+		"text": "Poderes para receber valores em processos?",
+		"answers": ["Sim","Não"],
+		"next": [83,82]
+	},
+	{
+		"id": 82,
+		"type": "question",
+		"text": "Poderes para assinar títulos de crédito?",
+		"answers": ["Sim","Não"],
+		"next": [84,85]
+	},
+	{
+		"id": 83,
+		"type": "task",
+		"text": "Mencionar ciência da parte de que valores históricos tendem a ser bem menores que os atualizados",
+		"next": 82
+	},
+	{
+		"id": 84,
+		"type": "task",
+		"text": "Cuidado: se títulos conferem direitos reais sobre imóveis, tratar procuração como referente a bens imóveis",
+		"next": 85
+	},
+	{
+		"id": 85,
+		"type": "question",
+		"text": "Doação?",
+		"answers": ["Sim","Não"],
+		"next": [86,87]
+	},
+	{
+		"id": 86,
+		"type": "task",
+		"text": "Se pessoa física outorgante, já especificar se é em adiantamento de legítima",
+		"next": 88
+	},
+	{
+		"id": 87,
+		"type": "question",
+		"text": "Poderes técnicos específicos (intuito personae)?",
+		"answers": ["Sim","Não"],
+		"next": [90,89]
+	},
+	{
+		"id": 88,
+		"type": "task",
+		"text": "Definir o donatário e o bem (jurisprudência do STJ)",
+		"next": 87
+	},
+	{
+		"id": 89,
+		"type": "task",
+		"text": "Cuidado com assinaturas gráficas",
+		"next": 91
+	},
+	{
+		"id": 90,
+		"type": "task",
+		"text": "O procurador deve ter as mesmas qualificações do outorgante (ex. corretor de imóveis)",
+		"next": 89
+	},
+	{
+		"id": 91,
+		"type": "question",
+		"text": "Documento judicial sendo utilizado?",
+		"answers": ["Sim","Não"],
+		"next": [93,92]
+	},
+	{
+		"id": 92,
+		"type": "task",
+		"text": "Colocar local e momento exatos da coleta de cada assinatura",
+		"next": 94
+	},
+	{
+		"id": 93,
+		"type": "task",
+		"text": "Exigir assinatura do escrivão-diretor",
+		"next": 92
+	},
+	{
+		"id": 94,
+		"type": "question",
+		"text": "Escrevente ou substituto parentes dos outorgantes?",
+		"answers": ["Sim","Não"],
+		"next": [96,95]
+	},
+	{
+		"id": 95,
+		"type": "question",
+		"text": "Pessoa com problemas de visão ou analfabeta?",
+		"answers": ["Sim","Não"],
+		"next": [98,97]
+	},
+	{
+		"id": 96,
+		"type": "task",
+		"text": "Substituí-los por pessoas estranhas",
+		"next": 95
+	},
+	{
+		"id": 97,
+		"type": "question",
+		"text": "Pessoa com dificuldade de subscrição?",
+		"answers": ["Sim","Não"],
+		"next": [100,99]
+	},
+	{
+		"id": 98,
+		"type": "task",
+		"text": "Seguir processo do art. 1.867 do Código Civil",
+		"next": 97
+	},
+	{
+		"id": 99,
+		"type": "task",
+		"text": "Se procuração é para pagamento de taxas, não pode ser 'sem valor'",
+		"next": 101
+	},
+	{
+		"id": 100,
+		"type": "task",
+		"text": "Seguir processo das Normas referente a assinatura a rogo etc",
+		"next": 99
+	},
+	{
+		"id": 101,
+		"type": "task",
+		"text": "Se pessoa requisitou serviço antes da virada da tabela, necessário manter os valores ",
+		"next": 102
+	},
+	{
+		"id": 102,
+		"type": "end",
+		"text": "Fim do processo"
 	}
 ]
