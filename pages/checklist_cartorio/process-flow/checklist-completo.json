@@ -16,7 +16,7 @@
 		"id": 2,
 		"type": "task",
 		"text": "Apresentar ao tabelião",
-		"next": 4
+		"next": 3
 	},
 	{
 		"id": 3,
@@ -49,7 +49,7 @@
 		"type": "question",
 		"text": "Representantes capazes?",
 		"answers": ["Sim","Não"],
-		"next": [4,2]
+		"next": [4,103]
 	},
 	{
 		"id": 8,
@@ -175,7 +175,7 @@
 		"id": 27,
 		"type": "task",
 		"text": "Fazer consulta à central de indisponibilidades",
-		"next": 15
+		"next": 28
 	},
 	{
 		"id": 28,
@@ -214,7 +214,7 @@
 		"type": "question",
 		"text": "Poderes para oneração ou venda de imóveis?",
 		"answers": ["Sim","Não"],
-		"next": [32,34]
+		"next": [34,36]
 	},
 	{
 		"id": 34,
@@ -285,14 +285,14 @@
 		"id": 44,
 		"type": "task",
 		"text": "Atenção aos descontos dos itens 75 e 75.1 do XIII das Normas",
-		"next": 41
+		"next": 45
 	},
 	{
 		"id": 45,
 		"type": "question",
 		"text": "Fundação outorgando?",
 		"answers": ["Sim","Não"],
-		"next": [46,37]
+		"next": [46,71]
 	},
 	{
 		"id": 46,
@@ -482,7 +482,7 @@
 		"id": 75,
 		"type": "task",
 		"text": "Ver item 132 do XIV das Normas",
-		"next": 76
+		"next": 74
 	},
 	{
 		"id": 76,
@@ -654,5 +654,11 @@
 		"id": 102,
 		"type": "end",
 		"text": "Fim do processo"
+	},
+	{
+		"id": 103,
+		"type": "task",
+		"text": "Apresentar ao tabelião",
+		"next": 4
 	}
 ]
