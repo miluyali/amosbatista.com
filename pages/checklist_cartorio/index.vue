@@ -3,9 +3,10 @@
     import linkStyle from '../../components/external-link-style.vue'
     import checklistLoader from './checklist-retrieve.js'
     import checklistProcessor from './process-flow/process-simple.js'
+    import checklistView from './checklist.vue'
 
     export default {
-        components: {vueMeta, linkStyle},
+        components: {vueMeta, linkStyle, checklistView},
         data: function(){
             var checklist = checklistLoader();
             var checklistProcess = checklistProcessor(checklist);
@@ -20,12 +21,17 @@
                 },
                 checklistTask: checklist[0],
                 checklistProcess: checklistProcess,
-                checkListProcessed: checkListProcessed
+                checkListProcessed: [],
+                backgroundType: "normal-background",
+                titleColorType: "normal-title"
             }
         },
         methods: {
             resolve (stepIndex){
                 this.checklistTask = this.checklistProcess.resolve(stepIndex);
+                this.checkListProcessed = this.checklistProcess.getProcessed();
+                this.backgroundType = this.checklistTask.type == "task" ? "task-alert-background" : "normal-background"
+                this.titleColorType = this.checklistTask.type == "task" ? "task-title" : "normal-title"
             },
             reset (){
                 var checklist = checklistLoader();
@@ -34,6 +40,8 @@
                 this.checklistTask = checklist[0];
                 this.checklistProcess = checklistProcess;
                 this.checkListProcessed = checkListProcessed;
+                this.backgroundType = "normal-background";
+                this.titleColorType = "normal-title";
             }
         }
     }
@@ -45,37 +53,22 @@
         <link-style />
 
         <div class="divisor lateral">
-            <h2 class="answer-title">Checklist:</h2>
-            <ul class="answers-list">
-               <li class="answer" v-if="checkListProcessed.length <= 0">
-                   Nenhuma etapa iniciada
-               </li>
-               <li class="answer" v-for="check in checkListProcessed">
-                    <span class="answer-icon">
-                       <i class="fa fa-check" />
-                    </span>
-                    {{check.text}}
-                    <p class="answer-content" v-if="check.isQuestion==true">
-                        R: 
-                        <span>
-                            {{check.answer}}
-                        </span>
-                    </p>
-               </li> 
-               
-            </ul>
+            <checklist-view :check-list-processed="checkListProcessed"></checklist-view>
         </div>
 
-        <div class="divisor main">
+        <div class="divisor main" :class="backgroundType">
             <p class="document-name">
                 Documento: Análise de Procuração
             </p>
-            <h1 class="question">
+            <h1 class="question" :class="titleColorType">
+                <span class="icon" v-if="checklistTask.type == 'task'">
+                    <i class="fa fa-exclamation-triangle"></i>
+                </span>
                 {{checklistTask.text}}
             </h1>
 
             <div class="option-line">
-                <div class="decoration" v-if="checklistTask.type == 'task'">
+                <div class="decoration" v-if="checklistTask.type == 'task' || checklistTask.type == 'init'">
                     <button type="button" class="option-button next" v-on:click="resolve()">
                         Próximo
                     </button>
@@ -110,6 +103,7 @@
 
     @lateral-color: #3B56A8;
     @lateral-text-color: white;
+    
     @document-name-color: #17285B;
     @decoration-color: hsla(43, 55%, 70%, 1);
 
@@ -120,6 +114,10 @@
     @no-border-color: hsla(5, 75%, 25%, 1);
     @yes-clear-color: hsla(120, 45%, 65%, 1);
     @no-clear-color: hsla(5, 75%, 65%, 1);
+
+    @normal-bg-color: hsla(0,0%,0%,0);
+    @alert-bg-color: hsla(42,100%,44%, 1);
+    @alert-icon-color: hsla(42,100%,100%, 0.3);
 
     @base-font: 'Open Sans', sans-serif;
     @font-light: 300;
@@ -134,37 +132,22 @@
         .lateral{
             width: 25%;
             float: right;
-            background-color: @lateral-color;
-            color: @lateral-text-color;
-            overflow-y: scroll;
-            .answer-title{
-                margin: 17px 0 0 0;
-                padding: 0 10px;
-            }
-            .answers-list{
-                margin: 40px 0;
-                .answer{
-                    padding: 10px 10px 0 10px;
-                    font-size: 75%;
-                    .answer-content{
-                        margin: 0;
-                        text-indent: 20px;
-                        span{
-                            font-weight: @font-heavy;
-                        }
-                    }
-                    .yes{
-                        color: @yes-clear-color;
-                    }
-                    .no{
-                        color: @no-clear-color;
-                    }
-                }
-            }
+        }
+        .normal-background{
+            background-color: @normal-bg-color;
+        }
+        .task-alert-background{
+            background-color: @alert-bg-color;
         }
         .main{
             width: 75%;
             float: left;
+            .normal-title{
+                color: @document-name-color;
+            }
+            .task-title{
+                color: @lateral-text-color;
+            }
             .document-name{
                 text-align: right;
                 padding-right: 20px;
@@ -176,13 +159,15 @@
             .question{
                 text-indent: 20px;
                 text-align: left;
-                color: @document-name-color;
                 font-weight: @font-heavy;
                 font-size: 200%;
                 min-height: 200px;
                 width: 75%;
                 float: right;
                 padding: 0 20px;
+                .icon{
+                    color: @alert-icon-color;
+                }
             }
             .option-line{
                 width: 100%;
@@ -193,11 +178,11 @@
                     width: 75%;
                     float: right;
                     .option-button{
+                        color: @lateral-text-color;
                         .borda-radius();
                         padding: 15px;
                         margin: 0 15px 0 0;
                         font-size: 150%;
-                        color: @lateral-text-color;
                         font-weight: @font-heavy;
                     }
                     .yes{

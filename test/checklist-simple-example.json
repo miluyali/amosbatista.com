@@ -1,6 +1,6 @@
 [
 	{
-		"type": "task",
+		"type": "init",
 		"text": "Should review field 'Name'",
 		"next": 1
 	},

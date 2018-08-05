@@ -1,7 +1,7 @@
 [
 	{
 		"id": 0,
-		"type": "task",
+		"type": "init",
 		"text": "Análise de procuração",
 		"next": 1
 	},
