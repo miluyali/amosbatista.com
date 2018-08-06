@@ -387,13 +387,13 @@
 	{
 		"id": 60,
 		"type": "task",
-		"text": "Vedado acúmulo de funções de assistente e de procurador",
+		"text": "Evitar acúmulo de funções de assistente e de procurador",
 		"next": 69
 	},
 	{
 		"id": 61,
 		"type": "task",
-		"text": "Vedado acúmulo de funções de assistente e de procurador ad negotia",
+		"text": "Evitar acúmulo de funções de assistente e de procurador ad negotia",
 		"next": 62
 	},
 	{
