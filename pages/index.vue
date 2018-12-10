@@ -50,6 +50,10 @@
             <a class="big-link box hover-box" href="/portfolio">
                 <title-paragraph content="Portfolio" />
             </a>
+
+            <a class="big-link box hover-box" href="/about">
+                <title-paragraph content="Sobre" />
+            </a>
         </div>
     </div>
 
