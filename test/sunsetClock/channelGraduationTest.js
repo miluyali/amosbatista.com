@@ -1,9 +1,9 @@
 import chai from "chai"
 let expect = chai.expect
 
-import sunsetClock from '../components/sunsetClock/module'
+import sunsetClock from '../../components/sunsetClock/module'
 
-describe('sunsetClockTest', function () {
+describe('channel graduation test', function () {
 
   it('should return a number between min and max channel, relative to hour at morning', function () {
     const channelFromTo = {

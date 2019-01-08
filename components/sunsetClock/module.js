@@ -20,5 +20,36 @@ export default {
     );
 
     return gradientValue.toFixed(0);
+  },
+  getColorChannelFromHour: (
+    minChannel,
+    maxChannel,
+    currentHour
+  ) => {
+    const cicleHour = 12;
+
+    if (
+      (currentHour < cicleHour && minChannel < maxChannel) ||
+      (currentHour >= cicleHour && minChannel >= maxChannel)
+    ) {
+      return getCrescentColorChannelFromHour(
+        minChannel,
+        maxChannel,
+        currentHour,
+        cicleHour
+      );
+    }
+
+    if (
+      (currentHour > cicleHour && minChannel < maxChannel) ||
+      (currentHour <= cicleHour && minChannel >= maxChannel)
+    ) {
+      return getDecrescentColorChannelFromHour(
+        minChannel,
+        maxChannel,
+        currentHour,
+        cicleHour
+      );
+    }
   }
 }
