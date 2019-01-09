@@ -1,4 +1,4 @@
-export default {
+var mod = {
   getCrescentColorChannelFromHour: (
     minChannel,
     maxChannel,
@@ -21,6 +21,9 @@ export default {
 
     return gradientValue.toFixed(0);
   },
+  formatHour: (hour, cicle) => {
+    return hour <= cicle ? hour : Math.abs(hour - cicle)
+  },
   getColorChannelFromHour: (
     minChannel,
     maxChannel,
@@ -32,10 +35,10 @@ export default {
       (currentHour < cicleHour && minChannel < maxChannel) ||
       (currentHour >= cicleHour && minChannel >= maxChannel)
     ) {
-      return getCrescentColorChannelFromHour(
+      return mod.getCrescentColorChannelFromHour(
         minChannel,
         maxChannel,
-        currentHour,
+        mod.formatHour(currentHour, cicleHour),
         cicleHour
       );
     }
@@ -44,12 +47,14 @@ export default {
       (currentHour > cicleHour && minChannel < maxChannel) ||
       (currentHour <= cicleHour && minChannel >= maxChannel)
     ) {
-      return getDecrescentColorChannelFromHour(
+      return mod.getDecrescentColorChannelFromHour(
         minChannel,
         maxChannel,
-        currentHour,
+        mod.formatHour(currentHour, cicleHour),
         cicleHour
       );
     }
   }
 }
+
+export default mod
