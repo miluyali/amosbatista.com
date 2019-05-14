@@ -6,15 +6,43 @@
 
     data: function () {
       return {
-        classToAddToBox: ''
+        classToAddToBox: '',
+        boxWidth: ''
       }
     },
-    props: ["boxUrl", "isBoxHoverable", "boxSimpleTitle", "isInsideFullSize"],
+    props: {
+      boxUrl: String,
+      isBoxHoverable: Boolean, 
+      boxSimpleTitle: String, 
+      isInsideFullSize: Boolean, 
+      small: Boolean,
+      medium: Boolean, 
+      large: Boolean
+    },
     components: { titleParagraph },
     created: function () {
-      this.classToAddToBox = (!this.isInsideFullSize ? 'content-with-margin' : '' ) + ' ' + (this.isBoxHoverable ? 'hoverable-box' : '')
-    }
 
+      let boxWidth = "medium-size"
+
+      if(this.small){
+        boxWidth = "small-size"
+      }
+
+      if(this.large){
+        boxWidth = "large-size"
+      }
+
+      if(this.medium){
+        boxWidth = "medium-size"
+      }
+
+      this.classToAddToBox = 
+        // (!this.isInsideFullSize ? 'content-with-margin' : '' ) + 
+        // ' ' + 
+        (this.isBoxHoverable ? 'hoverable-box' : '') +
+        ' ' +
+        boxWidth
+    }
   }
 
 </script>
@@ -35,13 +63,10 @@
   @import '../assets/variables.less';
   @import '../assets/mixin.less';
 
-  @box-size: 225px;
-
   .hover-big-box{
     .shadow();
 
-    width: @box-size;
-    height: @box-size;
+    box-sizing: content-box;
 
     margin: 10px 10px 0 0;
     float: left;
@@ -65,9 +90,6 @@
 
   .content-with-margin {
     padding-left: 20px;
-
-    width: @box-size - 20px;
-    height: @box-size;
   }
 
   .hoverable-box{
@@ -78,6 +100,21 @@
       background-color: #fcfcfc;
     }
 
+  }
+
+  .small-size {
+    width: 25%;
+    height: 25%;
+  }
+
+  .medium-size {
+    width: 50%;
+    height: 25%;
+  }
+
+  .large-size {
+    width: 100%;
+    height: auto;
   }
 
 </style>

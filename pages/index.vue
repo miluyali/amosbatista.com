@@ -38,13 +38,27 @@
 
     link-style
 
-    hover-big-box
+    hover-big-box(small)
       page-title
 
     hover-big-box(is-inside-full-size="true")
       animation
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable="true")
+
+    hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable="true")
+
+    hover-big-box(box-url="/web-development" box-simple-title="Desenvolvimento Web" is-box-hoverable="true")
+
+    hover-big-box(box-url="/refactoring" box-simple-title="Refatoração" is-box-hoverable="true")
+
+    hover-big-box(box-url="/classes" box-simple-title="Web Aulas" is-box-hoverable="true")
+
+    hover-big-box(box-url="/translations" box-simple-title="Traduções" is-box-hoverable="true")
+
+    hover-big-box(box-url="/gitHub" box-simple-title="Meu Git Hub" is-box-hoverable="true")
+
+    hover-big-box(box-url="/contact" box-simple-title="Contato" is-box-hoverable="true")
 
 </template>
 
