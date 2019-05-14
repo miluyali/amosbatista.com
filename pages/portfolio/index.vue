@@ -1,64 +1,107 @@
 <script>
 
-    import post from '~/components/post-title.vue'
-    import box from '~/components/box.vue'
+  import post from '~/components/post-title.vue'
+  import box from '~/components/box.vue'
 
-    import postTitle from '~/components/post-title.vue'
-    import myLink from '~/components/myLink.vue'
-    import pgHeader from '~/components/pageHeader.vue'
-    import vueMeta from '~/components/meta.vue'
-    import linkStyle from '~/components/external-link-style.vue'
-    import facebookApp from '~/components/facebook-app.vue'
-    import pgFooter from '~/components/pageFooter.vue'
+  import postTitle from '~/components/post-title.vue'
+  import myLink from '~/components/myLink.vue'
+  import pgHeader from '~/components/pageHeader.vue'
+  import vueMeta from '~/components/meta.vue'
+  import linkStyle from '~/components/external-link-style.vue'
+  import facebookApp from '~/components/facebook-app.vue'
+  import pgFooter from '~/components/pageFooter.vue'
 
-    export default {
+  export default {
 
-        components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle, facebookApp, pgFooter },
+    components: { postTitle, box, myLink, pgHeader, vueMeta, linkStyle, facebookApp, pgFooter },
 
-        data: function () {
-            return {
-                meta: {
-                    title: "Portfolio",
-                    description: "Veja em detalhes os maiores projetos que participei",
-                    thumbnail: "https://amosbatista.com/thumbnails/portfolio.jpg",
-                    url: "/portfolio",
-                    type: "list"
-                },
-                portfolios: [
-                    {
-                        title: "MasterRow",
-                        resume: "Ferramenta escrita em puro JavaScript para criação de tabelas dinâmicas",
-                        url: "/portfolio/masterrow"
-                    }
-                ]
-            }
-        }
+    data: function () {
+      return {
+        meta: {
+          title: "Portfolio",
+          description: "Veja em detalhes os maiores projetos que participei",
+          thumbnail: "https://amosbatista.com/thumbnails/portfolio.jpg",
+          url: "/portfolio",
+          type: "list"
+        },
+        portfolios: [
+          {
+            title: "Migração Kofax Capture",
+            type: 'Refatoração', 
+            resume: "Remodelação dos processos de digitalização na Iron Mountain do Brasil",
+            url: "/portfolio/kofaxCapture"
+          },
+
+          {
+            title: "MasterRow",
+            type: 'Framework', 
+            resume: "Ferramenta escrita em puro JavaScript para criação de tabelas dinâmicas",
+            url: "/portfolio/masterrow"
+          },
+
+          {
+            title: "AmosBatista.com",
+            type: 'Website', 
+            resume: "Criação do meu site para divulgação",
+            url: "/portfolio/masterrow"
+          },
+
+          {
+            title: "E-htl Executivo",
+            type: 'Aplicativo', 
+            resume: "Desenvolvimento de aplicativo de gestão de carteira de clientes na área de turismo. ",
+            url: "/portfolio/masterrow"
+          },
+
+          {
+            title: "E-htl Dashboard",
+            type: 'Website interno', 
+            resume: "Criação de dashboard para acompanhamento de métricas importantes, desde vendas até funcionamento de instâncias AWS. ",
+            url: "/portfolio/masterrow"
+          },
+
+          {
+            title: "Catho 2.0",
+            type: 'Aplicativo', 
+            resume: "Comunicação entre o candidato e o recrutador, e recebimento de convites de entrevistas.",
+            url: "/portfolio/masterrow"
+          },
+
+          {
+            title: "catho.com.br",
+            type: 'Refatoração', 
+            resume: "Reconstrução das páginas de busca e detalhe da vaga.",
+            url: "/portfolio/masterrow"
+          }
+        ]
+      }
     }
+  }
 
 </script>
 
 <template>
 
-    <div class="two-col-layout">
+  <div class="two-col-layout">
 
-        <div class="container">
-            <vue-meta :metadata="meta" />
-            <facebook-app />
-            <link-style />
-            <pg-header />
-        
-            <box>
-                <ul class="list">
-                   <li class="item" v-for="post in portfolios">
-                        <my-link :url="post.url">
-                            <post-title :title="post.title" :resume="post.resume" />
-                        </my-link>
-                   </li>
-                </ul>
-            </box>
-            <pg-footer />
-        </div>
+    <div class="container">
+      <vue-meta :metadata="meta" />
+      <facebook-app />
+      <link-style />
+      <pg-header />
+    
+      <box>
+        <ul class="list">
+          <li class="item" v-for="post in portfolios" :key="post.title">
+            <my-link :url="post.url">
+              <post-title :title="post.title" :resume="post.resume" :sub-title="post.type" />
+            </my-link>
+          </li>
+        </ul>
+      </box>
+      <pg-footer />
     </div>
+  </div>
 </template>
 
 <style lang="less">
@@ -81,8 +124,10 @@
 
             .item{
                 width: 100%;
+                height: 200px;
                 margin: 0 0 10px 0;
                 padding: 0;
+                float: left;
             }
 
             @media (min-width: 500px){

@@ -9,7 +9,7 @@
             titleParagraph, box
         },
 
-        props: ['title', 'resume', 'isColorReverted'],
+        props: ['title', 'resume', 'isColorReverted', 'subTitle'],
 
         data () {
             return {
@@ -26,6 +26,12 @@
 
         <div :class="'post-title' + whiteColorClass">
             <title-paragraph :content="title" :is-color-reverted="isColorReverted" />
+
+            <p class="sub-title">
+                <i>
+                    {{ subTitle }}
+                </i>
+            </p>
 
             <p class="post-title-resume">
                 {{ resume }}
@@ -49,6 +55,13 @@
             font-family: @base-font;
             padding-left: 20px;
             color: @color-secundary;
+            margin: 10px 0 0 0;
+        }
+
+        .sub-title{
+            font-family: @base-font;
+            padding-left: 20px;
+            color: @color-terciary;
             margin: 10px 0 0 0;
         }
     }

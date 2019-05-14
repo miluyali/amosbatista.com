@@ -51,7 +51,7 @@
 <template lang="pug">
 
   .hover-big-box(:class="classToAddToBox")
-    a.link(:href="boxUrl" target="_blank")
+    a.link(:href="boxUrl")
       title-paragraph(:content="boxSimpleTitle" v-if="boxSimpleTitle")
       slot
 
@@ -81,10 +81,6 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-
-    .comment-chars{
-        color: @color-secundary;
-    }
 
     .link{
       width: 100%;
