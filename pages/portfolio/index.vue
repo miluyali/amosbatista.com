@@ -42,36 +42,29 @@
           {
             title: "AmosBatista.com",
             type: 'Website', 
-            resume: "Criação do meu site para divulgação",
-            url: "/portfolio/masterrow"
+            resume: "Criação do meu site para divulgação profissional.",
+            url: "/portfolio/amosBatista"
           },
 
           {
             title: "E-htl Executivo",
             type: 'Aplicativo', 
             resume: "Desenvolvimento de aplicativo de gestão de carteira de clientes na área de turismo. ",
-            url: "/portfolio/masterrow"
+            url: "/portfolio/ehtlexecutivo"
           },
 
           {
             title: "E-htl Dashboard",
             type: 'Website interno', 
             resume: "Criação de dashboard para acompanhamento de métricas importantes, desde vendas até funcionamento de instâncias AWS. ",
-            url: "/portfolio/masterrow"
+            url: "/portfolio/ehtldashboard"
           },
 
           {
             title: "Catho 2.0",
             type: 'Aplicativo', 
-            resume: "Comunicação entre o candidato e o recrutador, e recebimento de convites de entrevistas.",
-            url: "/portfolio/masterrow"
-          },
-
-          {
-            title: "catho.com.br",
-            type: 'Refatoração', 
-            resume: "Reconstrução das páginas de busca e detalhe da vaga.",
-            url: "/portfolio/masterrow"
+            resume: "Criação da nova versão do aplicativo. Comunicação entre o candidato e o recrutador, e recebimento de convites de entrevistas.",
+            url: "/portfolio/cathoApp"
           }
         ]
       }
