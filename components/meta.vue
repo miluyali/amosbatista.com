@@ -36,7 +36,7 @@
 				titleTemplate: '%s | amosBatista.com',
 				meta: [
 	      			{ property: 'name', content: "viewport"},
-	      			{ property: 'content', content: "width=device-width, user-scalable=no"},
+	      			{ property: 'content', content: "width=device-width, user-scalable=yes"},
 
 	      			{ property: 'fb:app_id', content: "212560042661168"},
 	      			{ property: 'og:title', content: this.metadata.title},

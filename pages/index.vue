@@ -58,6 +58,8 @@
 
     hover-big-box(box-url="/gitHub" box-simple-title="Meu Git Hub" is-box-hoverable small)
 
+    hover-big-box(box-url="/services" box-simple-title="Outros serviços" is-box-hoverable small)
+
     hover-big-box(box-url="/contact" box-simple-title="Contato" is-box-hoverable small)
 
 </template>
