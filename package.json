@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "hexo": "^3.9.0",
     "install": "^0.11.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
