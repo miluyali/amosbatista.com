@@ -45,31 +45,45 @@
             <div class="topics">
 
                 <topic title="O que é?">
-                    <slot name="whatsIsThis" />
+                    <div class="topic-content">
+                        <slot name="whatsIsThis" />
+                    </div>
                 </topic>
 
                 <topic title="A Necessidade">
-                    <slot name="necessity" />
+                    <div class="topic-content">
+                        <slot name="necessity" />
+                    </div>
                 </topic>
 
                 <topic title="Concorrentes">
-                    <slot name="competitor" />
+                    <div class="topic-content">
+                        <slot name="competitor" />
+                    </div>
                 </topic>
 
                 <topic title="O conceito">
-                    <slot name="concept" />
+                    <div class="topic-content">
+                        <slot name="concept" />
+                    </div>
                 </topic>
 
                 <topic title="O desenvolvimento">
-                    <slot name="development" />
+                    <div class="topic-content">
+                        <slot name="development" />
+                    </div>
                 </topic>
 
                 <topic title="Retrô">
-                    <slot name="retro" />
+                    <div class="topic-content">
+                        <slot name="retro" />
+                    </div>
                 </topic>
 
                 <topic title="Fonte">
-                    <slot name="source" />
+                    <div class="topic-content">
+                        <slot name="source" />
+                    </div>
                 </topic>
             </div>
         </box>
@@ -83,5 +97,26 @@
 
 <style lang="less">
 
+    @import '../assets/fontawesome/fontawesome.less';
+    @import '../assets/variables.less';
+    @import '../assets/mixin.less';
+    @import '../assets/generic.less';
+    @import '../assets/base.less';
+    @import '../assets/objects.less';
 
+    .topic-content{
+      font-family: @base-font;
+      color: @color-primary;
+      margin: 0;
+
+    
+      p{
+          margin: 0 0 10px 0;
+          text-indent: 20px;
+      }
+
+      a{
+          text-decoration: underline;
+      }
+    }
 </style>

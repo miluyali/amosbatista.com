@@ -52,13 +52,11 @@
 
         .icon{
             padding: 20px 10px;
-            float: left;
             display: inline-block;
         }
         .url{
             padding: 20px 10px;
             font-size: 50%;
-            float: left;
             display: inline-block;
             width: 60%;
         }
