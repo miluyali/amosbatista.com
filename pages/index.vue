@@ -9,6 +9,7 @@
   import animation from '../components/animatedBg_linesToCenter.vue'
   import pageTitle from '../components/home-header.vue'
   import hoverBigBox from '../components/hoverBigBox.vue'
+  import firstPost from '../components/firstPost'
 
   export default {
 
@@ -23,7 +24,7 @@
         }
       }
     },
-    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation }
+    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation, firstPost }
   }
 
 </script>
@@ -45,6 +46,9 @@
       animation
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable small)
+
+    hover-big-box(box-url="/portfolio")
+      first-post
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 

@@ -1,5 +1,9 @@
 <script>
 
+  import firstPostService from '../ghost.io/firstPostService'
+  import httpService from '../requests/http'
+  import titleParagraph from './title-paragraph.vue'
+
   export default {
 
     data () {
@@ -8,25 +12,22 @@
         description: ""
       } 
     },
+    components: { titleParagraph },
+    created: function () {
 
-    created () {
-      
-      const firstPost = await requestService.get(
-        `${process.env.BLOG_URL}/ghost/api/v2/content/posts/?key=${process.env.BLOG_REQUEST_KEY}&fields=title,url,custom_excerpt`
-      )
+      firstPostService(httpService).then((post)=>{
+        this.title = post.title
+        this.description = post.description
+      })
     }
   }
 
 </script>
 
 
-<template>
-    
-    <div class="box">
-        <slot>
-        </slot>
-    </div>
-
+<template lang="pug">
+  a.link(href="#")
+    title-paragraph(:content="title")
 </template>
 
 

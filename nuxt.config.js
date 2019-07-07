@@ -1,5 +1,11 @@
-module.exports = {
-  env: {
-    BLOG_URL: process.env.BLOG_URL || 'http://amosbatista-wordpress-com.umbler.net/index.php/wp-json/wp/v2'
-  }
+require('dotenv').config()
+
+{
+  modules: [
+    // Simple usage
+    '@nuxtjs/dotenv',
+
+    // With options
+    ['@nuxtjs/dotenv', { /* module options */ }],
+ ]
 }
