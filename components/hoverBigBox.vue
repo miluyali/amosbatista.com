@@ -104,12 +104,12 @@
   }
 
   .small-size {
-    width: 25%;
+    width: 24%;
     height: 25%;
   }
 
   .medium-size {
-    width: 50%;
+    width: 49%;
     height: 25%;
   }
 

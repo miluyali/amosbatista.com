@@ -9,7 +9,9 @@
   import animation from '../components/animatedBg_linesToCenter.vue'
   import pageTitle from '../components/home-header.vue'
   import hoverBigBox from '../components/hoverBigBox.vue'
-  import firstPost from '../components/firstPost'
+
+  import firstPostService from '../ghost.io/firstPostService'
+  import httpService from '../requests/http'
 
   export default {
 
@@ -21,10 +23,22 @@
           thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
           url: "",
           type: "home"
+        },
+        blog: {
+          title: "",
+          description: ""
         }
       }
     },
-    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation, firstPost }
+    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation },
+    async asyncData () {
+      const post = await firstPostService(httpService)
+
+      return {
+        title: post.title,
+        description: post.description
+      }
+    }
   }
 
 </script>
@@ -46,9 +60,11 @@
       animation
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable small)
+    
+    hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable small)
 
     hover-big-box(box-url="/portfolio")
-      first-post
+      title-paragraph(:content="title")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 

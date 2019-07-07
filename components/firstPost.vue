@@ -13,12 +13,16 @@
       } 
     },
     components: { titleParagraph },
-    created: function () {
 
-      firstPostService(httpService).then((post)=>{
-        this.title = post.title
-        this.description = post.description
-      })
+    async asyncData () {
+      console.log("teste")
+
+      const post = await firstPostService(httpService)
+
+      return {
+        title: "post.title",
+        description: post.description
+      }
     }
   }
 
@@ -27,6 +31,7 @@
 
 <template lang="pug">
   a.link(href="#")
+    |{{title}}
     title-paragraph(:content="title")
 </template>
 
