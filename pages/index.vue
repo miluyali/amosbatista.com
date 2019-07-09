@@ -16,6 +16,12 @@
   export default {
 
     data: function () {
+      return {}
+    },
+    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation },
+    async asyncData () {
+      const post = await firstPostService(httpService)
+
       return {
         meta: {
           title: "Home",
@@ -25,18 +31,10 @@
           type: "home"
         },
         blog: {
-          title: "",
-          description: ""
-        }
-      }
-    },
-    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation },
-    async asyncData () {
-      const post = await firstPostService(httpService)
-
-      return {
-        title: post.title,
-        description: post.description
+          title: post.title,
+          description: post.description,
+          url: post.url
+        }        
       }
     }
   }
@@ -59,12 +57,12 @@
     hover-big-box(is-inside-full-size small)
       animation
 
-    hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable small)
-    
-    hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable small)
+    hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
-    hover-big-box(box-url="/portfolio")
-      title-paragraph(:content="title")
+    hover-big-box.first-post(:box-url="blog.url")
+      .title
+        |{{blog.title}}
+      |{{blog.description}}
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 
@@ -114,6 +112,13 @@
         }
     }
 
+    .first-post{
+      padding-top: 50px;
+      display: flexbox;
+      align-items: center;
+      justify-content: center;
+    }
+
     .outro{
         padding: 0;
         width: calc(@box-size+20px);
@@ -135,6 +140,7 @@
         line-height: 1;
         color: @color-primary;
         font-size: 200%;
+        font-weight: bold;
     }
 
     .comment-chars{

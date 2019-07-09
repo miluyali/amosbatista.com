@@ -6,12 +6,13 @@ const service = async (request) => {
   )
   const posts = response.data.posts || []
   const firstPost = 0
-
+    
   return {
     title: posts[firstPost].title,
     description: posts[firstPost].custom_excerpt,
     thumbnail: "",
-    slug: posts[firstPost].slug 
+    slug: posts[firstPost].slug,
+    url: `/artigo/${posts[firstPost].slug}`
   }
 }
 
