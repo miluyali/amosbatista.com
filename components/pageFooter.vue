@@ -12,7 +12,7 @@
 
 <template>
     
-    <footer class="page-footer box">
+    <footer class="page-footer">
 
         <p class="content">
             Obrigado pela visita.

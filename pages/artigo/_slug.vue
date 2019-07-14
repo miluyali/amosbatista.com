@@ -1,13 +1,18 @@
 <script>
-import metaTags from '../../components/meta'
-import baseStyle from '../../components/external-link-style'
-import box from '../../components/hoverBigBox'
-import postBySlug from '../../ghost.io/getPostBySlug'
-import httpService from '../../requests/http'
+import metaTags from '~/components/meta'
+import box from '~/components/hoverBigBox'
+import postBySlug from '~/ghost.io/getPostBySlug'
+import httpService from '~/requests/http'
+import postTitle from '~/components/post-title'
+import vueMeta from '~/components/meta.vue'
+import linkStyle from '~/components/external-link-style.vue'
+import facebookApp from '~/components/facebook-app.vue'
+import pgHeader from '~/components/pageHeader.vue'
+import pgFooter from '~/components/pageFooter.vue'
 
 export default {
   components: {
-    metaTags, baseStyle, box
+    metaTags, box, vueMeta, facebookApp, pgHeader, postTitle, linkStyle, pgFooter
   },
   data: function () {
     return {}
@@ -30,26 +35,39 @@ export default {
 </script>
 
 <template lang="pug">
+  .container
+  
+    vue-meta(:metadata="meta")
+    facebook-app
+    link-style
 
-  .bg
+    pg-header
 
-    meta-tags(:metadata="meta")
-    base-style
+    box(large)
+      post-title(
+        :title="post.title"
+        :resume="post.description")
 
-    .container
+    box(large)
+      .content(v-html="post.content")
+    
+    pg-footer
 
-      h1.title
-        | {{post.title}}
-      h2.short-description
-        | {{post.description}}
-      
-      |{{post.content}}
 </template>
 
 <style lang="less">
 
-  
+  @import '../../assets/fontawesome/fontawesome.less';
+  @import '../../assets/variables.less';
+  @import '../../assets/mixin.less';
+  @import '../../assets/generic.less';
+  @import '../../assets/base.less';
+  @import '../../assets/objects.less';
 
+  .content{
+    text-indent: 25px;
+    padding: 10px 30px;
+  }
 
 </style>
 

@@ -1,7 +1,6 @@
 <script>
 
   import box from '../components/box.vue'
-  import titleParagraph from '../components/title-paragraph.vue'
   import myLink from '../components/myLink.vue'
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
@@ -9,6 +8,7 @@
   import animation from '../components/animatedBg_linesToCenter.vue'
   import pageTitle from '../components/home-header.vue'
   import hoverBigBox from '../components/hoverBigBox.vue'
+  import postTitle from '../components/post-title'
 
   import firstPostService from '../ghost.io/firstPostService'
   import httpService from '../requests/http'
@@ -18,7 +18,7 @@
     data: function () {
       return {}
     },
-    components: { hoverBigBox, titleParagraph, vueMeta, facebookApp, linkStyle, pageTitle, animation },
+    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle },
     async asyncData () {
       const post = await firstPostService(httpService)
 
@@ -51,7 +51,7 @@
 
     link-style
 
-    hover-big-box(small)
+    hover-big-box(small is-box-hoverable)
       page-title
 
     hover-big-box(is-inside-full-size small)
@@ -59,10 +59,10 @@
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
-    hover-big-box.first-post(:box-url="blog.url")
-      .title
-        |{{blog.title}}
-      |{{blog.description}}
+    hover-big-box.first-post(:box-url="blog.url" is-box-hoverable)
+      post-title(
+        :title="blog.title"
+        :resume="blog.description")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 
