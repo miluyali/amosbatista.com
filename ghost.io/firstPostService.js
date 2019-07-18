@@ -1,6 +1,6 @@
 const service = async (request) => {
 
-  const fields = "title,url,custom_excerpt,slug"
+  const fields = "title,url,custom_excerpt,slug,feature_image"
   const response = await request.get(
     `${process.env.BLOG_URL}/ghost/api/v2/content/posts/?key=${process.env.BLOG_REQUEST_KEY}&fields=${fields}`
   )
@@ -10,7 +10,7 @@ const service = async (request) => {
   return {
     title: posts[firstPost].title,
     description: posts[firstPost].custom_excerpt,
-    thumbnail: "",
+    thumbnail: posts[firstPost].feature_image,
     slug: posts[firstPost].slug,
     url: `/artigo/${posts[firstPost].slug}`
   }
