@@ -81,6 +81,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    overflow: hidden;
 
     .link{
       width: 100%;
