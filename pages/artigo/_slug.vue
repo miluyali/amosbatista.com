@@ -42,6 +42,9 @@ export default {
     link-style
 
     pg-header
+    
+    box(large)
+      img.thumbnail(:src="post.thumbnail")
 
     box(large)
       post-title(
@@ -64,6 +67,11 @@ export default {
   @import '../../assets/base.less';
   @import '../../assets/objects.less';
 
+  .thumbnail{
+    width: 35%;
+    margin: 0 auto;
+    display: block;
+  }
   .content{
     text-indent: 25px;
     padding: 10px 30px;

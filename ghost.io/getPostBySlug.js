@@ -9,7 +9,7 @@ const service = async (request, slug) => {
   return {
     title: posts[firstPost].title,
     description: posts[firstPost].custom_excerpt,
-    thumbnail: "",
+    thumbnail: posts[firstPost].feature_image,
     url: `${process.env.SITE_DOMAIN}/artigo/${posts[firstPost].slug}`,
     content: posts[firstPost].html
   }

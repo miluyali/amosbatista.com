@@ -8,7 +8,7 @@
   import animation from '../components/animatedBg_linesToCenter.vue'
   import pageTitle from '../components/home-header.vue'
   import hoverBigBox from '../components/hoverBigBox.vue'
-  import postTitle from '../components/post-title'
+  import postTitle from '../components/postWithImage'
 
   import firstPostService from '../ghost.io/firstPostService'
   import httpService from '../requests/http'
@@ -26,14 +26,15 @@
         meta: {
           title: "Home",
           description: "Site pessoal de projetos e portfólios.",
-          thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
-          url: "",
+          thumbnail: post.thumbnail,
+          url: `${post.url}`,
           type: "home"
         },
         blog: {
           title: post.title,
           description: post.description,
-          url: post.url
+          url: post.url,
+          thumbnail: post.thumbnail
         }        
       }
     }
@@ -62,7 +63,8 @@
     hover-big-box.first-post(:box-url="blog.url" is-box-hoverable)
       post-title(
         :title="blog.title"
-        :resume="blog.description")
+        :resume="blog.description"
+        :thumbnail="blog.thumbnail")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 
