@@ -51,7 +51,7 @@ export default {
         :title="post.title"
         :resume="post.description")
 
-    box(large)
+    box(large invisible)
       .content(v-html="post.content")
     
     pg-footer
@@ -75,6 +75,9 @@ export default {
   .content{
     text-indent: 25px;
     padding: 10px 30px;
+    line-height: 1.7;
+    font-size: 117%;
+    font-family: @base-font;
   }
 
 </style>

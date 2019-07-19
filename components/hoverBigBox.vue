@@ -17,7 +17,8 @@
       isInsideFullSize: Boolean, 
       small: Boolean,
       medium: Boolean, 
-      large: Boolean
+      large: Boolean,
+      invisible: Boolean
     },
     components: { titleParagraph },
     created: function () {
@@ -40,6 +41,8 @@
         // (!this.isInsideFullSize ? 'content-with-margin' : '' ) + 
         // ' ' + 
         (this.isBoxHoverable ? 'hoverable-box' : '') +
+        ' ' +
+        (!this.invisible ? 'border' : '') +
         ' ' +
         boxWidth
     }
@@ -64,8 +67,6 @@
   @import '../assets/mixin.less';
 
   .hover-big-box{
-    .shadow();
-
     box-sizing: content-box;
 
     margin: 10px 10px 0 0;
@@ -86,6 +87,10 @@
     .link{
       width: 100%;
       height: 100%;
+    }
+
+    &.border{
+      .shadow();
     }
     
   }
