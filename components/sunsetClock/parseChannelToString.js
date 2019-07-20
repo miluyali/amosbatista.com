@@ -1,3 +1,3 @@
-export default(r, g, b) => {
-  return `rgb(${r},${g},${b})`
+export default(channels) => {
+  return `rgb(${channels[0]},${channels[1]},${channels[2]})`
 }
