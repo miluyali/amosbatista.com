@@ -20,7 +20,7 @@
 
 <template>
 
-    <div :class="'post-title'">
+    <div :class="'post-title post-with-image'">
 
         <img class="thumbnail" :src="thumbnail" />
 
@@ -49,7 +49,7 @@
     @import "../assets/variables.less";
     @import "../assets/mixin.less";
 
-    .post-title{
+    .post-with-image{
         height: 100%;
         position: relative;
         
@@ -70,7 +70,7 @@
 
         .title-paragraph{
             position: absolute;
-            top: -66px;
+            top: -35px;
         }
 
         .post-title-resume{
@@ -95,6 +95,19 @@
 
         .post-title-resume{
             color: @color-base;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .post-with-image{
+            .title-paragraph {
+                .title-paragraph-h{
+                    font-size: 130%;
+                }
+            }
+            .thumbnail{
+                top: -25px;
+            }
         }
     }
 

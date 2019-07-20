@@ -83,7 +83,6 @@
       <link-style />
       <pg-header />
     
-      <box>
         <ul class="list">
           <li class="item" v-for="post in portfolios" :key="post.title">
             <my-link :url="post.url">
@@ -91,7 +90,6 @@
             </my-link>
           </li>
         </ul>
-      </box>
       <pg-footer />
     </div>
   </div>
@@ -117,7 +115,7 @@
 
             .item{
                 width: 100%;
-                height: 200px;
+                height: 300px;
                 margin: 0 0 10px 0;
                 padding: 0;
                 float: left;

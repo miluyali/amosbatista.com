@@ -67,6 +67,7 @@
   @import '../assets/mixin.less';
 
   .hover-big-box{
+    min-width: 170px;
     box-sizing: content-box;
 
     margin: 10px 10px 0 0;
@@ -110,18 +111,36 @@
   }
 
   .small-size {
-    width: 24%;
+    width: 23.5%;
     height: 25%;
   }
 
   .medium-size {
-    width: 49%;
+    width: 48.5%;
     height: 25%;
   }
 
   .large-size {
     width: 100%;
     height: auto;
+  }
+
+  @media (max-width: 800px) {
+    .medium-size {
+      width: 39.5%;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+    .hover-big-box{
+      width: 39.5%;
+      max-width: initial;
+    }
+
+    .large-size {
+      width: 100%;
+    }
   }
 
 </style>
