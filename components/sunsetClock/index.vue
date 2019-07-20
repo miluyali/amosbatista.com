@@ -8,94 +8,155 @@
   import moment from "moment"
 
   const dayColors = {
-    first: [116, 126, 255],
-    second: [125, 94, 232],
-    third: [94, 137, 232],
+    first: [57, 214, 224],
+    second: [47, 125, 237],
+    third: [47, 237, 143],
     letter: [189, 150, 255]
   }
 
   const nightColors = {
-    first: [255, 246, 13],
-    second: [255, 194, 0],
-    third: [232, 181, 13],
+    first: [17, 26, 105],
+    second: [59, 13, 117],
+    third: [13, 78, 117],
     letter: [255, 246, 87]
   }
+
+  var setClockLetterColor = function(colors, currentHour){
+    
+    var letterRGBString = getColorStringFromHour(
+      dayColors.letter,
+      nightColors.letter,
+      currentHour
+    );
+    
+    var letterColor =  
+    clockDigit.css('color', letterRGBString);
+  }
+
+  const generateBgProperty = function(layers, currentHour){
+    const gradientType = 'to bottom, ';
+    const firstLayer = 0,
+      secondLayer = 1,
+      thirdLayer = 2
+    
+    const gradientScript = "linear-gradient(" +
+      gradientType +
+      layers[firstLayer] + " 0%," + 
+      layers[secondLayer] + " 50%," +
+      layers[thirdLayer] + "100%)";
+
+    return gradientScript
+}
 
   const processColors = (colorFrom, colorTo, currentHour) => {
     const channelNumber = 2
     let color = [];
 
-    for(currentChannel == 0;currentChannel<=channelNumber;currentChannel++){
+    for(let currentChannel = 0;currentChannel<=channelNumber;currentChannel++){
       color.push(
-          dayColors.first.defineChannelColorMethod(
-          dayColors.first[currentChannel], nightColors.first[currentChannel], currentHour
+        defineChannelColorMethod(
+          colorFrom[currentChannel], colorTo[currentChannel], currentHour
         ) == "crescent" ?
         getCrescentColorChannelFromHour(
-          colorFrom.first[currentChannel], 
-          colorTo.first[currentChannel], 
+          colorFrom[currentChannel], 
+          colorTo[currentChannel], 
           formatHour(currentHour)) : 
         getDecrescentColorChannelFromHour(
-          colorFrom.first[currentChannel], 
-          colorTo.first[currentChannel], formatHour(currentHour)
+          colorFrom[currentChannel], 
+          colorTo[currentChannel], 
+          formatHour(currentHour)
         )
       )
     }
 
     return parseChannelsToString(color)
   }
-  const processTime = ()=>{
+  const processTime = (self)=>{
     
     const currentHour = moment().hour()
-    const color1 = processColors(dayColors.first, nightColors.first, currentHour)
+    let colors = []
+
+    colors.push(processColors(dayColors.first, nightColors.first, currentHour))
+    colors.push(processColors(dayColors.second, nightColors.second, currentHour))
+    colors.push(processColors(dayColors.third, nightColors.third, currentHour))
+    self.clockBg = {
+      background: generateBgProperty(colors, currentHour)
+    }
+
+    self.digitColor = {
+      color: processColors(dayColors.letter, nightColors.letter, currentHour)
+    }
+
     const currentMinute = moment().format("mm")
 
-    this.clockBg = color1
-    this.currentTime = `${currentHour}:${currentMinute}`
-    this.clockBg = color1
+    self.currentTime = `${currentHour}:${currentMinute}`
   }
 
 
   export default {
     data: function () {
       return {
-        clockBg: "",
+        clockBg: {
+          background: "none"
+        },
         currentTime: "00:00",
-        digitColor: ""
+        digitColor: {
+          color: "none"
+        }
       }
     },
     created: function () {
       const refreshMilisec = 1000
-      setInterval(()=>{processTime()},refreshMilisec)
-    }
+      let self = this
+
+      processTime(self)
       
+      setInterval(()=>{
+        processTime(self)
+      },refreshMilisec)
+    },
+    head: function () {
+
+      return {
+        link: [
+          { 
+            rel: 'stylesheet', 
+            href: 'https://fonts.googleapis.com/css?family=Medula+One' 
+          }
+        ]
+      }
+    }
   }
 </script>
 
 <template lang="pug">
-    .clock.center()
-      .time()
-        |{{currentTime}} - {{clockBg}} - {{digitColor}}
+
+  .clock.center(v-bind:style="clockBg")
+    .time(v-bind:style="digitColor")
+      |{{currentTime}}
+
 </template>
 
 <style lang="less">
-    @import url('https://fonts.googleapis.com/css?family=Medula+One');
+    
     @font: 'Medula One', cursive;
 
     .clock{
-        width: 100%;
-        height: 100%;
-        font-family: @font;
+      width: 100%;
+      height: 100%;
+      font-family: @font;
 
-        .center{
-            display: flex;
-            justify-content: center;   
-            align-content: center;
-        }
+      .time{
+        width: auto;
+        font-size: 500%; 
+        margin: auto;
+      }
+    }
 
-        .time{
-            font-size: 500%; 
-            margin: auto;
-        }
+    .center{
+      display: flex;
+      justify-content: center;   
+      align-content: center;
     }
     
 </style>
