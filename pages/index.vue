@@ -9,6 +9,7 @@
   import pageTitle from '../components/home-header.vue'
   import hoverBigBox from '../components/hoverBigBox.vue'
   import postTitle from '../components/postWithImage'
+  import sunsetClock from '../components/sunsetClock'
 
   import firstPostService from '../ghost.io/firstPostService'
   import httpService from '../requests/http'
@@ -18,7 +19,7 @@
     data: function () {
       return {}
     },
-    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle },
+    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock },
     async asyncData () {
       const post = await firstPostService(httpService)
 
@@ -56,7 +57,7 @@
       page-title
 
     hover-big-box(is-inside-full-size small)
-      animation
+      sunset-clock
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
