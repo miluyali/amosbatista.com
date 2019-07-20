@@ -116,7 +116,6 @@
     }
 
     .first-post{
-      padding-top: 50px;
       display: flexbox;
       align-items: center;
       justify-content: center;
