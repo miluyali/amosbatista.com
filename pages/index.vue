@@ -57,7 +57,7 @@
       page-title
 
     hover-big-box(is-inside-full-size small)
-      animation
+      sunset-clock
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
@@ -66,9 +66,6 @@
         :title="blog.title"
         :resume="blog.description"
         :thumbnail="blog.thumbnail")
-    
-    hover-big-box(is-inside-full-size small)
-      sunset-clock
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 
