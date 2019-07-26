@@ -5,15 +5,16 @@ const service = async (request) => {
     `${process.env.BLOG_URL}/ghost/api/v2/content/posts/?key=${process.env.BLOG_REQUEST_KEY}&fields=${fields}`
   )
   const posts = response.data.posts || []
-  const firstPost = 0
-    
-  return {
-    title: posts[firstPost].title,
-    description: posts[firstPost].custom_excerpt,
-    thumbnail: posts[firstPost].feature_image,
-    slug: posts[firstPost].slug,
-    url: `/artigo/${posts[firstPost].slug}`
-  }
+  
+  return posts.map((post) => {
+    return {
+      title: post.title,
+      description: post.custom_excerpt,
+      thumbnail: post.feature_image,
+      slug: post.slug,
+      url: `/artigo/${post.slug}`
+    }
+  })
 }
 
 export default service
