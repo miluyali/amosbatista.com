@@ -6,7 +6,7 @@ const service = async (request) => {
     `${process.env.BLOG_URL}/ghost/api/v2/content/posts/?key=${process.env.BLOG_REQUEST_KEY}&fields=${fields}&filter=${filters}`
   )
   
-  const posts = response.posts || []
+  const posts = response.data.posts || []
 
   return posts.map((post)=>{
     return {

@@ -21,24 +21,26 @@
       return {}
     },
     components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock },
+
     async asyncData () {
-      const post = await firstPostService(httpService)
+      const featured = await firstPostService(httpService)
+      const postList = await postListService(httpService)
 
       return {
         meta: {
           title: "Home",
           description: "Site pessoal de projetos e portfólios.",
-          thumbnail: post.thumbnail,
-          url: `${post.url}`,
+          thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
+          url: ``,
           type: "home"
         },
         firstPost: {
-          title: post.title,
-          description: post.description,
-          url: post.url,
-          thumbnail: post.thumbnail
+          title: featured.title,
+          description: featured.description,
+          url: featured.url,
+          thumbnail: featured.thumbnail
         },
-        postList: []     
+        postList  
       }
     }
   }
@@ -72,7 +74,6 @@
     hover-big-box.post(v-for="post in postList" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
       post-title(
         :title="post.title"
-        :resume="post.description"
         :thumbnail="post.thumbnail")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
