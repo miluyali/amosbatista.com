@@ -11,7 +11,8 @@
   import postTitle from '../components/postWithImage'
   import sunsetClock from '../components/sunsetClock'
 
-  import firstPostService from '../ghost.io/firstPostService'
+  import firstPostService from '../ghost.io/featuredPostService'
+  import postListService from '../ghost.io/postListService'
   import httpService from '../requests/http'
 
   export default {
@@ -20,23 +21,26 @@
       return {}
     },
     components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock },
+
     async asyncData () {
-      const post = await firstPostService(httpService)
+      const featured = await firstPostService(httpService)
+      const postList = await postListService(httpService)
 
       return {
         meta: {
           title: "Home",
           description: "Site pessoal de projetos e portfólios.",
-          thumbnail: post.thumbnail,
-          url: `${post.url}`,
+          thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
+          url: ``,
           type: "home"
         },
-        blog: {
-          title: post.title,
-          description: post.description,
-          url: post.url,
-          thumbnail: post.thumbnail
-        }        
+        firstPost: {
+          title: featured.title,
+          description: featured.description,
+          url: featured.url,
+          thumbnail: featured.thumbnail
+        },
+        postList  
       }
     }
   }
@@ -61,11 +65,16 @@
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
-    hover-big-box.first-post(:box-url="blog.url" is-box-hoverable)
+    hover-big-box.first-post(:box-url="firstPost.url" is-box-hoverable)
       post-title(
-        :title="blog.title"
-        :resume="blog.description"
-        :thumbnail="blog.thumbnail")
+        :title="firstPost.title"
+        :resume="firstPost.description"
+        :thumbnail="firstPost.thumbnail")
+    
+    hover-big-box.post(v-for="post in postList" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
+      post-title(
+        :title="post.title"
+        :thumbnail="post.thumbnail")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 
@@ -115,7 +124,7 @@
         }
     }
 
-    .first-post{
+    .first-post, post{
       display: flexbox;
       align-items: center;
       justify-content: center;
