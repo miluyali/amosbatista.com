@@ -9,6 +9,7 @@
         //
       </span>
       Amós Batista
+      <span class="sub-title">.com</span>
     </h1>	
   </div>
 </template>
