@@ -35,25 +35,25 @@ export default {
 </script>
 
 <template lang="pug">
-  .container
-  
-    vue-meta(:metadata="meta")
-    facebook-app
-    link-style
+  .article
+    .container
+      vue-meta(:metadata="meta")
+      facebook-app
+      link-style
 
-    pg-header
-    
-    box(large)
-      img.thumbnail(:src="post.thumbnail")
+      pg-header
+      
+      box(large)
+        img.thumbnail(:src="post.thumbnail")
 
-    box(large)
-      post-title(
-        :title="post.title"
-        :resume="post.description")
+      box(large)
+        post-title(
+          :title="post.title"
+          :resume="post.description")
 
-    box(large invisible)
-      .content(v-html="post.content")
-    
+      box(large invisible)
+        .content(v-html="post.content")
+      
     pg-footer
 
 </template>

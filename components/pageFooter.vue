@@ -1,44 +1,34 @@
 <script>
+  
+  import creativeCommons from "./creative-commons"
+  import deFacto from "./fluidFooter"
 
-    export default {
-        
-        data: function () {
-            return {}
-        }
-    }
+  export default {
+
+    data: function () {
+      return {
+      }
+    },
+    created: function () {
+    },
+    components: {creativeCommons,deFacto}
+  }
 
 </script>
 
 
-<template>
-    
-    <footer class="page-footer">
+<template lang="pug">
 
-        <p class="content">
-            Obrigado pela visita.
-        </p>
-    </footer>
+    footer
+        creative-commons
+        de-facto
 
 </template>
 
 
 <style lang="less">
-    
-    @import "../assets/variables.less";
-
-    .page-footer{
-        margin: 10px 0 10px 0;
+    footer{
         float: left;
-        display: block;
         width: 100%;
-        background-color: @color-primary;
-
-        .content{
-            padding-left: 20px;
-            color: @color-base;
-            font-size: 75%;
-        }
     }
-    
-
 </style>
