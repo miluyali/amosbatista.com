@@ -31,7 +31,7 @@
         a.link(v-for="link in links" :href="link.url")
             |{{link.text}} / 
         span.link
-            | Obrigado pela visita.
+            | obrigado pela visita
 
         
 </template>
@@ -47,6 +47,7 @@
       background-color: @color-primary;
       float: left;
       width: 100%;
+      box-sizing: border-box;
 
       .link{
           color: @color-base;
