@@ -10,9 +10,11 @@
   import hoverBigBox from '../components/hoverBigBox.vue'
   import postTitle from '../components/postWithImage'
   import sunsetClock from '../components/sunsetClock'
+  import caderno1Post from '../components/blackPost'
 
   import firstPostService from '../ghost.io/featuredPostService'
-  import postListService from '../ghost.io/postListService'
+  import articlesService from '../ghost.io/articleListService'
+  import caderno1PostsService from '../ghost.io/caderno1ListService'
   import httpService from '../requests/http'
 
   export default {
@@ -20,11 +22,12 @@
     data: function () {
       return {}
     },
-    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock },
+    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock, caderno1Post },
 
     async asyncData () {
       const featured = await firstPostService(httpService)
-      const postList = await postListService(httpService)
+      const articles = await articlesService(httpService)
+      const caderno1Posts = await caderno1PostsService(httpService)
 
       return {
         meta: {
@@ -40,7 +43,8 @@
           url: featured.url,
           thumbnail: featured.thumbnail
         },
-        postList  
+        articles,
+        caderno1Posts
       }
     }
   }
@@ -71,10 +75,14 @@
         :resume="firstPost.description"
         :thumbnail="firstPost.thumbnail")
     
-    hover-big-box.post(v-for="post in postList" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
+    hover-big-box.post(v-for="post in articles" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
       post-title(
         :title="post.title"
         :thumbnail="post.thumbnail")
+    
+    hover-big-box.post(v-for="post in caderno1Posts" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
+      caderno1-post(
+        :title="post.title")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 

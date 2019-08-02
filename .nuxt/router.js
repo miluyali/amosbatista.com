@@ -11,6 +11,7 @@ const _1f8376b8 = () => interopDefault(import('../pages/portfolio/ehtlexecutivo.
 const _3fff74a0 = () => interopDefault(import('../pages/portfolio/kofaxCapture.vue' /* webpackChunkName: "pages/portfolio/kofaxCapture" */))
 const _41fea6e5 = () => interopDefault(import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */))
 const _cad1adf6 = () => interopDefault(import('../pages/artigo/_slug.vue' /* webpackChunkName: "pages/artigo/_slug" */))
+const _360d3234 = () => interopDefault(import('../pages/caderno1/_slug.vue' /* webpackChunkName: "pages/caderno1/_slug" */))
 const _4515ec06 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -123,6 +124,10 @@ export function createRouter() {
       path: "/artigo/:slug?",
       component: _cad1adf6,
       name: "artigo-slug"
+    }, {
+      path: "/caderno1/:slug?",
+      component: _360d3234,
+      name: "caderno1-slug"
     }, {
       path: "/",
       component: _4515ec06,
