@@ -138,7 +138,7 @@ export async function setContext(app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {}
+      env: {"BLOG_URL":"https://amosdasilvabatista.ghost.io","BLOG_REQUEST_KEY":"cba17c89537bea486690d94821","SITE_DOMAIN":"https://amosbatista.com"}
     }
     // Only set once
     if (context.req) {

@@ -2,17 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _4a972e02 = () => interopDefault(import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */))
-const _12a44046 = () => interopDefault(import('../pages/services/index.vue' /* webpackChunkName: "pages/services/index" */))
-const _22fe80e9 = () => interopDefault(import('../pages/portfolio/amosBatista.vue' /* webpackChunkName: "pages/portfolio/amosBatista" */))
-const _67b4ff67 = () => interopDefault(import('../pages/portfolio/cathoApp.vue' /* webpackChunkName: "pages/portfolio/cathoApp" */))
-const _f8c7fb74 = () => interopDefault(import('../pages/portfolio/ehtldashboard.vue' /* webpackChunkName: "pages/portfolio/ehtldashboard" */))
-const _1f8376b8 = () => interopDefault(import('../pages/portfolio/ehtlexecutivo.vue' /* webpackChunkName: "pages/portfolio/ehtlexecutivo" */))
-const _3fff74a0 = () => interopDefault(import('../pages/portfolio/kofaxCapture.vue' /* webpackChunkName: "pages/portfolio/kofaxCapture" */))
-const _41fea6e5 = () => interopDefault(import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */))
-const _cad1adf6 = () => interopDefault(import('../pages/artigo/_slug.vue' /* webpackChunkName: "pages/artigo/_slug" */))
-const _360d3234 = () => interopDefault(import('../pages/caderno1/_slug.vue' /* webpackChunkName: "pages/caderno1/_slug" */))
-const _4515ec06 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _0539f996 = () => interopDefault(import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */))
+const _b50f3f34 = () => interopDefault(import('../pages/services/index.vue' /* webpackChunkName: "pages/services/index" */))
+const _4ae50440 = () => interopDefault(import('../pages/portfolio/amosBatista.vue' /* webpackChunkName: "pages/portfolio/amosBatista" */))
+const _966bd920 = () => interopDefault(import('../pages/portfolio/cathoApp.vue' /* webpackChunkName: "pages/portfolio/cathoApp" */))
+const _4bef0bdd = () => interopDefault(import('../pages/portfolio/ehtldashboard.vue' /* webpackChunkName: "pages/portfolio/ehtldashboard" */))
+const _8edd638a = () => interopDefault(import('../pages/portfolio/ehtlexecutivo.vue' /* webpackChunkName: "pages/portfolio/ehtlexecutivo" */))
+const _962ba58e = () => interopDefault(import('../pages/portfolio/kofaxCapture.vue' /* webpackChunkName: "pages/portfolio/kofaxCapture" */))
+const _d0e7d808 = () => interopDefault(import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */))
+const _5c2b9064 = () => interopDefault(import('../pages/artigo/_slug.vue' /* webpackChunkName: "pages/artigo/_slug" */))
+const _36509a86 = () => interopDefault(import('../pages/caderno1/_slug.vue' /* webpackChunkName: "pages/caderno1/_slug" */))
+const _5783fd5d = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -90,47 +90,47 @@ export function createRouter() {
 
     routes: [{
       path: "/portfolio",
-      component: _4a972e02,
+      component: _0539f996,
       name: "portfolio"
     }, {
       path: "/services",
-      component: _12a44046,
+      component: _b50f3f34,
       name: "services"
     }, {
       path: "/portfolio/amosBatista",
-      component: _22fe80e9,
+      component: _4ae50440,
       name: "portfolio-amosBatista"
     }, {
       path: "/portfolio/cathoApp",
-      component: _67b4ff67,
+      component: _966bd920,
       name: "portfolio-cathoApp"
     }, {
       path: "/portfolio/ehtldashboard",
-      component: _f8c7fb74,
+      component: _4bef0bdd,
       name: "portfolio-ehtldashboard"
     }, {
       path: "/portfolio/ehtlexecutivo",
-      component: _1f8376b8,
+      component: _8edd638a,
       name: "portfolio-ehtlexecutivo"
     }, {
       path: "/portfolio/kofaxCapture",
-      component: _3fff74a0,
+      component: _962ba58e,
       name: "portfolio-kofaxCapture"
     }, {
       path: "/portfolio/masterrow",
-      component: _41fea6e5,
+      component: _d0e7d808,
       name: "portfolio-masterrow"
     }, {
       path: "/artigo/:slug?",
-      component: _cad1adf6,
+      component: _5c2b9064,
       name: "artigo-slug"
     }, {
       path: "/caderno1/:slug?",
-      component: _360d3234,
+      component: _36509a86,
       name: "caderno1-slug"
     }, {
       path: "/",
-      component: _4515ec06,
+      component: _5783fd5d,
       name: "index"
     }],
 
