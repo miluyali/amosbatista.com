@@ -1,0 +1,50 @@
+@import '_object_mainContainer.less';
+@import '_object_titulo-site.less';
+
+
+.bordaTeste{
+	/*border: 1px solid red;*/
+}
+
+
+
+.titulo-site{
+	font-family: @fonteDestaque	;
+	color: @cor_titulo;
+	text-align: center;
+	font-size: 500%;
+	text-transform: uppercase;
+	letter-spacing: -6px;
+	line-height: 90%;
+	.sombra-texto(2px);
+}
+
+.descricao{
+	font-family: @fontMaquinaEscrever;
+	text-align: justify;
+	color: @cor_titulo;
+	line-height: 90%;
+}
+
+
+.ocultar{
+	/*display: none !important;
+	visibility: hidden !important;*/
+	opacity: 0 !important;
+	z-index: -2 !important;
+}
+
+
+.botao{
+	font-size: 80%;
+	font-weight: @fontWeight_bold;
+	padding: 3px 5px;
+	.borda-radius();
+	margin: 0 0 5px 5px;
+	color: @cor_campoTexto;
+	display: inline-block;
+
+	.fa{
+		margin-right: 3px;
+	}
+}

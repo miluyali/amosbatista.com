@@ -1,0 +1,36 @@
+.sombra(@altura: 1px){
+	box-shadow: 0px @altura 3px 1px @cor_Sombra;
+}
+
+.sombra-texto(@altura: 1px, @sombra:@cor_Sombra){
+	text-shadow: 0px @altura @sombra;
+}
+
+.borda(@CorBorda: @cor_Borda_Geral, @borda: 1px){
+	border: @borda solid @CorBorda;
+	border-radius: 3px;
+}
+
+.borda-radius(@radius: 3px){
+	border-radius: @radius;
+}
+
+.transicao(@tempo: 0.5s){
+	transition: all ease @tempo;
+}
+
+.cor-link(@cor: @cor_campoTexto){
+	color: @cor;
+
+	&:hover{
+		color: @cor;
+	}
+}
+
+.gradiente-radial(@corInicial: @cor_Borda_Geral_transparente, @corFinal: @cor_Borda_Geral){
+	background: @corInicial; /* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(@corInicial, @corFinal); /*Safari 5.1-6*/
+	background: -o-radial-gradient(@corInicial, @corFinal); /*Opera 11.1-12*/
+	background: -moz-radial-gradient(@corInicial, @corFinal); /*Fx 3.6-15*/
+	background: radial-gradient(@corInicial,  @corFinal); /*Standard*/
+}
