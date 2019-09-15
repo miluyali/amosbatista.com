@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 const _5aefd0dc = () => interopDefault(import('../pages/censurador/index.vue' /* webpackChunkName: "pages/censurador/index" */))
 const _0539f996 = () => interopDefault(import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */))
 const _b50f3f34 = () => interopDefault(import('../pages/services/index.vue' /* webpackChunkName: "pages/services/index" */))
+const _67f372d6 = () => interopDefault(import('../pages/censurador/buscador.js' /* webpackChunkName: "pages/censurador/buscador" */))
 const _4ae50440 = () => interopDefault(import('../pages/portfolio/amosBatista.vue' /* webpackChunkName: "pages/portfolio/amosBatista" */))
 const _966bd920 = () => interopDefault(import('../pages/portfolio/cathoApp.vue' /* webpackChunkName: "pages/portfolio/cathoApp" */))
 const _4bef0bdd = () => interopDefault(import('../pages/portfolio/ehtldashboard.vue' /* webpackChunkName: "pages/portfolio/ehtldashboard" */))
@@ -101,6 +102,10 @@ export function createRouter() {
       path: "/services",
       component: _b50f3f34,
       name: "services"
+    }, {
+      path: "/censurador/buscador",
+      component: _67f372d6,
+      name: "censurador-buscador"
     }, {
       path: "/portfolio/amosBatista",
       component: _4ae50440,
