@@ -1,34 +1,124 @@
+<script>
+  import linkStyle from '~/components/external-link-style.vue'
+
+  export default {
+    components: {
+      linkStyle
+    }
+  }
+</script>
 <template lang="pug">
-  .ocultar.container-loading-screen.transicao
 
-    .ocultar#loadScreen.loading-screen
+  .conteudo-central
+    .bg
+      .bg-degrade
+  
+    link-style
 
-      h2.titulo.titulo-site#loadScreen_Titulo
+    h1.titulo-site
+      | Censure Minha Música!
+    p.descricao
+      | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
+    
+    //- campo-busca(generation-promise="buscarCancao" searchvalue="buscaGeral" placeholder="Informe o nome da música ou artista" placeholder-with-artist="Informe o nome da música" selected-object="resultadoBusca", item-thumbnail="foto" item-style="registro" selected-artist="artistaSelecionado")
 
-      .detalhes-descricao
-        .icone
-          i.fa.fa-refresh.fa-spin.fa-fw
+    .confirmacao-pesquisa
 
-        p.descricao#loadScreen_Descricao
+      //- Reservado para detector de robô
+
+      a.btn-pesquisa(ng-disabled="!resultadoBusca" ng-click="fazerResultado()" tabindex="3" href="")
+        |Iniciar Censura
+
+        span.icone
+          i.fa.fa-gavel
+  //- .ocultar.container-loading-screen.transicao
+
+  //-   .ocultar#loadScreen.loading-screen
+
+  //-     h2.titulo.titulo-site#loadScreen_Titulo
+
+  //-     .detalhes-descricao
+  //-       .icone
+  //-         i.fa.fa-refresh.fa-spin.fa-fw
+
+  //-       p.descricao#loadScreen_Descricao
           
 
-    .ocultar#errorScreen.error-screen
+  //-   .ocultar#errorScreen.error-screen
 
-      h2.titulo.titulo-site#errScreen_Titulo
+  //-     h2.titulo.titulo-site#errScreen_Titulo
 
-      .detalhes-descricao
-        .icone
-          i.fa.fa-times
+  //-     .detalhes-descricao
+  //-       .icone
+  //-         i.fa.fa-times
 
-        p.descricao#errScreen_Descricao
+  //-       p.descricao#errScreen_Descricao
           
-        a.botao.link-retorno#errScreen_Link(data-ui-sref="home")
+  //-       a.botao.link-retorno#errScreen_Link
 
 </template>
 
 <style lang="less">
 
   @import './estilo.less';
+
+  .conteudo-central{
+    /*display: flex;
+    align-items: center;*/
+    width: 75%;
+    margin: 0 auto;
+
+    .titulo-site{
+      width: 575px;
+        margin: 50px auto 0 auto;
+        font-size: 500%;
+    }
+
+    .descricao{
+      font-family: @fontMaquinaEscrever;
+      text-align: justify;
+      color: @cor_titulo;
+      line-height: 90%;
+    }
+
+    .confirmacao-pesquisa{
+      width: 100%;
+      padding: 15px 0;
+
+      .btn-pesquisa{
+        padding: 10px;
+        font-size: 100%;
+        font-weight: @fontWeight_bold;
+        color: @cor_titulo;
+        float: right;
+        background-color: @cor_botao_pesquisar;
+        .borda-radius();
+
+        &:hover{
+          background-color: @cor_botao_pesquisar_hover;
+        }
+
+        &[disabled]{
+          background-color: @cor_botao_pesquisar_desabilitado;
+        }
+
+        .icone{
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  @media(max-width: 700px){
+
+    .conteudo-central{
+
+      .titulo-site{
+        width: auto;
+        font-size: 400%;
+      }	
+    }
+  }
 
   .container-loading-screen{
 
