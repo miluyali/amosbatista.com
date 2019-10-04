@@ -9,25 +9,14 @@
       'selectedArtist',
       'placeholderWithArtist'
     ],
-    created: function(){
-      this.searchvalue = '';
+    watch: {
+      searchvalue: function(value, lastValue){
 
-      this.initialPlaceholder = this.placeholder;
+        if(value == ''){
+          this.results = [];
+        }
 
-      this.results = [];
-      this.clickEvent = this.clickEvent || function(value){return;};
-      this.selectedArtist = undefined;
-
-      this.loadingResult = false;
-
-      // Localizando o elemento Input
-      var inputField = document.getElementById("theInput")
-      var clearFieldCheck = 1;
-
-      // Função de validação de entrada de dados
-      var processDataEntry = function(){
-
-        if(inputField.value == ''){
+        if(value != lastValue){
           this.results = [];
           this.selectedObject = undefined;
         }
@@ -38,13 +27,13 @@
           var dateObj = new Date();
           
           if(clearFieldCheck < 1){
-              clearFieldCheck++;
-              return;
+            clearFieldCheck++;
+            return;
           }
           else{
 
             // Recebe o Promise fornecido pelo controller
-            this.generationPromise(inputField.value)
+            this.generationPromise(value)
 
               // Quando a Promise for concluída, a função then irá preencher os dados da lista
               .then( function (resultsByUser){
@@ -74,18 +63,10 @@
               this.loadingResult = true;
             }
           }
-      };
-
-      this.$watch('searchvalue', function(value, lastValue){
-
-        if(value == ''){
-          this.results = [];
         }
+        
 
-        if(value != lastValue)
-          processDataEntry();
-
-      });
+      }
 
       // Ao selecionar o resultado, retornar o objeto selecionado para o controller
       this.resultSelect = function(value){
@@ -110,6 +91,29 @@
         // Evento de click fornecido pelo controller
         this.clickEvent(value);
       };
+    },
+    created: function(){
+      this.searchvalue = '';
+
+      this.initialPlaceholder = this.placeholder;
+
+      this.results = [];
+      this.clickEvent = this.clickEvent || function(value){return;};
+      this.selectedArtist = undefined;
+
+      this.loadingResult = false;
+
+      // Localizando o elemento Input
+      var inputField = document.getElementById("theInput")
+      var clearFieldCheck = 1;
+
+      // Função de validação de entrada de dados
+      var processDataEntry = function(){
+
+        
+      };
+
+      
 
       this.closeArtist = function(){
         this.searchvalue = "";
@@ -141,7 +145,11 @@
         //- a.link-apagar(v-on:click="closeArtist()" href="")
         //- 	i.fa.fa-times
 
-      input.campo(type="text", :placeholder="initialPlaceholder" v-model="searchvalue" tabindex="1" id="theInput")
+      input.campo(type="text"
+        :placeholder="initialPlaceholder"
+        v-model="searchvalue"
+        tabindex="1"
+      )
     
     
     ul.resultados-lista(role="menu" v-if="results.length > 0")
