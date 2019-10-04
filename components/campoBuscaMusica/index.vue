@@ -1,111 +1,64 @@
 <script>
   export default {
-    props: [
-      'generationPromise',
-      'searchvalue',
-      'placeholder',
-      'selectedObject',
-      'clickEvent',
-      'selectedArtist',
-      'placeholderWithArtist'
-    ],
+    data () {
+      return {
+        results: []
+      }
+    },
+    props: {
+      generationPromise: Function,
+      searchvalue: String,
+      placeholder: String,
+      selectedObject: Object,
+      clickEvent: Function,
+      selectedArtist: Object,
+      placeholderWithArtist: String
+    },
     watch: {
       searchvalue: function(value, lastValue){
+        var self = this
 
         if(value == ''){
-          this.results = [];
+          self.results = [];
         }
 
-        if(value != lastValue){
-          this.results = [];
-          this.selectedObject = undefined;
-        }
-          
-        else{
+        // Recebe o Promise fornecido pelo controller
+        self.generationPromise(value)
 
-          // Validação de tempo. Apenas fazer a pesquisa quando houver 1 sec de diferença
-          var dateObj = new Date();
-          
-          if(clearFieldCheck < 1){
-            clearFieldCheck++;
-            return;
-          }
-          else{
+          // Quando a Promise for concluída, a função then irá preencher os dados da lista
+          .then( function (resultsByUser){
 
-            // Recebe o Promise fornecido pelo controller
-            this.generationPromise(value)
-
-              // Quando a Promise for concluída, a função then irá preencher os dados da lista
-              .then( function (resultsByUser){
-
-                // A lista pode estar exibindo resultado, ocultar se não houver mais nada escrito na tela
-                if(inputField.value == '' || !resultsByUser){
-                  this.results = [];
-                  this.selectedObject = undefined;
-                }
-                else{
-
-                  /* Exibir os resultados, com o limite de 10 registros*/
-                  this.results = resultsByUser.slice(0, 9);		                               	
-                }
-                
-                this.loadingResult = false;
-                
-              },
-              function(error){
-
-                console.log(error);
-                this.loadingResult = false;
-
-              });
-
-              // Enquanto a lista não é carregada, exibir apenas uma mensagem
-              this.loadingResult = true;
+            // A lista pode estar exibindo resultado, ocultar se não houver mais nada escrito na tela
+            if(value == '' || !resultsByUser){
+              self.results = [];
+              self.selectedObject = undefined;
             }
+            else{
+
+              /* Exibir os resultados, com o limite de 10 registros*/
+              self.results = resultsByUser.slice(0, 9);		                               	
+            }
+            
+            self.loadingResult = false;
+            
+          },
+          function(error){
+
+            console.log(error);
+            self.loadingResult = false;
+
+          });
+
+            // Enquanto a lista não é carregada, exibir apenas uma mensagem
+            self.loadingResult = true;
           }
-        }
-        
-
-      }
-
+      },
       // Ao selecionar o resultado, retornar o objeto selecionado para o controller
-      this.resultSelect = function(value){
-
-        if(value.songName){
-
-          if(this.selectedArtist)
-            this.searchvalue = value.songName;
-          else
-              this.searchvalue = value.songName + ', ' + value.artistName;
-        }
-        else{
-          this.searchvalue = "";
-          this.selectedArtist = value;
-          this.initialPlaceholder = this.placeholderWithArtist;
-        }
-        
-        this.selectedObject = value;
-        this.results = [];
-        clearFieldCheck = 0;
-
-        // Evento de click fornecido pelo controller
-        this.clickEvent(value);
-      };
-    },
+  
     created: function(){
-      this.searchvalue = '';
-
       this.initialPlaceholder = this.placeholder;
 
-      this.results = [];
-      this.clickEvent = this.clickEvent || function(value){return;};
-      this.selectedArtist = undefined;
-
       this.loadingResult = false;
-
-      // Localizando o elemento Input
-      var inputField = document.getElementById("theInput")
-      var clearFieldCheck = 1;
 
       // Função de validação de entrada de dados
       var processDataEntry = function(){
@@ -116,17 +69,25 @@
       
 
       this.closeArtist = function(){
-        this.searchvalue = "";
         this.selectedArtist = null;
         this.initialPlaceholder = this.placeholder;
       }
 
       this.closeField = function(){
-        this.searchvalue = "";
         this.selectedArtist = null;
         this.initialPlaceholder = this.placeholder;
       }
 
+    },
+    methods: {
+      resultSelect: function(value){
+        this.searchvalue = value.songName + ', ' + value.artistName;
+        this.selectedObject = value;
+        this.results = [];
+
+        // Evento de click fornecido pelo controller
+        //this.clickEvent(value);
+      }
     }
   }
 </script>
@@ -156,7 +117,7 @@
       //-li.resultado(v-for="result in results" :class="result[itemStyle]")
       li.resultado(v-for="result in results")
 
-        a.resultado-link(href="" v-on:click="resultSelect( result )" tabindex="2")
+        a.resultado-link(href="#" v-on:click="resultSelect( result )" tabindex="2")
 
           span.icone.musica(v-if="result['type'] == 'song'")
             i.fa.fa-music
@@ -193,6 +154,8 @@
     font-family: 'Kingthings Trypewriter'; 
     src: url('../../static/fonts/Kingthings_Trypewriter_2.ttf'); 
   } 
+
+  @font-typeWriter: 'Kingthings Trypewriter', monospace;
 
   @fontePadrao: 'Open Sans', sans-serif;
 
@@ -265,6 +228,7 @@
         margin-left: 10px;
         font-size: 75%;
         border:none;
+        font-family: @font-typeWriter;
         &:focus{
           outline: none;
         }

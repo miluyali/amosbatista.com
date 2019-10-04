@@ -1,16 +1,24 @@
 <script>
   import linkStyle from '~/components/external-link-style.vue'
-  import buscarCancaoSrv from './buscador'
+  import buscarCancaoSrv from './mockBuscador'
   import campoBusca from '~/components/campoBuscaMusica'
 
   export default {
+    data () {
+      return {
+        buscaGeral: "",
+        resultadoBusca: null
+      }
+    },
     components: {
       linkStyle,
       campoBusca
     },
    created () {
       this.buscaGeral = "";
-      this.resultadoBusca = null;
+      this.artistaSelecionado = {
+        artistName: ""
+      }
 
       this.buscarCancao = function(){
       
@@ -21,6 +29,7 @@
       };
 
       this.fazerResultado = function(){
+        console.log("resultadobusca", this.resultadoBusca)
         // state.go('resultado', {
         //   songId: this.resultadoBusca.idAPI
         // })
@@ -37,12 +46,12 @@
     link-style
 
     h1.titulo-site
-      | Censure Minha Música!
+      | Foo bar!
     p.descricao
       | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
     
     campo-busca(
-      generation-promise="buscarCancao"
+      :generation-promise="buscarCancao"
       :searchvalue="buscaGeral"
       placeholder="Informe o nome da música ou artista"
       placeholder-with-artist="Informe o nome da música"
@@ -53,7 +62,7 @@
 
       //- Reservado para detector de robô
 
-      a.btn-pesquisa(ng-disabled="!resultadoBusca" ng-click="fazerResultado()" tabindex="3" href="")
+      a.btn-pesquisa(ng-disabled="!resultadoBusca" v-on:click="fazerResultado()" tabindex="3" href="#")
         |Iniciar Censura
 
         span.icone

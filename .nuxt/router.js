@@ -2,19 +2,20 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _5aefd0dc = () => interopDefault(import('../pages/censurador/index.vue' /* webpackChunkName: "pages/censurador/index" */))
-const _0539f996 = () => interopDefault(import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */))
-const _b50f3f34 = () => interopDefault(import('../pages/services/index.vue' /* webpackChunkName: "pages/services/index" */))
-const _67f372d6 = () => interopDefault(import('../pages/censurador/buscador.js' /* webpackChunkName: "pages/censurador/buscador" */))
-const _4ae50440 = () => interopDefault(import('../pages/portfolio/amosBatista.vue' /* webpackChunkName: "pages/portfolio/amosBatista" */))
-const _966bd920 = () => interopDefault(import('../pages/portfolio/cathoApp.vue' /* webpackChunkName: "pages/portfolio/cathoApp" */))
-const _4bef0bdd = () => interopDefault(import('../pages/portfolio/ehtldashboard.vue' /* webpackChunkName: "pages/portfolio/ehtldashboard" */))
-const _8edd638a = () => interopDefault(import('../pages/portfolio/ehtlexecutivo.vue' /* webpackChunkName: "pages/portfolio/ehtlexecutivo" */))
-const _962ba58e = () => interopDefault(import('../pages/portfolio/kofaxCapture.vue' /* webpackChunkName: "pages/portfolio/kofaxCapture" */))
-const _d0e7d808 = () => interopDefault(import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */))
-const _5c2b9064 = () => interopDefault(import('../pages/artigo/_slug.vue' /* webpackChunkName: "pages/artigo/_slug" */))
-const _36509a86 = () => interopDefault(import('../pages/caderno1/_slug.vue' /* webpackChunkName: "pages/caderno1/_slug" */))
-const _5783fd5d = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _a748d56e = () => interopDefault(import('../pages/censurador/index.vue' /* webpackChunkName: "pages/censurador/index" */))
+const _4a972e02 = () => interopDefault(import('../pages/portfolio/index.vue' /* webpackChunkName: "pages/portfolio/index" */))
+const _12a44046 = () => interopDefault(import('../pages/services/index.vue' /* webpackChunkName: "pages/services/index" */))
+const _1ade5ecd = () => interopDefault(import('../pages/censurador/buscador.js' /* webpackChunkName: "pages/censurador/buscador" */))
+const _f3e8a93a = () => interopDefault(import('../pages/censurador/mockBuscador.js' /* webpackChunkName: "pages/censurador/mockBuscador" */))
+const _22fe80e9 = () => interopDefault(import('../pages/portfolio/amosBatista.vue' /* webpackChunkName: "pages/portfolio/amosBatista" */))
+const _67b4ff67 = () => interopDefault(import('../pages/portfolio/cathoApp.vue' /* webpackChunkName: "pages/portfolio/cathoApp" */))
+const _f8c7fb74 = () => interopDefault(import('../pages/portfolio/ehtldashboard.vue' /* webpackChunkName: "pages/portfolio/ehtldashboard" */))
+const _1f8376b8 = () => interopDefault(import('../pages/portfolio/ehtlexecutivo.vue' /* webpackChunkName: "pages/portfolio/ehtlexecutivo" */))
+const _3fff74a0 = () => interopDefault(import('../pages/portfolio/kofaxCapture.vue' /* webpackChunkName: "pages/portfolio/kofaxCapture" */))
+const _41fea6e5 = () => interopDefault(import('../pages/portfolio/masterrow.vue' /* webpackChunkName: "pages/portfolio/masterrow" */))
+const _cad1adf6 = () => interopDefault(import('../pages/artigo/_slug.vue' /* webpackChunkName: "pages/artigo/_slug" */))
+const _360d3234 = () => interopDefault(import('../pages/caderno1/_slug.vue' /* webpackChunkName: "pages/caderno1/_slug" */))
+const _4515ec06 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -92,55 +93,59 @@ export function createRouter() {
 
     routes: [{
       path: "/censurador",
-      component: _5aefd0dc,
+      component: _a748d56e,
       name: "censurador"
     }, {
       path: "/portfolio",
-      component: _0539f996,
+      component: _4a972e02,
       name: "portfolio"
     }, {
       path: "/services",
-      component: _b50f3f34,
+      component: _12a44046,
       name: "services"
     }, {
       path: "/censurador/buscador",
-      component: _67f372d6,
+      component: _1ade5ecd,
       name: "censurador-buscador"
     }, {
+      path: "/censurador/mockBuscador",
+      component: _f3e8a93a,
+      name: "censurador-mockBuscador"
+    }, {
       path: "/portfolio/amosBatista",
-      component: _4ae50440,
+      component: _22fe80e9,
       name: "portfolio-amosBatista"
     }, {
       path: "/portfolio/cathoApp",
-      component: _966bd920,
+      component: _67b4ff67,
       name: "portfolio-cathoApp"
     }, {
       path: "/portfolio/ehtldashboard",
-      component: _4bef0bdd,
+      component: _f8c7fb74,
       name: "portfolio-ehtldashboard"
     }, {
       path: "/portfolio/ehtlexecutivo",
-      component: _8edd638a,
+      component: _1f8376b8,
       name: "portfolio-ehtlexecutivo"
     }, {
       path: "/portfolio/kofaxCapture",
-      component: _962ba58e,
+      component: _3fff74a0,
       name: "portfolio-kofaxCapture"
     }, {
       path: "/portfolio/masterrow",
-      component: _d0e7d808,
+      component: _41fea6e5,
       name: "portfolio-masterrow"
     }, {
       path: "/artigo/:slug?",
-      component: _5c2b9064,
+      component: _cad1adf6,
       name: "artigo-slug"
     }, {
       path: "/caderno1/:slug?",
-      component: _36509a86,
+      component: _360d3234,
       name: "caderno1-slug"
     }, {
       path: "/",
-      component: _5783fd5d,
+      component: _4515ec06,
       name: "index"
     }],
 
