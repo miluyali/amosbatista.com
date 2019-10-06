@@ -2,12 +2,13 @@
   import stamp from '~/components/stamp'
   import typewriter from '~/components/typewriter'
   import service from './service'
+  import metaData from '~/components/meta.vue'
 
   export default {
     async asyncData ({ params }) {
 
       const result = await service(params.resultado)
-      
+
       return {
         songArtistName: result.songArtistName,
         tipoCarimbo: result.tipoCarimbo,
@@ -16,7 +17,14 @@
         urlPagina: result.urlPagina,
         textoResultado: result.tituloResposta,
         descricaoResultado: result.descricaoResposta,
-        urlLetra: result.theSong.url
+        urlLetra: result.theSong.url,
+        meta: {
+          title: result.tituloResposta,
+          description: result.descricaoResposta,
+          thumbnail: `${process.env.SITE_DOMAIN}/${result.urlThumb}`,
+          url: "/" + params.resultado,
+          type: "post"
+        }
       }
     },
     data: function () {
@@ -25,7 +33,7 @@
       }
     },
     components: {
-      stamp, typewriter
+      stamp, typewriter, metaData
     },
     created () {
 
@@ -212,6 +220,8 @@
 </style>
 <template lang="pug">
   .resultado
+
+    meta-data(:metadata="meta")
 
     .folha
       .margem

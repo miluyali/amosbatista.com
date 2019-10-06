@@ -250,7 +250,7 @@
       list-style: none;
       background-color: @cor_campoBusca_fundo;
       .borda();
-      top: 45px;
+      top: 15px;
       width: 100%;
       padding: 10px 0  0 0;
 

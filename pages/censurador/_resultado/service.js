@@ -9,25 +9,24 @@ const service = function(song){
     ).then(function(respServer){
 
       const resposta = respServer.data
-      console.log(resposta)
 
       if(resposta.isSongCensored){
         resposta.tipoCarimbo = 'censurado';
-        resposta.urlThumb = "";
-        resposta.tituloResposta = resposta.theSong.artistName + ' [CENSURADO!!]';
+        resposta.urlThumb = "censored.png";
+        resposta.tituloResposta = `CENSURA!! Artista ${resposta.theSong.artistName} sofre censura do governo!! `;
         resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' foi recusada pelos orgãos de regulamentação de Diversões. Seu autor está sujeito às penalidades previstas por lei.';
       }
       else{
         if(resposta.isSongFreeOfObjections){
           resposta.tipoCarimbo = 'aprovado';
-          resposta.urlThumb = "";
-          resposta.tituloResposta = resposta.theSong.songName + ' [Aprovado pela censura]';
+          resposta.urlThumb = "approved.png";
+          resposta.tituloResposta = resposta.theSong.songName + ' [Aprovado pelo governo]';
           resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' foi aprovada pelas autoridades, sendo considerada segura para a sociedade brasileira.';
         }
         else{
           resposta.tipoCarimbo = 'comRestricao';
-          resposta.urlThumb = "";
-          resposta.tituloResposta = resposta.theSong.songName + ' [Ameaçado de Censura!]';
+          resposta.urlThumb = "restricted.png";
+          resposta.tituloResposta = resposta.theSong.songName + ': Ameaça de Censura!';
           resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' teve partes de sua composição rejeitadas pelos orgãos do governo, e está sujeita à censura.';
         }
       }

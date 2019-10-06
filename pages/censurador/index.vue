@@ -38,7 +38,7 @@
     link-style
 
     h1.titulo-site
-      | Foo bar!
+      | Censure minha música!
     p.descricao
       | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
     
