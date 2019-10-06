@@ -13,8 +13,8 @@
     methods: {
       fazerResultado: function(){
         const resultadoBusca = persistence.song.get()
-
-        this.$router.push(`censurador/${resultadoBusca.idAPI}`) 
+        console.log(this)
+        this.$router.push(`${resultadoBusca.idAPI}`) 
       }	
     },
     components: {
@@ -23,9 +23,6 @@
     },
    created () {
       this.buscaGeral = "";
-      this.artistaSelecionado = {
-        artistName: ""
-      }
     }
   }
 </script>
@@ -43,11 +40,8 @@
       | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
     
     campo-busca(
-      :searchvalue="buscaGeral"
       placeholder="Informe o nome da música ou artista"
-      placeholder-with-artist="Informe o nome da música"
-      :selected-object="resultadoBusca"
-      :selected-artist="artistaSelecionado")
+      placeholder-with-artist="Informe o nome da música")
 
     .confirmacao-pesquisa
 

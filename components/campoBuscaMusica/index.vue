@@ -5,15 +5,15 @@
   export default {
     data () {
       return {
-        results: []
+        results: [],
+        selectedArtist: null,
+        selectedObject: null,
+        searchvalue: ""
       }
     },
     props: {
-      searchvalue: String,
       placeholder: String,
-      selectedObject: Object,
       clickEvent: Function,
-      selectedArtist: Object,
       placeholderWithArtist: String
     },
     watch: {
@@ -27,7 +27,12 @@
         // Recebe o Promise fornecido pelo controller
         return buscarCancaoSrv({
           searchValue: value,
-          artist: self.selectedArtist
+          artistName: self.selectedArtist ? 
+            self.selectedArtist.artistName :
+            null,
+          songName: self.selectedArtist ? 
+            value :
+            null
         })
 
           // Quando a Promise for concluída, a função then irá preencher os dados da lista
@@ -81,15 +86,28 @@
       this.closeField = function(){
         this.selectedArtist = null;
         this.initialPlaceholder = this.placeholder;
+        this.searchvalue = ""
       }
 
     },
     methods: {
       resultSelect: function(value){
-        this.searchvalue = value.songName + ', ' + value.artistName;
+
+        this.searchvalue = value.songName 
+          ? value.songName + ', ' + value.artistName:
+          value.artistName
+
         this.selectedObject = value;
         this.results = [];
         sessionPersistence.song.set(value)
+        
+        if(value.type == "artist"){
+          this.selectedArtist = value
+          this.searchvalue = ""
+        }
+        else{
+          this.selectedArtist = null
+        }
 
         // Evento de click fornecido pelo controller
         //this.clickEvent(value);
@@ -104,7 +122,7 @@
     .campo-borda
       
       //- INPUT
-      .artista-selecionado(v-if="!selectedArtist")
+      .artista-selecionado(v-if="selectedArtist")
         span.icone
           i.fa.fa-user
         span.nome
@@ -134,7 +152,7 @@
           |  - 
           span.nome-artista {{result['artistName']}}
 
-    a.icone-status.link-apagar-resultado(v-on:click="closeField()" href="" v-if="searchvalue == '' && !selectedArtist || loadingResult")
+    a.icone-status.link-apagar-resultado(v-on:click="closeField()" href="#" v-if="searchvalue != '' || selectedArtist || loadingResult")
       i.fa.fa-times
 
     span.icone-status.carregando-resultado(v-if="loadingResult")
