@@ -13,11 +13,8 @@
     methods: {
       fazerResultado: function(){
         const resultadoBusca = persistence.song.get()
-        console.log("resultadobusca", resultadoBusca)
+
         this.$router.push(`censurador/${resultadoBusca.idAPI}`) 
-        // state.go('resultado', {
-        //   songId: this.resultadoBusca.idAPI
-        // })
       }	
     },
     components: {

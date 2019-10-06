@@ -1,26 +1,22 @@
 <script>
   import stamp from '~/components/stamp'
   import typewriter from '~/components/typewriter'
-  import service from './mockService'
+  import service from './service'
 
   export default {
     async asyncData ({ params }) {
 
-      const result = await service()
+      const result = await service(params.resultado)
       
       return {
-        songArtistName: "result.songArtistName",
+        songArtistName: result.songArtistName,
         tipoCarimbo: result.tipoCarimbo,
-        detalhes: [{
-          "feedBack": "foo",
-          "censorExcerpt": "trash demais"
-
-        }],
-        songId: 1234,
-        urlPagina: "asas",
+        detalhes: result.theSong.censorResultList,
+        songId: params.resultado,
+        urlPagina: result.urlPagina,
         textoResultado: result.tituloResposta,
         descricaoResultado: result.descricaoResposta,
-        urlLetra: "teste"
+        urlLetra: result.theSong.url
       }
     },
     data: function () {
