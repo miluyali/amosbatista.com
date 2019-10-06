@@ -1,0 +1,245 @@
+<script>
+  import stamp from '~/components/stamp'
+  import typewriter from '~/components/typewriter'
+  import service from './mockService'
+
+  export default {
+    async asyncData ({ params }) {
+
+      const result = await service()
+      
+      return {
+        songArtistName: "result.songArtistName",
+        tipoCarimbo: result.tipoCarimbo,
+        detalhes: [{
+          "feedBack": "foo",
+          "censorExcerpt": "trash demais"
+
+        }],
+        songId: 1234,
+        urlPagina: "asas",
+        textoResultado: result.tituloResposta,
+        descricaoResultado: result.descricaoResposta,
+        urlLetra: "teste"
+      }
+    },
+    data: function () {
+      return {
+        isStampCalled: false
+      }
+    },
+    components: {
+      stamp, typewriter
+    },
+    created () {
+
+      var self = this
+      
+      setTimeout( () => {
+        self.isStampCalled = true
+      }, 2000)
+    }
+  }
+</script>
+<style lang="less">
+  @import '../estilo.less';
+
+  @margem-topo: 50px;
+
+  .cabecalho{
+    width: 100%;
+    margin-top: 50px;
+    float: left;
+
+    .titulo-site{
+      font-size: 257%;
+      width: 295px;
+      padding: 13px 1px 0 0;
+      margin: 0;
+      letter-spacing: -3px;
+    }
+  }
+
+  .resultado{
+    width: 100%;
+
+    .folha{
+      width: 80%;
+      background-image: url('../img/template-documento-antigo.jpg');
+      background-size: cover;
+      background-position: top left;
+      margin: @margem-topo auto;
+      padding: 15px;
+      .sombra(5px);
+
+      .margem{
+        overflow: hidden;
+        .borda(@cor_Borda_Resultado, 2px);
+        padding: 15px;			
+
+        .topo{
+          width: 100%;
+          float: left;
+
+          .topo-cent{
+            margin: auto;
+            width: 75%;
+
+            .info{
+              font-family: @fontePadrao;
+              font-size: 80%;
+              text-transform: uppercase;
+              text-align: center;
+              font-weight: @fontWeight_bold;
+              margin: 0;
+            }
+
+            .nro-parecer{
+              text-orientation: right;
+              font-family: @fontMaquinaEscrever;
+            }
+          }
+        }
+
+        .detalhes{
+          margin-top: 20px;
+          width: 100%;
+          float: left;
+          
+          .info{
+            text-transform: uppercase;
+            font-weight: @fontWeight_bold;
+          }
+
+          .musica-autor{
+            min-height: 60px; 
+          }
+
+          .resultado-censura{
+            height: 100px;
+            position: relative;
+          }
+
+          .lista-detalhes{
+
+            .item-detalhe{
+              margin: 11px 0;
+                line-height: 17px;
+            }
+          }
+        }
+      }
+    }
+
+    .compartilhar{
+      width: 15%;
+      float: right;
+      margin-top: @margem-topo;
+      color: @cor_icone_compartilhar;
+
+      .linha{
+        float: left;
+        padding: 0 10px;
+        width: 80%;
+
+        .titulo{
+          font-size: 100%;
+          text-align: center;
+          font-family: @fontMaquinaEscrever;
+          width: 90%;
+        }
+        .link{
+          width: 58px;
+          font-size: 150%;
+          font-weight: @fontWeight_bold;
+          padding: 3px 5px;
+          .borda-radius();
+          margin: 0 0 5px 5px;
+          color: @cor_titulo;
+          display: inline-block;
+          
+          text-align: center;
+
+          .conteudo{
+            margin: 0;
+          }
+        }
+
+        .facebook{
+          background-color: @cor_link_facebook_bold;
+        }
+
+        .twitter{
+          background-color: @cor_link_twitter_bold;
+        }
+
+        .voltar{
+          font-size: 80%;
+          background-color: @cor_voltar;
+          font-family: @fontePadrao;
+        }
+
+        .ver-letra{
+          font-size: 80%;
+          background-color: @cor_verLetra;
+          font-family: @fontePadrao;
+        }
+      }
+
+      
+    }
+  }
+
+  @media (max-width: 1000px){
+
+    .resultado{
+
+      .folha{
+        width: 90%;
+      }
+
+      .compartilhar{
+        width: 100%;
+
+        .link{
+          margin: 0px 0 0 10px;
+        }
+      }
+    }
+  }
+
+
+  .maquina-escrever{
+    font-family: @fontMaquinaEscrever;
+  }
+
+</style>
+<template lang="pug">
+  .resultado
+
+    .folha
+      .margem
+        .topo
+          .topo-cent
+            p.info Ministério da Justiça
+            p.info Departamento de Polícia Federal
+            p.info Divisão de Censura de Diversões Públicas
+            p.info Nº do Parecer: 
+              span.nro-parecer
+                |{{songId}}
+
+        .detalhes
+          p.info.musica-autor Música e Autor: 
+            a(:href="urlLetra" target="_blank")
+              typewriter(:content="songArtistName")
+
+          p.info.resultado-censura Parecer:
+            stamp(:type="tipoCarimbo" :activate="true")
+
+          p.info Detalhes:
+            ul.lista-detalhes
+              li.item-detalhe.maquina-escrever(v-for="detalhe in detalhes")
+                |- {{detalhe.feedBack}} 
+                i
+                  |("...{{detalhe.censorExcerpt}}...")
+</template>
