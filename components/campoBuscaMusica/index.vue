@@ -1,4 +1,7 @@
 <script>
+  import buscarCancaoSrv from '../../pages/censurador/buscador'
+  import sessionPersistence from './simpleSessionStoragesService'
+
   export default {
     data () {
       return {
@@ -6,7 +9,6 @@
       }
     },
     props: {
-      generationPromise: Function,
       searchvalue: String,
       placeholder: String,
       selectedObject: Object,
@@ -23,7 +25,10 @@
         }
 
         // Recebe o Promise fornecido pelo controller
-        self.generationPromise(value)
+        return buscarCancaoSrv({
+          searchValue: value,
+          artist: self.selectedArtist
+        })
 
           // Quando a Promise for concluída, a função then irá preencher os dados da lista
           .then( function (resultsByUser){
@@ -84,6 +89,7 @@
         this.searchvalue = value.songName + ', ' + value.artistName;
         this.selectedObject = value;
         this.results = [];
+        sessionPersistence.song.set(value)
 
         // Evento de click fornecido pelo controller
         //this.clickEvent(value);

@@ -1,30 +1,21 @@
-/* TODO: Usar o auto complete do Busca-mE - aplicativo*/
+import request from "../../requests/http"
 
 export default function(param){
 
   return new Promise(function(resolver,rejeitar){
+    var requestUrl = "";
 
-    var objRequest = null;
-
-    if(param.artist){
-
-      objRequest = {
-        artistName: param.artist.artistName,
-        songName: param.searchValue
-      };
+    if(param.artist && param.artist.artistName != ""){
+      requestUrl = `?artistName=${param.artist.artistName}&songName=${param.searchValue}`
     }
     else{
-      objRequest = {
-        searchValue: param.searchValue
-      };
+      requestUrl = `?searchValue=${param.searchValue}`
     }
+
     request.get(
-      process.env.CENSURADOR_SEARCH_API_URL,
-      objRequest,
-      null,
-      false
+      process.env.CENSURADOR_SEARCH_API_URL + requestUrl
     ).then(function(resposta){
-      resolver(resposta.result);
+      resolver(resposta.data.result);
 
     }).catch(function(erro){
       rejeitar(erro);

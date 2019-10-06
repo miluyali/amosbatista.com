@@ -1,7 +1,7 @@
 <script>
   import linkStyle from '~/components/external-link-style.vue'
-  import buscarCancaoSrv from './mockBuscador'
   import campoBusca from '~/components/campoBuscaMusica'
+  import persistence from '~/components/campoBuscaMusica/simpleSessionStoragesService'
 
   export default {
     data () {
@@ -9,6 +9,16 @@
         buscaGeral: "",
         resultadoBusca: null
       }
+    },
+    methods: {
+      fazerResultado: function(){
+        const resultadoBusca = persistence.song.get()
+        console.log("resultadobusca", resultadoBusca)
+        this.$router.push(`censurador/${resultadoBusca.idAPI}`) 
+        // state.go('resultado', {
+        //   songId: this.resultadoBusca.idAPI
+        // })
+      }	
     },
     components: {
       linkStyle,
@@ -19,21 +29,6 @@
       this.artistaSelecionado = {
         artistName: ""
       }
-
-      this.buscarCancao = function(){
-      
-        return buscarCancaoSrv({
-          searchValue: this.buscaGeral,
-          artist: this.artistaSelecionado
-        })
-      };
-
-      this.fazerResultado = function(){
-        console.log("resultadobusca", this.resultadoBusca)
-        // state.go('resultado', {
-        //   songId: this.resultadoBusca.idAPI
-        // })
-      }	
     }
   }
 </script>
@@ -51,7 +46,6 @@
       | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
     
     campo-busca(
-      :generation-promise="buscarCancao"
       :searchvalue="buscaGeral"
       placeholder="Informe o nome da música ou artista"
       placeholder-with-artist="Informe o nome da música"
