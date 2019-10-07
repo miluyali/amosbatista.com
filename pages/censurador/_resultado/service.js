@@ -32,6 +32,7 @@ const service = function(song){
       }
 
       resposta.urlPagina = "";
+      resposta.songArtistName = resposta.theSong.songName + " - " + resposta.theSong.artistName
 
       resolver(resposta);
 

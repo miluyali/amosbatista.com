@@ -4,7 +4,6 @@ export default function(param){
 
   return new Promise(function(resolver,rejeitar){
     var requestUrl = "";
-    console.log(param)
     if(param.artist && param.artist.artistName != ""){
       requestUrl = `?artistName=${param.artist.artistName}&songName=${param.songName}`
     }

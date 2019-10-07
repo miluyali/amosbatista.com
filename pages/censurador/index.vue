@@ -13,7 +13,6 @@
     methods: {
       fazerResultado: function(){
         const resultadoBusca = persistence.song.get()
-        console.log(this)
         this.$router.push(`${resultadoBusca.idAPI}`) 
       }	
     },
@@ -82,6 +81,18 @@
 <style lang="less">
 
   @import './estilo.less';
+
+
+  .titulo-site{
+    font-family: @fonteDestaque	;
+    color: @cor_titulo;
+    text-align: center;
+    font-size: 500%;
+    text-transform: uppercase;
+    letter-spacing: -6px;
+    line-height: 90%;
+    .sombra-texto(2px);
+  }
 
   .conteudo-central{
     /*display: flex;

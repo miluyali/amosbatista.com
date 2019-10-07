@@ -47,25 +47,33 @@
 </script>
 <style lang="less">
   @import '../estilo.less';
+  @import '../config.less';
 
   @margem-topo: 50px;
+
+
 
   .cabecalho{
     width: 100%;
     margin-top: 50px;
     float: left;
 
-    .titulo-site{
-      font-size: 257%;
-      width: 295px;
-      padding: 13px 1px 0 0;
-      margin: 0;
-      letter-spacing: -3px;
-    }
+    
   }
 
   .resultado{
     width: 100%;
+
+    .titulo-site{
+      font-family: @fonteDestaque	;
+      color: @cor_titulo;
+      text-align: center;
+      font-size: 100%;
+      text-transform: uppercase;
+      letter-spacing: -6px;
+      line-height: 90%;
+      .sombra-texto(2px);
+    }
 
     .folha{
       width: 80%;
