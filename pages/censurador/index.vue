@@ -13,7 +13,9 @@
     methods: {
       fazerResultado: function(){
         const resultadoBusca = persistence.song.get()
-        this.$router.push(`${resultadoBusca.idAPI}`) 
+        this.$nuxt.$router.replace({
+          path: `/censurador/${resultadoBusca.idAPI}`
+        }) 
       }	
     },
     components: {
@@ -46,7 +48,7 @@
 
       //- Reservado para detector de robô
 
-      a.btn-pesquisa(ng-disabled="!resultadoBusca" v-on:click="fazerResultado()" tabindex="3" href="#")
+      button.btn-pesquisa(v-on:click="fazerResultado()" tabindex="3")
         |Iniciar Censura
 
         span.icone

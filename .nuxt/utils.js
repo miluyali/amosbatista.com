@@ -138,7 +138,7 @@ export async function setContext(app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"BLOG_URL":"https://amosdasilvabatista.ghost.io","BLOG_REQUEST_KEY":"cba17c89537bea486690d94821","SITE_DOMAIN":"https://amosbatista.com","CENSURADOR_SEARCH_API_URL":"https://methodman.com.br/searchSong","CENSURADOR_CENSOR_API_URL":"https://methodman.com.br/processSong"}
+      env: {"BLOG_URL":"https://amosdasilvabatista.ghost.io","BLOG_REQUEST_KEY":"cba17c89537bea486690d94821","SITE_DOMAIN":"https:////amosbatista.com","CENSURADOR_SEARCH_API_URL":"https://methodman.com.br/searchSong","CENSURADOR_CENSOR_API_URL":"https://methodman.com.br/processSong"}
     }
     // Only set once
     if (context.req) {

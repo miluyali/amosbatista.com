@@ -2,7 +2,7 @@
   import stamp from '~/components/stamp'
   import typewriter from '~/components/typewriter'
   import service from './service'
-  import metaData from '~/components/meta.vue'
+  import metaVue from '~/components/meta.vue'
 
   export default {
     async asyncData ({ params }) {
@@ -33,7 +33,7 @@
       }
     },
     components: {
-      stamp, typewriter, metaData
+      stamp, typewriter, metaVue
     },
     created () {
 
@@ -229,7 +229,7 @@
 <template lang="pug">
   .resultado
 
-    meta-data(:metadata="meta")
+    meta-vue(:metadata="meta")
 
     .folha
       .margem
