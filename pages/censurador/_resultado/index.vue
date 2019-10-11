@@ -251,9 +251,9 @@
             stamp(:type="tipoCarimbo" :activate="true")
 
           p.info Detalhes:
-            ul.lista-detalhes
-              li.item-detalhe.maquina-escrever(v-for="detalhe in detalhes")
-                |- {{detalhe.feedBack}} 
-                i
-                  |("...{{detalhe.censorExcerpt}}...")
+          ul.lista-detalhes
+            li.item-detalhe.maquina-escrever(v-for="detalhe in detalhes")
+              |- {{detalhe.feedBack}} 
+              i
+                |("...{{detalhe.censorExcerpt}}...")
 </template>
