@@ -11,6 +11,7 @@
   import postTitle from '../components/postWithImage'
   import sunsetClock from '../components/sunsetClock'
   import caderno1Post from '../components/blackPost'
+  import ctaCatarse from '../components/CTA_Catarse'
 
   import firstPostService from '../ghost.io/featuredPostService'
   import articlesService from '../ghost.io/articleListService'
@@ -22,7 +23,10 @@
     data: function () {
       return {}
     },
-    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock, caderno1Post },
+    components: {
+      hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, 
+      animation, postTitle, sunsetClock, caderno1Post, ctaCatarse
+    },
 
     async asyncData () {
       const featured = await firstPostService(httpService)
@@ -74,6 +78,9 @@
         :title="firstPost.title"
         :resume="firstPost.description"
         :thumbnail="firstPost.thumbnail")
+    
+    hover-big-box(small box-url="https://www.catarse.me/amosbatista_com?project_id=102907&project_user_id")
+      cta-catarse
     
     hover-big-box.post(v-for="post in articles" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
       post-title(
