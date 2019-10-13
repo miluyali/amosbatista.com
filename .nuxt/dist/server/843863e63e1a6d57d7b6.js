@@ -1,0 +1,2 @@
+exports.ids=[4],exports.modules={140:function(e,o,r){"use strict";r.r(o);o.default=function(e){return new Promise(function(e,o){var r={tipoCarimbo:"censurado",urlThumb:"",tituloResposta:"Foo Bar - Song of punk [CENSURADO!!]",descricaoResposta:"A música XPTO foi recusada pelos orgãos de regulamentação de Diversões. Seu autor está sujeito às penalidades previstas por lei."};e(r)})}}};
+//# sourceMappingURL=843863e63e1a6d57d7b6.js.map

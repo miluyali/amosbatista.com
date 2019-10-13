@@ -41,6 +41,7 @@
 
   @import '../assets/variables.less';
   @import '../assets/mixin.less';
+  @import '../assets/generic.less';
 
   .fluid-footer{
       padding: 25px;

@@ -1,0 +1,2 @@
+exports.ids=[8],exports.modules={139:function(t,e,o){"use strict";o.r(e),e.default=async function(param){return await([{songName:"foo",artistName:"bar",type:"song"},{songName:"Ana Julia",artistName:"Los Ermanos",type:"artist"}])}}};
+//# sourceMappingURL=9e42d3da8aad5be0ce64.js.map
