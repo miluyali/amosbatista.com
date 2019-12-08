@@ -7,7 +7,7 @@ const service = function(song){
     request.get(
       `${process.env.CENSURADOR_CENSOR_API_URL}?songId=${song}`
     ).then(function(respServer){
-
+      
       const resposta = respServer.data
 
       if(resposta.isSongCensored){

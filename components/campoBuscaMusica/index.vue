@@ -1,6 +1,14 @@
 <script>
   import buscarCancaoSrv from '../../pages/censurador/buscador'
   import sessionPersistence from './simpleSessionStoragesService'
+  import Vue from 'vue'
+  import vueDebounce from 'vue-debounce'
+
+  Vue.use(vueDebounce, {
+    lock: true,
+    defaultTime: '700ms',
+    listenTo: 'input'
+  })
 
   export default {
     data () {
@@ -16,8 +24,37 @@
       clickEvent: Function,
       placeholderWithArtist: String
     },
-    watch: {
-      searchvalue: function(value, lastValue){
+    computed: {
+      
+    },
+  
+    created: function(){
+      this.initialPlaceholder = this.placeholder;
+
+      this.loadingResult = false;
+
+      // Função de validação de entrada de dados
+      var processDataEntry = function(){
+
+        
+      };
+
+      
+
+      this.closeArtist = function(){
+        this.selectedArtist = null;
+        this.initialPlaceholder = this.placeholder;
+      }
+
+      this.closeField = function(){
+        this.selectedArtist = null;
+        this.initialPlaceholder = this.placeholder;
+        this.searchvalue = ""
+      }
+
+    },
+    methods: {
+      toSearch: function(value, lastValue){
         var self = this
 
         if(value == ''){
@@ -61,36 +98,8 @@
 
             // Enquanto a lista não é carregada, exibir apenas uma mensagem
             self.loadingResult = true;
-          }
-      },
+          },
       // Ao selecionar o resultado, retornar o objeto selecionado para o controller
-  
-    created: function(){
-      this.initialPlaceholder = this.placeholder;
-
-      this.loadingResult = false;
-
-      // Função de validação de entrada de dados
-      var processDataEntry = function(){
-
-        
-      };
-
-      
-
-      this.closeArtist = function(){
-        this.selectedArtist = null;
-        this.initialPlaceholder = this.placeholder;
-      }
-
-      this.closeField = function(){
-        this.selectedArtist = null;
-        this.initialPlaceholder = this.placeholder;
-        this.searchvalue = ""
-      }
-
-    },
-    methods: {
       resultSelect: function(value){
 
         this.searchvalue = value.songName 
@@ -132,6 +141,7 @@
 
       input.campo(type="text"
         :placeholder="initialPlaceholder"
+        v-debounce="toSearch"
         v-model="searchvalue"
         tabindex="1"
       )
