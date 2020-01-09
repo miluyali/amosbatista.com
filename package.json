@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "prod": "HOST=0.0.0.0 PORT=3000 nuxt start",
-    "start": "HOST=0.0.0.0 PORT=3000 nuxt start",
+    "prod": "nuxt build && nuxt start",
+    "start": "HOST=0.0.0.0 PORT=5000 nuxt start",
     "generate": "nuxt generate",
     "test": "./node_modules/mocha/bin/mocha --recursive --require babel-register --reporter spec || exit 0"
   },

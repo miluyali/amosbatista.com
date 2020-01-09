@@ -10,6 +10,6 @@ export default {
  ],
  serverMiddleware: [
     // Will register redirect-ssl npm package
-    'redirect-ssl'
+    
   ]
 }
