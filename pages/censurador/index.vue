@@ -2,12 +2,20 @@
   import linkStyle from '~/components/external-link-style.vue'
   import campoBusca from '~/components/campoBuscaMusica'
   import persistence from '~/components/campoBuscaMusica/simpleSessionStoragesService'
+  import vueMeta from '~/components/meta.vue'
 
   export default {
     data () {
       return {
         buscaGeral: "",
-        resultadoBusca: null
+        resultadoBusca: null,
+        meta: {
+          title: "Censure minha música!!",
+          description: "Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Confira agora antes que seja tarde!!",
+          thumbnail: "https://amosbatista.com/censurador/print-tela-censurador.jpg",
+          url: `/censurador`,
+          type: "post"
+        }
       }
     },
     methods: {
@@ -20,7 +28,8 @@
     },
     components: {
       linkStyle,
-      campoBusca
+      campoBusca,
+      vueMeta
     },
    created () {
       this.buscaGeral = "";
@@ -30,6 +39,8 @@
 <template lang="pug">
 
   .conteudo-central
+    vue-meta(:metadata="meta")
+
     .bg
       .bg-degrade
   

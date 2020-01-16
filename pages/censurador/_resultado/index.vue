@@ -21,8 +21,8 @@
         meta: {
           title: result.tituloResposta,
           description: result.descricaoResposta,
-          thumbnail: `${process.env.SITE_DOMAIN}/${result.urlThumb}`,
-          url: "/" + params.resultado,
+          thumbnail: `${process.env.SITE_DOMAIN}/censurador/${result.urlThumb}`,
+          url: "/censurador/" + params.resultado,
           type: "post"
         }
       }
