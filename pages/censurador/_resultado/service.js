@@ -12,20 +12,20 @@ const service = function(song){
 
       if(resposta.isSongCensored){
         resposta.tipoCarimbo = 'censurado';
-        resposta.urlThumb = "censored.png";
+        resposta.urlThumb = "censurador/censored.png";
         resposta.tituloResposta = `CENSURA!! Artista ${resposta.theSong.artistName} sofre censura!! `;
         resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' foi recusada pelos orgãos de regulamentação de Diversões.';
       }
       else{
         if(resposta.isSongFreeOfObjections){
           resposta.tipoCarimbo = 'aprovado';
-          resposta.urlThumb = "approved.png";
+          resposta.urlThumb = "censurador/approved.png";
           resposta.tituloResposta = resposta.theSong.songName + ' [Aprovado pelo governo]';
           resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' foi considerada segura para a sociedade brasileira.';
         }
         else{
           resposta.tipoCarimbo = 'comRestricao';
-          resposta.urlThumb = "restricted.png";
+          resposta.urlThumb = "censurador/restricted.png";
           resposta.tituloResposta = resposta.theSong.songName + ': Ameaça de Censura!';
           resposta.descricaoResposta = 'A música ' + resposta.theSong.songName + ' teve partes de sua composição rejeitadas, e está sujeita à censura.';
         }
