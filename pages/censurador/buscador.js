@@ -12,7 +12,7 @@ export default function(param){
     }
 
     request.get(
-      process.env.CENSURADOR_SEARCH_API_URL + requestUrl
+      "https://methodman.com.br/searchSong" + requestUrl
     ).then(function(resposta){
       resolver(resposta.data.result);
 

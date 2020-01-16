@@ -5,7 +5,7 @@ const service = function(song){
   return new Promise(function(resolver, rejeitar){
 
     request.get(
-      `${process.env.CENSURADOR_CENSOR_API_URL}?songId=${song}`
+      `https://methodman.com.br/processSong?songId=${song}`
     ).then(function(respServer){
       
       const resposta = respServer.data
