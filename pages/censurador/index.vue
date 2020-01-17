@@ -3,6 +3,7 @@
   import campoBusca from '~/components/campoBuscaMusica'
   import persistence from '~/components/campoBuscaMusica/simpleSessionStoragesService'
   import vueMeta from '~/components/meta.vue'
+  import logo from '~/components/logo-censure-minha-musica'
 
   export default {
     data () {
@@ -29,7 +30,8 @@
     components: {
       linkStyle,
       campoBusca,
-      vueMeta
+      vueMeta,
+      logo
     },
    created () {
       this.buscaGeral = "";
@@ -46,8 +48,9 @@
   
     link-style
 
-    h1.titulo-site
-      | Censure minha música!
+    .titulo-site-logo
+      logo
+
     p.descricao
       | Como seria se em pleno séc. 21, ainda estivéssemos sob Regime Militar? Será que todas as músicas que ouvimos hoje seriam permitidas em plena época de Ditadura? Descubra se seu artista favorito sofreria censura. 
     
@@ -95,29 +98,11 @@
 
   @import './estilo.less';
 
-
-  .titulo-site{
-    font-family: @fonteDestaque	;
-    color: @cor_titulo;
-    text-align: center;
-    font-size: 500%;
-    text-transform: uppercase;
-    letter-spacing: -6px;
-    line-height: 90%;
-    .sombra-texto(2px);
-  }
-
   .conteudo-central{
     /*display: flex;
     align-items: center;*/
     width: 75%;
     margin: 0 auto;
-
-    .titulo-site{
-      width: 575px;
-        margin: 50px auto 0 auto;
-        font-size: 500%;
-    }
 
     .descricao{
       font-family: @fontMaquinaEscrever;
@@ -151,17 +136,6 @@
           margin-left: 5px;
         }
       }
-    }
-  }
-
-  @media(max-width: 700px){
-
-    .conteudo-central{
-
-      .titulo-site{
-        width: auto;
-        font-size: 400%;
-      }	
     }
   }
 

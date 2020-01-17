@@ -1,8 +1,10 @@
 <script>
+  import linkStyle from '~/components/external-link-style.vue'
   import stamp from '~/components/stamp'
   import typewriter from '~/components/typewriter'
   import service from './service'
   import metaVue from '~/components/meta.vue'
+  import logo from '~/components/logo-censure-minha-musica'
 
   export default {
     async asyncData ({ params }) {
@@ -33,7 +35,7 @@
       }
     },
     components: {
-      stamp, typewriter, metaVue
+      stamp, typewriter, metaVue, logo, linkStyle
     },
     created () {
 
@@ -51,29 +53,17 @@
 
   @margem-topo: 50px;
 
-
-
+  .titulo-site{
+    margin-bottom: 100px;
+  }
   .cabecalho{
     width: 100%;
     margin-top: 50px;
     float: left;
-
-    
   }
 
   .resultado{
     width: 100%;
-
-    .titulo-site{
-      font-family: @fonteDestaque	;
-      color: @cor_titulo;
-      text-align: center;
-      font-size: 100%;
-      text-transform: uppercase;
-      letter-spacing: -6px;
-      line-height: 90%;
-      .sombra-texto(2px);
-    }
 
     .folha{
       width: 80%;
@@ -228,9 +218,9 @@
 </style>
 <template lang="pug">
   .resultado
-
+    link-style
     meta-vue(:metadata="meta")
-
+    
     .folha
       .margem
         .topo
@@ -256,4 +246,5 @@
               |- {{detalhe.feedBack}} 
               i
                 |("...{{detalhe.censorExcerpt}}...")
+    logo
 </template>

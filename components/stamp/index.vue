@@ -35,11 +35,11 @@
 
           switch(self.type){
             case 'censurado':
-              self.stampSrc = '../../censurador/censored.png'; break;
+              self.stampSrc = '../../censurador/censored_doc.png'; break;
             case 'comRestricao': 
-              self.stampSrc = '../../censurador/restricted.png'; break;
+              self.stampSrc = '../../censurador/restricted_doc.png'; break;
             case 'aprovado':
-              self.stampSrc = '../../censurador/approved.png'; break;
+              self.stampSrc = '../../censurador/approved_doc.png'; break;
           }
 
           setTimeout(function() {

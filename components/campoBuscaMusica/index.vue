@@ -6,7 +6,7 @@
 
   Vue.use(vueDebounce, {
     lock: true,
-    defaultTime: '700ms',
+    defaultTime: '500ms',
     listenTo: 'input'
   })
 
