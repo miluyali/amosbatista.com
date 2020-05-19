@@ -12,10 +12,10 @@
   import sunsetClock from '../components/sunsetClock'
   import caderno1Post from '../components/blackPost'
 
-  import firstPostService from '../ghost.io/featuredPostService'
-  import articlesService from '../ghost.io/articleListService'
-  import caderno1PostsService from '../ghost.io/caderno1ListService'
-  import httpService from '../requests/http'
+  // import firstPostService from '../ghost.io/featuredPostService'
+  // import articlesService from '../ghost.io/articleListService'
+  // import caderno1PostsService from '../ghost.io/caderno1ListService'
+  // import httpService from '../requests/http'
 
   export default {
 
@@ -25,9 +25,17 @@
     components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock, caderno1Post },
 
     async asyncData () {
-      const featured = await firstPostService(httpService)
-      const articles = await articlesService(httpService)
-      const caderno1Posts = await caderno1PostsService(httpService)
+      // const featured = await firstPostService(httpService)
+      // const articles = await articlesService(httpService)
+      // const caderno1Posts = await caderno1PostsService(httpService)
+
+      const featured = {
+        title: "Home",
+        description: "Site pessoal de projetos e portfólios.",
+        thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
+        url: ``,
+        type: "home"
+      };
 
       return {
         meta: {
@@ -43,8 +51,8 @@
           url: featured.url,
           thumbnail: featured.thumbnail
         },
-        articles,
-        caderno1Posts
+        // articles,
+        // caderno1Posts
       }
     }
   }
@@ -69,20 +77,25 @@
 
     hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
 
-    hover-big-box.first-post(:box-url="firstPost.url" is-box-hoverable)
+    hover-big-box.post(
+      is-box-hoverable large)
       post-title(
-        :title="firstPost.title"
-        :resume="firstPost.description"
-        :thumbnail="firstPost.thumbnail")
+        title="Página em manutenção")
+
+    // hover-big-box.first-post(:box-url="firstPost.url" is-box-hoverable)
+    //   post-title(
+    //     :title="firstPost.title"
+    //     :resume="firstPost.description"
+    //     :thumbnail="firstPost.thumbnail")
     
-    hover-big-box.post(v-for="post in articles" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
-      post-title(
-        :title="post.title"
-        :thumbnail="post.thumbnail")
+    // hover-big-box.post(v-for="post in articles" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
+    //   post-title(
+    //     :title="post.title"
+    //     :thumbnail="post.thumbnail")
     
-    hover-big-box.post(v-for="post in caderno1Posts" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
-      caderno1-post(
-        :title="post.title")
+    // hover-big-box.post(v-for="post in caderno1Posts" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
+    //   caderno1-post(
+    //     :title="post.title")
 
     //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
 

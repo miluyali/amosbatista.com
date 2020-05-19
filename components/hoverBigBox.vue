@@ -122,7 +122,7 @@
 
   .large-size {
     width: 100%;
-    height: auto;
+    height: 25%;
   }
 
   @media (max-width: 800px) {
