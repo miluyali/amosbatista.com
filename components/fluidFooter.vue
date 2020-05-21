@@ -27,11 +27,11 @@
 
 <template lang="pug">
 
-    .fluid-footer
-        a.link(v-for="link in links" :href="link.url")
-            |{{link.text}} / 
-        span.link
-            | obrigado pela visita
+  .fluid-footer
+    a.link.title(v-for="link in links" :href="link.url")
+      |{{link.text}} / 
+    span.link
+      | obrigado pela visita
 
         
 </template>

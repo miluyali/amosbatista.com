@@ -23,7 +23,7 @@
 
 <template lang="pug">
 
-  .title-paragraph
+  .title-paragraph.title
     h2(:class="'title-paragraph-h' + whiteColorClass")
       |{{content}}
 
@@ -40,16 +40,13 @@
         justify-content: center;
         flex-direction: column;
         height: 100%;
-        width: 80%;
-        padding-left: 20px;
+        padding: 30px 0 0 0;
 
         .title-paragraph-h{
             font-family: @title-font;
-            text-transform: uppercase;
             margin: 0;
             line-height: 1;
             color: @color-primary;
-            font-size: 200%;
             overflow-wrap: break-word;
         }
 

@@ -1,17 +1,10 @@
 <script>
 
   import box from '../components/box.vue'
-  import myLink from '../components/myLink.vue'
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
   import facebookApp from '../components/facebook-app.vue'
-  import animation from '../components/animatedBg_linesToCenter.vue'
-  import pageTitle from '../components/home-header.vue'
-  import hoverBigBox from '../components/hoverBigBox.vue'
-  import postTitle from '../components/postWithImage'
-  import sunsetClock from '../components/sunsetClock'
-  import caderno1Post from '../components/blackPost'
-
+  
   // import firstPostService from '../ghost.io/featuredPostService'
   // import articlesService from '../ghost.io/articleListService'
   // import caderno1PostsService from '../ghost.io/caderno1ListService'
@@ -22,7 +15,11 @@
     data: function () {
       return {}
     },
-    components: { hoverBigBox, vueMeta, facebookApp, linkStyle, pageTitle, animation, postTitle, sunsetClock, caderno1Post },
+    components: { 
+      vueMeta,
+      facebookApp, 
+      linkStyle,
+    },
 
     async asyncData () {
       // const featured = await firstPostService(httpService)
@@ -61,26 +58,31 @@
 
 <template lang="pug">
 
-  .container.home
+  .home
 
     vue-meta(:metadata="meta")
-
     facebook-app
-
     link-style
 
-    hover-big-box(small is-box-hoverable)
-      page-title
+    .links
+      span.title.fluid-title.level-1
+        |amosBatista.com
+      span.title.fluid-title.level-2
+        a(href="/portfolio")
+          |portfólio
 
-    hover-big-box(is-inside-full-size small)
-      sunset-clock
+    // hover-big-box(small is-box-hoverable)
+    //   page-title
 
-    hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
+    // hover-big-box(is-inside-full-size small)
+    //   sunset-clock
 
-    hover-big-box.post(
-      is-box-hoverable large)
-      post-title(
-        title="Página em manutenção")
+    // hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
+
+    // hover-big-box.post(
+    //   is-box-hoverable large)
+    //   post-title(
+    //     title="Página em manutenção")
 
     // hover-big-box.first-post(:box-url="firstPost.url" is-box-hoverable)
     //   post-title(
@@ -118,74 +120,62 @@
 
 
 <style lang="less">
+  @import '../assets/base.less';
+  @import '../assets/generic.less';
+  @import '../assets/variables.less';
+  @import '../assets/mixin.less';
+  @import '../assets/objects.less';
 
-    @import '../assets/variables.less';
-    @import '../assets/mixin.less';
-    @import '../assets/fontawesome/fontawesome.less';
-    @import '../assets/generic.less';
-    @import '../assets/base.less';
-    @import '../assets/objects.less';
+  .home {
+    width: 90%;
+    display: flex;
+    align-content: center;
 
-    @box-size: 225px;
+    .links {
 
-    .big-link{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-
-        width: @box-size;
-        height: @box-size;
-        float: left;
-        padding-left: 20px;
-
-        margin: 10px 10px 0 0;
-
-        .comment-chars{
-            color: @color-secundary;
-        }
     }
+  }
+  .fluid-title {
+    font-size: 300%;
+  }
+  .fluid-title:after {
+    content: "■";
+    margin: 0 8px;
+  }
+  
+  .fluid-title:last-child:after {
+    content: "";
+  }
 
-    .first-post, post{
-      display: flexbox;
-      align-items: center;
-      justify-content: center;
-    }
+  .level-1 {
+    color: hsl(250, 65%, 45%);
+  }
 
-    .outro{
-        padding: 0;
-        width: calc(@box-size+20px);
-    }
+  .level-2 {
+    color: hsl(220, 30%, 55%);
+  }
+  .level-3 {
+    color: hsl(265, 30%, 60%);
+  }
+  .level-4 {
+    color: hsl(195, 30%, 65%);
+  }
+  .level-5 {
+    color: hsl(225, 30%, 70%);
+  }
+  .level-6 {
+    color: hsl(230, 25%, 75%);
+  }
 
-    .hover-box{
-        .transiction();
+  @media (min-width: 768px) {
 
-        &:hover{
-            .shadow(9px);
-            background-color: @color-base-clear;
-        }
-    }
-
-    .title{
-        font-family: @title-font;
-        text-transform: uppercase;
-        margin: 0;
-        line-height: 1;
-        color: @color-primary;
-        font-size: 200%;
-        font-weight: bold;
-    }
-
-    .comment-chars{
-        color: @color-secundary;
-    }
-
-    .animation{
-        width: 100%;
-        height: 100%;
+    .home{
+      
     }
     
-    .home{
-      padding-bottom: 100px;
+    .fluid-title {
+      font-size: 300%;
     }
+  }
 
 </style>

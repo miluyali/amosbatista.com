@@ -37,7 +37,7 @@
 
         .title{
             font-family: @title-font;
-            text-transform: uppercase;
+            text-transform: lowercase;
             color: @color-primary-light;
             padding-left: 20px;
         }
@@ -46,7 +46,7 @@
             margin: 0;
         }
 
-        @media (min-width: 500px){
+        @media (min-width: 768px){
 
             .title{
                 float: left;

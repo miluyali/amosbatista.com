@@ -5,7 +5,7 @@
 
   import postTitle from '~/components/post-title.vue'
   import myLink from '~/components/myLink.vue'
-  import pgHeader from '~/components/pageHeader.vue'
+  import pgHeader from '~/components/pageSimpleHeader-portfolio.vue'
   import vueMeta from '~/components/meta.vue'
   import linkStyle from '~/components/external-link-style.vue'
   import facebookApp from '~/components/facebook-app.vue'
@@ -75,59 +75,46 @@
 
 <template>
 
-  <div class="two-col-layout">
+  <div class="container">
+    <vue-meta :metadata="meta" />
+    <facebook-app />
+    <link-style />
+    <pg-header />
 
-    <div class="container">
-      <vue-meta :metadata="meta" />
-      <facebook-app />
-      <link-style />
-      <pg-header />
+    <ul class="list">
+      <li class="item" v-for="post in portfolios" :key="post.title">
+        <my-link :url="post.url">
+          <p class="title">
+            {{post.title}}
+          </p>
+          <p>
+            {{post.resume}}
+          </p>
+        </my-link>
+      </li>
+    </ul>
     
-        <ul class="list">
-          <li class="item" v-for="post in portfolios" :key="post.title">
-            <my-link :url="post.url">
-              <post-title :title="post.title" :resume="post.resume" :sub-title="post.type" />
-            </my-link>
-          </li>
-        </ul>
-      <pg-footer />
-    </div>
+    <pg-footer />
   </div>
 </template>
 
-<style lang="less">
-    @import '../../assets/fontawesome/fontawesome.less';
-    @import '../../assets/variables.less';
-    @import '../../assets/mixin.less';
-    @import '../../assets/generic.less';
-    @import '../../assets/base.less';
-    @import '../../assets/objects.less';
+<style lang="less" >
+  @import '../../assets/base.less';
+  @import '../../assets/generic.less';
+  @import '../../assets/variables.less';
+  @import '../../assets/mixin.less';
+  @import '../../assets/objects.less';
 
-    .two-col-layout{
+  .item {
+    margin-bottom: 32px;
+  }
 
-        float: left;
-        width: 100%;
-        margin: 0 0 10px 0;
+  .title {
+    font-size: 120%;
+  }
+  p {
+   font-size: 75%;
+   margin: 0; 
+  }
 
-        .list{
-
-            width: 100%;
-
-            .item{
-                width: 100%;
-                height: 300px;
-                margin: 0 0 10px 0;
-                padding: 0;
-                float: left;
-            }
-
-            @media (min-width: 500px){
-
-                .item{
-                    width: 45%;
-                    float: left;
-                }
-            }
-        }
-    }
 </style>
