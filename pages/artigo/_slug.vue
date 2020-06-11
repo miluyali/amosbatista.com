@@ -1,18 +1,17 @@
 <script>
 import metaTags from '~/components/meta'
-import box from '~/components/hoverBigBox'
-import postBySlug from '~/ghost.io/getPostBySlug'
+import postBySlug from '~/cms/loadPostService'
 import httpService from '~/requests/http'
 import postTitle from '~/components/post-title'
 import vueMeta from '~/components/meta.vue'
 import linkStyle from '~/components/external-link-style.vue'
 import facebookApp from '~/components/facebook-app.vue'
-import pgHeader from '~/components/pageHeader.vue'
+import pgHeader from '~/components/pageSimpleHeader.vue'
 import pgFooter from '~/components/pageFooter.vue'
 
 export default {
   components: {
-    metaTags, box, vueMeta, facebookApp, pgHeader, postTitle, linkStyle, pgFooter
+    metaTags, vueMeta, facebookApp, pgHeader, postTitle, linkStyle, pgFooter
   },
   data: function () {
     return {}
@@ -35,26 +34,30 @@ export default {
 </script>
 
 <template lang="pug">
+
   .article
+
     .container
       vue-meta(:metadata="meta")
       facebook-app
       link-style
-
-      pg-header
+      pg-header(:currentPage="'blog'")
       
-      box(large)
+      .content
+
+        header
+          p.title
+            |{{post.title}}
+
+          .description(v-html="post.description")
+
         img.thumbnail(:src="post.thumbnail")
+        p.thumbnail-description
+          |Logotipo do amós batista ponto com
 
-      box(large)
-        post-title(
-          :title="post.title"
-          :resume="post.description")
-
-      box(large invisible)
-        .content(v-html="post.content")
+        .post-content(v-html="post.content")
       
-    pg-footer
+        pg-footer
 
 </template>
 
@@ -67,17 +70,37 @@ export default {
   @import '../../assets/base.less';
   @import '../../assets/objects.less';
 
+  header {
+    margin-bottom: 60px;
+
+    .title {
+      font-size: 200%;
+    }
+    .description {
+      font-family: @title-font;
+      font-size: 80%;
+    }
+    p {
+      margin: 0;
+    }
+  }
   .thumbnail{
-    width: 35%;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 20px auto 0;
     display: block;
   }
+  .thumbnail-description {
+    font-size: 50%;
+    margin: 0;
+    text-align: center;
+  }
   .content{
-    text-indent: 25px;
-    padding: 10px 30px;
-    line-height: 1.7;
-    font-size: 117%;
+    flex-direction: column;
+    padding: 30% 30px 10px;
     font-family: @base-font;
+    display: flex;
   }
 
 </style>

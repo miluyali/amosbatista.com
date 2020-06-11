@@ -1,0 +1,17 @@
+const service = async (request, slug) => {
+  
+  const response = await request.get(
+    `${process.env.BLOG_URL}/${slug}`
+  )
+  const post = response.data || {}
+
+  return {
+    title: post.title,
+    description: post.custom_excerpt,
+    thumbnail: post.thumbnail,
+    url: `/artigo/${post.slug}`,
+    content: post.content,
+  }
+}
+
+export default service

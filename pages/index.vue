@@ -4,11 +4,13 @@
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
   import facebookApp from '../components/facebook-app.vue'
+
+  import postListService from '../cms/postListService'
   
   // import firstPostService from '../ghost.io/featuredPostService'
   // import articlesService from '../ghost.io/articleListService'
   // import caderno1PostsService from '../ghost.io/caderno1ListService'
-  // import httpService from '../requests/http'
+  import httpService from '../requests/http'
 
   export default {
 
@@ -23,7 +25,7 @@
 
     async asyncData () {
       // const featured = await firstPostService(httpService)
-      // const articles = await articlesService(httpService)
+      const articles = await postListService(httpService)
       // const caderno1Posts = await caderno1PostsService(httpService)
 
       const featured = {
@@ -48,7 +50,7 @@
           url: featured.url,
           thumbnail: featured.thumbnail
         },
-        // articles,
+        articles,
         // caderno1Posts
       }
     }
@@ -70,6 +72,9 @@
       span.title.fluid-title.level-2
         a(href="/portfolio")
           |portfólio
+      span.title.fluid-title.level-3(v-for="post in articles" v-bind:key="post.id")
+        a(:href="post.url")
+          |{{post.title}}
 
     // hover-big-box(small is-box-hoverable)
     //   page-title
