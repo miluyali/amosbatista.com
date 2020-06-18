@@ -52,8 +52,7 @@ export default {
           .description(v-html="post.description")
 
         img.thumbnail(:src="post.thumbnail")
-        p.thumbnail-description
-          |Logotipo do amós batista ponto com
+        .thumbnail-description(v-html="post.thumbnailDescription")
 
         .post-content(v-html="post.content")
       
