@@ -4,12 +4,11 @@
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
   import facebookApp from '../components/facebook-app.vue'
-
-  import postListService from '../cms/postListService'
   
   // import firstPostService from '../ghost.io/featuredPostService'
-  // import articlesService from '../ghost.io/articleListService'
-  // import caderno1PostsService from '../ghost.io/caderno1ListService'
+  import itPostsService from '../cms/itArticleListService'
+  import cotidianoPostsService from '../cms/dailyListService'
+  import caderno1PostsService from '../cms/caderno1ListService'
   import httpService from '../requests/http'
 
   export default {
@@ -24,17 +23,9 @@
     },
 
     async asyncData () {
-      // const featured = await firstPostService(httpService)
-      const articles = await postListService(httpService)
-      // const caderno1Posts = await caderno1PostsService(httpService)
-
-      const featured = {
-        title: "Home",
-        description: "Site pessoal de projetos e portfólios.",
-        thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
-        url: ``,
-        type: "home"
-      };
+      const itPosts = await itPostsService(httpService)
+      const cotidianoPosts = await cotidianoPostsService(httpService)
+      const caderno1Posts = await caderno1PostsService(httpService)
 
       return {
         meta: {
@@ -44,14 +35,9 @@
           url: ``,
           type: "home"
         },
-        firstPost: {
-          title: featured.title,
-          description: featured.description,
-          url: featured.url,
-          thumbnail: featured.thumbnail
-        },
-        articles,
-        // caderno1Posts
+        caderno1Posts,
+        cotidianoPosts,
+        itPosts,
       }
     }
   }
@@ -72,53 +58,15 @@
       span.title.fluid-title.level-2
         a(href="/portfolio")
           |portfólio
-      span.title.fluid-title.level-3(v-for="post in articles" v-bind:key="post.id")
+      span.title.fluid-title.level-3(v-for="post in itPosts" v-bind:key="post.id")
         a(:href="post.url")
           |{{post.title}}
-
-    // hover-big-box(small is-box-hoverable)
-    //   page-title
-
-    // hover-big-box(is-inside-full-size small)
-    //   sunset-clock
-
-    // hover-big-box(box-url="/portfolio" box-simple-title="Portfolio" is-box-hoverable)
-
-    // hover-big-box.post(
-    //   is-box-hoverable large)
-    //   post-title(
-    //     title="Página em manutenção")
-
-    // hover-big-box.first-post(:box-url="firstPost.url" is-box-hoverable)
-    //   post-title(
-    //     :title="firstPost.title"
-    //     :resume="firstPost.description"
-    //     :thumbnail="firstPost.thumbnail")
-    
-    // hover-big-box.post(v-for="post in articles" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
-    //   post-title(
-    //     :title="post.title"
-    //     :thumbnail="post.thumbnail")
-    
-    // hover-big-box.post(v-for="post in caderno1Posts" v-bind:key="post.id" :box-url="post.url" is-box-hoverable small)
-    //   caderno1-post(
-    //     :title="post.title")
-
-    //hover-big-box(box-url="/about" box-simple-title="Sobre" is-box-hoverable small)
-
-    //hover-big-box(box-url="/web-development" box-simple-title="Desenvolvimento Web" is-box-hoverable small)
-
-    //hover-big-box(box-url="/refactoring" box-simple-title="Refatoração" is-box-hoverable small)
-
-    //hover-big-box(box-url="/classes" box-simple-title="Web Aulas" is-box-hoverable small)
-
-    //hover-big-box(box-url="/translations" box-simple-title="Traduções" is-box-hoverable small)
-
-    //hover-big-box(box-url="/gitHub" box-simple-title="Meu Git Hub" is-box-hoverable small)
-
-    //hover-big-box(box-url="/services" box-simple-title="Outros serviços" is-box-hoverable small)
-
-    //hover-big-box(box-url="/contact" box-simple-title="Contato" is-box-hoverable small)
+      span.title.fluid-title.level-4(v-for="post in caderno1Posts" v-bind:key="post.id")
+        a(:href="post.url")
+          |{{post.title}}
+      span.title.fluid-title.level-5(v-for="post in cotidianoPosts" v-bind:key="post.id")
+        a(:href="post.url")
+          |{{post.title}}
 
 </template>
 

@@ -1,7 +1,7 @@
 const service = async (request) => {
   
   const response = await request.get(
-    `${process.env.BLOG_URL}/blog`
+    `${process.env.BLOG_URL}/caderno1`
   )
   const posts = response.data || []
 
@@ -11,7 +11,7 @@ const service = async (request) => {
       description: post.custom_excerpt,
       thumbnail: post.feature_image,
       slug: post.slug,
-      url: `/artigo/${post.slug}`,
+      url: `/caderno1/${post.slug}`,
       id: post.id
     }
   })

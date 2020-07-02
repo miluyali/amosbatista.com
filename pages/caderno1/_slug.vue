@@ -1,7 +1,7 @@
 <script>
 import metaTags from '~/components/meta'
 import box from '~/components/hoverBigBox'
-import postBySlug from '~/ghost.io/getPostBySlug'
+import postBySlug from '~/cms/loadPostService'
 import httpService from '~/requests/http'
 import postTitle from '~/components/post-title'
 import vueMeta from '~/components/meta.vue'
@@ -41,10 +41,10 @@ export default {
       facebook-app
       link-style
 
+      .top
+        .title
+          |{{post.title}}
       .content(v-html="post.content")
-
-      a.go-home(href="/")
-        title-paragraph(:is-color-reverted="true" content="Ir para home")
 
     pg-footer
 
@@ -64,14 +64,26 @@ export default {
   }
   .container{
     height: inherit;
-    padding: 0 0 100px 0;
+  }
+  .top {
+    margin: 35vh 0 20vh 15vw;
+
+    .title {
+      color: @color-base-clear;
+      font-size: 140%;
+    }
   }
   .content{
-    padding: 10px 30px;
+    padding: 10px 30px 35vh;
     line-height: 1.7;
-    font-size: 117%;
     font-family: @base-font;
     color: @color-base-clear;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      line-height: 24px;
+    }
   }
   .go-home{
     text-align: right;

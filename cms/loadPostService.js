@@ -1,7 +1,7 @@
 const service = async (request, slug) => {
   
   const response = await request.get(
-    `${process.env.BLOG_URL}/${slug}`
+    `${process.env.BLOG_URL}/blog/${slug}`
   )
   const post = response.data || {}
 
