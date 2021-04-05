@@ -1,14 +1,10 @@
 <script>
 
-  import box from '../components/box.vue'
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
   import facebookApp from '../components/facebook-app.vue'
   
-  // import firstPostService from '../ghost.io/featuredPostService'
-  import itPostsService from '../cms/itArticleListService'
-  import cotidianoPostsService from '../cms/dailyListService'
-  import caderno1PostsService from '../cms/caderno1ListService'
+  import homeService from '../cms/homeService'
   import httpService from '../requests/http'
 
   export default {
@@ -23,21 +19,17 @@
     },
 
     async asyncData () {
-      const itPosts = await itPostsService(httpService)
-      const cotidianoPosts = await cotidianoPostsService(httpService)
-      const caderno1Posts = await caderno1PostsService(httpService)
+      const posts = await homeService(httpService)
 
       return {
         meta: {
           title: "Home",
-          description: "Site pessoal de projetos e portfólios.",
+          description: "Site pessoal.",
           thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
           url: ``,
           type: "home"
         },
-        caderno1Posts,
-        cotidianoPosts,
-        itPosts,
+        posts,
       }
     }
   }
@@ -58,13 +50,7 @@
       span.title.fluid-title.level-2
         a(href="/portfolio")
           |portfólio
-      span.title.fluid-title.level-3(v-for="post in itPosts" v-bind:key="post.id")
-        a(:href="post.url")
-          |{{post.title}}
-      span.title.fluid-title.level-4(v-for="post in caderno1Posts" v-bind:key="post.id")
-        a(:href="post.url")
-          |{{post.title}}
-      span.title.fluid-title.level-5(v-for="post in cotidianoPosts" v-bind:key="post.id")
+      span.title.fluid-title.level-3(v-for="post in posts" v-bind:key="post.id")
         a(:href="post.url")
           |{{post.title}}
 
@@ -83,10 +69,6 @@
     width: 90%;
     display: flex;
     align-content: center;
-
-    .links {
-
-    }
   }
   .fluid-title {
     font-size: 300%;
@@ -121,11 +103,6 @@
   }
 
   @media (min-width: 768px) {
-
-    .home{
-      
-    }
-    
     .fluid-title {
       font-size: 300%;
     }
