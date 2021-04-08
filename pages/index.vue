@@ -9,8 +9,24 @@
 
   export default {
 
-    data: function () {
-      return {}
+    data () { 
+      return {
+        data: [],
+        busy: false 
+      }
+    },
+    methods: {
+      loadMore: function() {
+        this.busy = true;
+        console.log("tesste");
+
+        setTimeout(() => {
+          for (var i = 0, j = 10; i < j; i++) {
+            this.data.push({ name: count++ });
+          }
+          this.busy = false;
+        }, 1000);
+      }
     },
     components: { 
       vueMeta,
@@ -44,68 +60,93 @@
     facebook-app
     link-style
 
-    .links
-      span.title.fluid-title.level-1
-        |amosBatista.com
-      span.title.fluid-title.level-2
-        a(href="/portfolio")
-          |portfólio
-      span.title.fluid-title.level-3(v-for="post in posts" v-bind:key="post.id")
-        a(:href="post.url")
+    .header
+      a.home-link.fluid-title(href="https://amosbatista.com")
+        |amosbatista.com
+    
+    .main
+
+      .post(v-for="post in posts" v-bind:key="post.id")
+        a.title(:href="post.url")
           |{{post.title}}
+        .content(v-html="post.content")
+    
+    .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10")
+    
 
 </template>
 
 
 
 <style lang="less">
-  @import '../assets/base.less';
   @import '../assets/generic.less';
   @import '../assets/variables.less';
   @import '../assets/mixin.less';
   @import '../assets/objects.less';
+  @import '../assets/base.less';
 
   .home {
-    width: 90%;
-    display: flex;
-    align-content: center;
+    width: 70%;
+    margin: auto;
   }
+
+  .header {
+    background-color: @color-base-clear;
+    padding: 30px 10px 5px;
+    font-family: @title-font;
+  }
+
   .fluid-title {
-    font-size: 300%;
+    font-size: 150%;
   }
-  .fluid-title:after {
-    content: "■";
-    margin: 0 8px;
-  }
-  
-  .fluid-title:last-child:after {
-    content: "";
-  }
-
-  .level-1 {
-    color: hsl(250, 65%, 45%);
-  }
-
-  .level-2 {
-    color: hsl(220, 30%, 55%);
-  }
-  .level-3 {
-    color: hsl(265, 30%, 60%);
-  }
-  .level-4 {
-    color: hsl(195, 30%, 65%);
-  }
-  .level-5 {
-    color: hsl(225, 30%, 70%);
-  }
-  .level-6 {
-    color: hsl(230, 25%, 75%);
-  }
-
   @media (min-width: 768px) {
     .fluid-title {
       font-size: 300%;
     }
   }
+  .fluid-title:after {
+    content: "■";
+    margin: 0 8px;
+  }
+  .fluid-title:last-child:after {
+    content: "";
+  }
+
+  .home-link {
+    color: @color-primary;
+  }
+
+  .scroller {
+    min-height: 100px;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    background-color: @color-base-clear;
+
+    .post {
+      margin: 40px 0 0;
+      font-family: @base-font;
+      padding: 10px;
+      background-color: @color-base-dark;
+      
+      .title {
+        font-size: 350%;
+        color: @color-secundary;
+        font-family: @base-font;
+        font-weight: @base-font-weigh-base;
+      }
+
+      .content {
+        color: @color-terciary;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+
 
 </style>

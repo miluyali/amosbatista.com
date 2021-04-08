@@ -12,7 +12,8 @@ const service = async (request) => {
       thumbnail: post.feature_image,
       slug: post.slug,
       url: `/caderno1/${post.slug}`,
-      id: post.id
+      id: post.id,
+      content: post.content,
     }
   })
 

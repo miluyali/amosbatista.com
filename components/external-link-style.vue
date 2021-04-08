@@ -5,8 +5,12 @@
             return {
                 link: [
                     { 
+                        rel: 'preconnect', 
+                        href: 'https://fonts.gstatic.com' 
+                    },
+                    { 
                         rel: 'stylesheet', 
-                        href: 'https://fonts.googleapis.com/css?family=Fjalla+One|Source+Serif+Pro:400,700' 
+                        href: 'https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Ibarra+Real+Nova:wght@400;600&display=swap' 
                     },
                     { 
                         rel: 'favicon', href: '~/static/favicon.ico' 

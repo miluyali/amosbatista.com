@@ -11,5 +11,13 @@ export default {
  serverMiddleware: [
     // Will register redirect-ssl npm package
     'redirect-ssl'
-  ]
+  ],
+  plugins: [
+    {
+      src: '~/plugins/infiniteScroll.js', mode: 'client'
+    }
+  ],
+  build: {
+    transpile: ['infinite-scroll']
+  }
 }
