@@ -22,8 +22,7 @@
     "pug-plain-loader": "^1.0.0",
     "redirect-ssl": "^1.4.1",
     "sanitize-html": "^1.18.2",
-    "vue-debounce": "^2.2.0",
-    "vue-infinite-scroll": "^2.0.2"
+    "vue-debounce": "^2.2.0"
   },
   "devDependencies": {
     "babel-preset-latest": "^6.24.1",

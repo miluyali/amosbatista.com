@@ -1,7 +1,7 @@
-const service = async (request) => {
+const service = async (request, page = 1) => {
   
   const response = await request.get(
-    `${process.env.BLOG_URL}/home`
+    `${process.env.BLOG_URL}/home?page=${page}`
   )
   const posts = response.data || []
 

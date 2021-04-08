@@ -14,10 +14,8 @@ export default {
   ],
   plugins: [
     {
-      src: '~/plugins/infiniteScroll.js', mode: 'client'
+      src: '~/plugins/amos-infinite-scroll.js', mode: 'client',
+      src: '~/plugins/infinite-scroll.js', mode: 'client'
     }
-  ],
-  build: {
-    transpile: ['infinite-scroll']
-  }
+  ]
 }

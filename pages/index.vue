@@ -11,21 +11,31 @@
 
     data () { 
       return {
-        data: [],
-        busy: false 
+        page: 1,
+        isLoadingContent: false,
+        isOnEndOfStream: false,
       }
     },
     methods: {
-      loadMore: function() {
-        this.busy = true;
-        console.log("tesste");
+      loadMore: async function() {
 
-        setTimeout(() => {
-          for (var i = 0, j = 10; i < j; i++) {
-            this.data.push({ name: count++ });
-          }
-          this.busy = false;
-        }, 1000);
+        if(this.isOnEndOfStream) {
+          return;
+        }
+
+        this.isLoadingContent = true;
+        this.page++;
+        const newContent = await homeService(httpService, this.page);
+
+        if(newContent.length <= 0){
+          this.isOnEndOfStream = true;
+          this.page--;
+        }
+        else{
+          this.posts = this.posts.concat( newContent);
+        }
+
+        this.isLoadingContent = false;
       }
     },
     components: { 
@@ -35,7 +45,7 @@
     },
 
     async asyncData () {
-      const posts = await homeService(httpService)
+      const posts = await homeService(httpService, 1)
 
       return {
         meta: {
@@ -54,7 +64,7 @@
 
 <template lang="pug">
 
-  .home
+  .home-page
 
     vue-meta(:metadata="meta")
     facebook-app
@@ -63,16 +73,22 @@
     .header
       a.home-link.fluid-title(href="https://amosbatista.com")
         |amosbatista.com
-    
-    .main
+    .home
 
-      .post(v-for="post in posts" v-bind:key="post.id")
-        a.title(:href="post.url")
-          |{{post.title}}
-        .content(v-html="post.content")
-    
-    .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10")
-    
+      .main
+        .post(v-for="post in posts" v-bind:key="post.id")
+          a.title(:href="post.url")
+            |{{post.title}}
+          .content(v-html="post.content")
+      
+      .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoadingContent" infinite-scroll-distance="10")
+        p.loading-icon.small-blink(v-if="isLoadingContent")
+          i.fa.fa-terminal
+        p.stream-end-message(v-if="isOnEndOfStream")
+          | Você leu todo o conteúdo disponível nesta página. Muito obrigado pelo seu interesse, isto significa muito para mim. 
+          br
+          |Confira outras páginas para mais conteúdo.
+
 
 </template>
 
@@ -92,17 +108,14 @@
 
   .header {
     background-color: @color-base-clear;
-    padding: 30px 10px 5px;
+    padding: 15px 10px 5px;
     font-family: @title-font;
+    position: fixed;
+    width: 100%;
   }
 
   .fluid-title {
     font-size: 150%;
-  }
-  @media (min-width: 768px) {
-    .fluid-title {
-      font-size: 300%;
-    }
   }
   .fluid-title:after {
     content: "■";
@@ -118,12 +131,27 @@
 
   .scroller {
     min-height: 100px;
+
+    .loading-icon {
+      text-align: center;
+      font-size: 300%;
+      color: @color-secundary;
+    }
+
+    .stream-end-message {
+      text-align: center;
+      font-size: 150%;
+      color: @color-secundary;
+      font-family: @base-font;
+      font-weight: @base-font-weigh-base;
+    }
   }
 
   .main {
     display: flex;
     flex-direction: column;
     background-color: @color-base-clear;
+    padding-top: 15px;
 
     .post {
       margin: 40px 0 0;
@@ -141,10 +169,20 @@
       .content {
         color: @color-terciary;
 
-        p {
-          margin: 0;
+        img {
+          max-width: 100%;
         }
       }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .fluid-title {
+      font-size: 250%;
+    }
+
+    .main {
+      padding-top: 40px;
     }
   }
 
