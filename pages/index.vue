@@ -25,6 +25,7 @@
 
         this.isLoadingContent = true;
         this.page++;
+        console.log("loadmore");
         const newContent = await homeService(httpService, this.page);
 
         if(newContent.length <= 0){

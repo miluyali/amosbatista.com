@@ -1,6 +1,7 @@
 const service = async (request, page = 1) => {
   
-  console.log("lenv", JSON.stringify(process.env))
+  console.log("enf", JSON.stringify(process.env));
+  
   const response = await request.get(
     `${process.env.BLOG_URL}/home?page=${page}`
   )
