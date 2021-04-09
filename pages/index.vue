@@ -18,7 +18,6 @@
     },
     methods: {
       loadMore: async function() {
-        console.log(`${process.env.BLOG_URL}`);
         if(this.isOnEndOfStream) {
           return;
         }
