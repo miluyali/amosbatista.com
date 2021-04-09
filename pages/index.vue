@@ -18,14 +18,14 @@
     },
     methods: {
       loadMore: async function() {
-
+        console.log(`${process.env.BLOG_URL}`);
         if(this.isOnEndOfStream) {
           return;
         }
 
         this.isLoadingContent = true;
         this.page++;
-        console.log("loadmore");
+        
         const newContent = await homeService(httpService, this.page);
 
         if(newContent.length <= 0){

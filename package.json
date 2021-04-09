@@ -22,11 +22,11 @@
     "pug-plain-loader": "^1.0.0",
     "redirect-ssl": "^1.4.1",
     "sanitize-html": "^1.18.2",
-    "vue-debounce": "^2.2.0"
+    "vue-debounce": "^2.2.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0"
   },
   "devDependencies": {
-    "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "mocha": "^5.1.1",
     "sinon": "^7.2.2"
