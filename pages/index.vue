@@ -73,15 +73,16 @@
     .header
       a.home-link.fluid-title(href="https://amosbatista.com")
         |amosbatista.com
-    .home
+
+    .container
 
       .main
         .post(v-for="post in posts" v-bind:key="post.id")
           a.title(:href="post.url")
             |{{post.title}}
-          .content(v-html="post.content")
+          .content.text-from-blog(v-html="post.content")
       
-      .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoadingContent" infinite-scroll-distance="10")
+      .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoadingContent" infinite-scroll-distance="500")
         p.loading-icon.small-blink(v-if="isLoadingContent")
           i.fa.fa-terminal
         p.stream-end-message(v-if="isOnEndOfStream")
@@ -100,11 +101,6 @@
   @import '../assets/mixin.less';
   @import '../assets/objects.less';
   @import '../assets/base.less';
-
-  .home {
-    width: 70%;
-    margin: auto;
-  }
 
   .header {
     background-color: @color-base-clear;
@@ -155,7 +151,6 @@
 
     .post {
       margin: 40px 0 0;
-      font-family: @base-font;
       padding: 10px;
       background-color: @color-base-dark;
       

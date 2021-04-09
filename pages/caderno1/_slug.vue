@@ -36,15 +36,17 @@ export default {
 
 <template lang="pug">
   .caderno1
+
+    vue-meta(:metadata="meta")
+    facebook-app
+    link-style
+
     .container
-      vue-meta(:metadata="meta")
-      facebook-app
-      link-style
 
       .top
         .title
           |{{post.title}}
-      .content(v-html="post.content")
+      .content.text-from-blog(v-html="post.content")
 
     pg-footer
 
@@ -59,32 +61,19 @@ export default {
   @import '../../assets/base.less';
   @import '../../assets/objects.less';
 
-  body{
-    background-color: @color-primary;
-  }
-  .container{
-    height: inherit;
-  }
   .top {
-    margin: 35vh 0 20vh 15vw;
-
-    .title {
-      color: @color-base-clear;
-      font-size: 140%;
-    }
+    margin: 17vh 0 10vh;
   }
   .content{
-    padding: 10px 30px 35vh;
+    padding: 10px 0;
     line-height: 1.7;
     font-family: @base-font;
-    color: @color-base-clear;
+    color: @color-terciary;
     display: flex;
     flex-direction: column;
-
-    p {
-      line-height: 24px;
-    }
+    font-size: 110%;
   }
+  
   .go-home{
     text-align: right;
     font-size: 65%;

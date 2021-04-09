@@ -28,7 +28,7 @@
 <template lang="pug">
 
   .fluid-footer
-    a.link.title(v-for="link in links" :href="link.url")
+    a.link(v-for="link in links" :href="link.url")
       |{{link.text}} / 
     span.link
       | obrigado pela visita
@@ -51,7 +51,10 @@
 
       .link{
           color: @color-base;
-          font-family: @title-font;
+          font-family: @base-font;
+          font-size: 100%;
+          letter-spacing: -1px;
+          font-weight: @base-font-weigh-bold;
       }
   }
     
