@@ -163,10 +163,6 @@
 
       .content {
         color: @color-terciary;
-
-        img {
-          max-width: 100%;
-        }
       }
     }
   }

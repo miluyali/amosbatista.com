@@ -65,7 +65,7 @@ export default {
     margin: 17vh 0 10vh;
   }
   .content{
-    padding: 10px 0;
+    padding: 10px 0 20vh;
     line-height: 1.7;
     font-family: @base-font;
     color: @color-terciary;

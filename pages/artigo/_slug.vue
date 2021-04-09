@@ -1,17 +1,18 @@
 <script>
 import metaTags from '~/components/meta'
+import box from '~/components/hoverBigBox'
 import postBySlug from '~/cms/loadPostService'
 import httpService from '~/requests/http'
 import postTitle from '~/components/post-title'
 import vueMeta from '~/components/meta.vue'
 import linkStyle from '~/components/external-link-style.vue'
 import facebookApp from '~/components/facebook-app.vue'
-import pgHeader from '~/components/pageSimpleHeader.vue'
 import pgFooter from '~/components/pageFooter.vue'
+import titleParagraph from '~/components/title-paragraph'
 
 export default {
   components: {
-    metaTags, vueMeta, facebookApp, pgHeader, postTitle, linkStyle, pgFooter
+    metaTags, box, vueMeta, facebookApp, postTitle, linkStyle, pgFooter, titleParagraph
   },
   data: function () {
     return {}
@@ -34,29 +35,20 @@ export default {
 </script>
 
 <template lang="pug">
+  .caderno1
 
-  .article
+    vue-meta(:metadata="meta")
+    facebook-app
+    link-style
 
     .container
-      vue-meta(:metadata="meta")
-      facebook-app
-      link-style
-      pg-header(:currentPage="'blog'")
-      
-      .content
 
-        header
-          p.title
-            |{{post.title}}
+      .top
+        .title
+          |{{post.title}}
+      .content.text-from-blog(v-html="post.content")
 
-          .description(v-html="post.description")
-
-        img.thumbnail(:src="post.thumbnail")
-        .thumbnail-description(v-html="post.thumbnailDescription")
-
-        .post-content(v-html="post.content")
-      
-        pg-footer
+    pg-footer
 
 </template>
 
@@ -69,37 +61,22 @@ export default {
   @import '../../assets/base.less';
   @import '../../assets/objects.less';
 
-  header {
-    margin-bottom: 60px;
-
-    .title {
-      font-size: 200%;
-    }
-    .description {
-      font-family: @title-font;
-      font-size: 80%;
-    }
-    p {
-      margin: 0;
-    }
-  }
-  .thumbnail{
-    width: 100%;
-    max-width: 300px;
-    max-height: 300px;
-    margin: 20px auto 0;
-    display: block;
-  }
-  .thumbnail-description {
-    font-size: 50%;
-    margin: 0;
-    text-align: center;
+  .top {
+    margin: 17vh 0 10vh;
   }
   .content{
-    flex-direction: column;
-    padding: 30% 30px 10px;
+    padding: 10px 0 20vh;
+    line-height: 1.7;
     font-family: @base-font;
+    color: @color-terciary;
     display: flex;
+    flex-direction: column;
+    font-size: 110%;
+  }
+  
+  .go-home{
+    text-align: right;
+    font-size: 65%;
   }
 
 </style>
