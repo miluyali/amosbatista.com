@@ -13,7 +13,7 @@ const service = async (request, page = 1) => {
       description: post.custom_excerpt,
       thumbnail: post.feature_image,
       slug: post.slug,
-      url: `https://amosbatista.com.br/${definePageByTag(post.tags)}/${post.slug}`,
+      url: `https://amosbatista.com/${definePageByTag(post.tags)}/${post.slug}`,
       id: post.id,
       content: post.content,
     }
