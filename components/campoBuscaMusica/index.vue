@@ -61,6 +61,10 @@
           self.results = [];
         }
 
+        // Enquanto a lista não é carregada, exibir apenas uma mensagem
+        self.loadingResult = true;
+        self.$forceUpdate();
+
         // Recebe o Promise fornecido pelo controller
         return buscarCancaoSrv({
           searchValue: value,
@@ -90,15 +94,10 @@
             
           },
           function(error){
-
             console.log(error);
             self.loadingResult = false;
-
           });
-
-            // Enquanto a lista não é carregada, exibir apenas uma mensagem
-            self.loadingResult = true;
-          },
+      },
       // Ao selecionar o resultado, retornar o objeto selecionado para o controller
       resultSelect: function(value){
 
@@ -117,6 +116,8 @@
         else{
           this.selectedArtist = null
         }
+
+        self.loadingResult = false;
 
         // Evento de click fornecido pelo controller
         //this.clickEvent(value);
@@ -162,11 +163,11 @@
           |  - 
           span.nome-artista {{result['artistName']}}
 
-    a.icone-status.link-apagar-resultado(v-on:click="closeField()" href="#" v-if="searchvalue != '' || selectedArtist || loadingResult")
+    a.icone-status.link-apagar-resultado(v-on:click="closeField()" href="#" v-if=" selectedArtist ")
       i.fa.fa-times
 
     span.icone-status.carregando-resultado(v-if="loadingResult")
-      i.fa.fa-refresh.fa-spin.fa-fw
+      i.fa.fa-spinner.fa-spin.fa-fw
 </template>
 
 <style lang="less">

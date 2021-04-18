@@ -187,8 +187,21 @@
           font-family: @fontePadrao;
         }
       }
+    }
 
-      
+    footer {
+      logo {
+        margin: 10px 0 0;
+      }
+
+      @media (min-width: 500px){
+
+        logo{
+          width: 500px;
+          margin: 90px auto 0;
+          font-size: 90px;
+        }
+      }
     }
   }
 
@@ -220,12 +233,12 @@
   .resultado
     link-style
     meta-vue(:metadata="meta")
+    link(href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet")
     
     .folha
       .margem
         .topo
           .topo-cent
-            p.info Ministério da Justiça
             p.info Departamento de Polícia Federal
             p.info Divisão de Censura de Diversões Públicas
             p.info Nº do Parecer: 
@@ -246,5 +259,6 @@
               |- {{detalhe.feedBack}} 
               i
                 |("...{{detalhe.censorExcerpt}}...")
-    logo
+    footer
+      logo
 </template>

@@ -12,7 +12,7 @@ export default function(param){
     }
 
     request.get(
-      "https://methodman.com.br/searchSong" + requestUrl
+      "https://methodman.com.br/censurador/searchSong" + requestUrl
     ).then(function(resposta){
       resolver(resposta.data.result);
 

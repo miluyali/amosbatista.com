@@ -73,6 +73,8 @@
     .header
       a.home-link.fluid-title(href="https://amosbatista.com")
         |amosbatista.com
+      a.censurador-link.fluid-title(href="https://amosbatista.com/censurador")
+        |Censure minha música
 
     .container
 
@@ -110,9 +112,6 @@
     width: 100%;
   }
 
-  .fluid-title {
-    font-size: 150%;
-  }
   .fluid-title:after {
     content: "■";
     margin: 0 8px;
@@ -120,8 +119,13 @@
   .fluid-title:last-child:after {
     content: "";
   }
+  .censurador-link {
+    font-size: 100%;
+    color: @color-primary;
+  }
 
   .home-link {
+    font-size: 150%;
     color: @color-primary;
   }
 
@@ -168,7 +172,11 @@
   }
 
   @media (min-width: 768px) {
-    .fluid-title {
+    .censurador-link {
+      font-size: 150%;
+    }
+
+    .home-link {
       font-size: 250%;
     }
 
