@@ -82,7 +82,7 @@
         .post(v-for="post in posts" v-bind:key="post.id")
           a.title(:href="post.url")
             |{{post.title}}
-          .content.text-from-blog(v-html="post.content")
+          .content(v-html="post.content")
       
       .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoadingContent" infinite-scroll-distance="500")
         p.loading-icon.small-blink(v-if="isLoadingContent")
@@ -104,12 +104,19 @@
   @import '../assets/objects.less';
   @import '../assets/base.less';
 
+  .home-page {
+    font-family: @base-font;
+  }
   .header {
     background-color: @color-base-clear;
-    padding: 15px 10px 5px;
+    padding: 15px 0 10px;
     font-family: @title-font;
     position: fixed;
     width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
   .fluid-title:after {
@@ -154,15 +161,19 @@
     padding-top: 15px;
 
     .post {
-      margin: 40px 0 0;
+      margin: 65px 0 0;
       padding: 10px;
       background-color: @color-base-dark;
+      overflow-x: scroll;
       
       .title {
-        font-size: 350%;
+        font-size: 375%;
         color: @color-secundary;
         font-family: @base-font;
-        font-weight: @base-font-weigh-base;
+        font-weight: @base-font-weigh-bold;
+        line-height: 50px;
+        margin: 40px 0 50px;
+        display: inline-block;
       }
 
       .content {
@@ -171,6 +182,11 @@
     }
   }
 
+  @media (min-width: 390px) {
+    .main {
+      padding-top: 5px;
+    }
+  }
   @media (min-width: 768px) {
     .censurador-link {
       font-size: 150%;
