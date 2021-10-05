@@ -3,39 +3,11 @@
   import vueMeta from '../components/meta.vue'
   import linkStyle from '../components/external-link-style.vue'
   import facebookApp from '../components/facebook-app.vue'
-  
-  import homeService from '../cms/homeService'
-  import httpService from '../requests/http'
 
   export default {
 
     data () { 
       return {
-        page: 1,
-        isLoadingContent: false,
-        isOnEndOfStream: false,
-      }
-    },
-    methods: {
-      loadMore: async function() {
-        if(this.isOnEndOfStream) {
-          return;
-        }
-
-        this.isLoadingContent = true;
-        this.page++;
-        
-        const newContent = await homeService(httpService, this.page);
-
-        if(newContent.length <= 0){
-          this.isOnEndOfStream = true;
-          this.page--;
-        }
-        else{
-          this.posts = this.posts.concat( newContent);
-        }
-
-        this.isLoadingContent = false;
       }
     },
     components: { 
@@ -45,17 +17,16 @@
     },
 
     async asyncData () {
-      const posts = await homeService(httpService, 1)
+      
 
       return {
         meta: {
           title: "Home",
           description: "Site pessoal.",
-          thumbnail: "https://amosbatista.com/thumbnails/home.jpg",
+          thumbnail: "",
           url: ``,
           type: "home"
         },
-        posts,
       }
     }
   }
@@ -69,28 +40,13 @@
     vue-meta(:metadata="meta")
     facebook-app
     link-style
-
-    .header
-      a.home-link.fluid-title(href="https://amosbatista.com")
-        |amosbatista.com
-      a.censurador-link.fluid-title(href="https://amosbatista.com/censurador")
-        |Censure minha música
-
-    .container
-
-      .main
-        .post(v-for="post in posts" v-bind:key="post.id")
-          a.title(:href="post.url")
-            |{{post.title}}
-          .content(v-html="post.content")
-      
-      .scroller(v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoadingContent" infinite-scroll-distance="500")
-        p.loading-icon.small-blink(v-if="isLoadingContent")
-          i.fa.fa-terminal
-        p.stream-end-message(v-if="isOnEndOfStream")
-          | Você leu todo o conteúdo disponível nesta página. Muito obrigado pelo seu interesse, isto significa muito para mim. 
-          br
-          |Confira outras páginas para mais conteúdo.
+    
+    .middle
+      h1 Amós Batista
+      a.link(href="/censurador") Censure minha música
+      a.link(href="https://github.com/amosbatista") github
+      a.link(href="mailto:amos.silva@gmail.com") amos.silva@gmail.com
+    
 
 
 </template>
@@ -105,6 +61,7 @@
   @import '../assets/base.less';
 
   .home-page {
+<<<<<<< HEAD
     font-family: @base-font;
   }
   .header {
@@ -152,11 +109,19 @@
       font-family: @base-font;
       font-weight: @base-font-weigh-base;
     }
+=======
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+>>>>>>> c481aeca (feat(home): redefinido layout simples da home)
   }
 
-  .main {
+  .middle {
+    width: 75%;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     background-color: @color-base-clear;
     padding-top: 15px;
 
@@ -199,7 +164,23 @@
     .main {
       padding-top: 40px;
     }
+=======
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
   }
 
+  h1 {
+    font-family: @title-font;
+    color: @color-primary;
+    line-height: 72px;
+    font-size: 300%;
+>>>>>>> c481aeca (feat(home): redefinido layout simples da home)
+  }
+
+  .link {
+    font-family: @base-font;
+    color: @color-secundary;
+  }
 
 </style>
