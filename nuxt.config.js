@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 export default {
+  buildModules: ['@nuxt/typescript-build'],
   modules: [
     // Simple usage
     '@nuxtjs/dotenv',

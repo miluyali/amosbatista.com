@@ -14,17 +14,19 @@ interface Character {
 }
 
 class CharacterManagerClass {
-  private nodes = new Object();
+  private nodesFromObject: any = {};
   private lastNodeId = 0;
   
+  private edges = new Array<Edges>();
+  
   GenerateEdges ():Array<Edges> {
-    return [];
+    return this.edges;
   }
 
   GenerateNodes ():Array<Nodes> {
-    return Object.keys(this.nodes).reduce((final, current) => {
+    return Object.keys(this.nodesFromObject).reduce((final, current) => {
       final.push({
-        id: this.nodes[current],
+        id: this.nodesFromObject[current] as number,
         label: current,
       });
 
@@ -32,10 +34,33 @@ class CharacterManagerClass {
     }, new Array<Nodes>());
   }
 
-  AddCharacter (character: Character):void {
-    if(!this.nodes[character.name]) {
-      this.nodes[character.name] = ++this.lastNodeId;
+  TryAddCharacter (character: Character) :void {
+    if(!this.nodesFromObject[character.name]) {
+      this.nodesFromObject[character.name] = ++this.lastNodeId;
     }
+  }
+  
+  AddInteraction (node1: Nodes, node2: Nodes) {
+    const newEdge: Edges = {
+      from: node1.id,
+      to: node2.id,
+      value: 1
+    }
+    this.edges.push(newEdge);
+  }
+  
+  AddNodesMomentum(nodes: Array<Nodes>): void {
+    const currentNode = nodes.pop();
+    
+    if(!currentNode) {
+      return;
+    }
+    
+    nodes.forEach(node => {
+      this.AddInteraction(currentNode, node);
+    });
+    
+    this.AddNodesMomentum(nodes);
   }
 }
 
