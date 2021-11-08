@@ -96,6 +96,52 @@ describe("Dumbing of Age Graph Char Controller", () => {
     expect(actualEdges).toEqual(expectedEdges);
   });
   
+  it("must add 2 node and must return a pre-edge object", () => {
+    const charController = new CharacterManagerClass();
+     
+    charController.TryAddCharacter({ name: "Toedad" });
+    charController.TryAddCharacter({ name: "Blaine" });
+    charController.TryAddCharacter({ name: "Carol" });
+    
+    const nodes = charController.GenerateNodes();
+    const nodeToedad = 0, nodeBlaine = 1, nodeCarol = 2;
+    charController.AddInteraction(nodes[nodeToedad], nodes[nodeBlaine]);
+    charController.AddInteraction(nodes[nodeToedad], nodes[nodeCarol]);
+    charController.AddInteraction(nodes[nodeBlaine], nodes[nodeCarol]);
+    
+    const expected = {
+      1: { 2: 1, 3: 1 },
+      2: { 3: 1 }
+    };
+    
+    expect(charController.GetEdgeObject()).toEqual(expected);
+  });
+  
+  it("must add 2 nodes, once and more once, and must return edges with value 2 for their", () => {
+    const charController = new CharacterManagerClass();
+     
+    charController.TryAddCharacter({ name: "Toedad" });
+    charController.TryAddCharacter({ name: "Blaine" });
+    charController.TryAddCharacter({ name: "Carol" });
+    
+    const nodes = charController.GenerateNodes();
+    
+    const nodeToedad = 0, nodeBlaine = 1, nodeCarol = 2;
+    charController.AddInteraction(nodes[nodeToedad], nodes[nodeBlaine]);
+    charController.AddInteraction(nodes[nodeToedad], nodes[nodeCarol]);
+    charController.AddInteraction(nodes[nodeBlaine], nodes[nodeCarol]);
+    
+    // new momentum
+    charController.AddInteraction(nodes[nodeToedad], nodes[nodeCarol]);
+    
+    const expected = {
+      1: { 2: 1, 3: 2 },
+      2: { 3: 1 }
+    };
+    
+    expect(charController.GetEdgeObject()).toEqual(expected);
+  });
+  
   it("must receive two nodes and create an edge", () => {
     const charController = new CharacterManagerClass();
     
@@ -110,7 +156,24 @@ describe("Dumbing of Age Graph Char Controller", () => {
       { from: 1, to: 2, value: 1 }
     ];
     
-    expect(expectedEdges).toEqual(charController.GenerateEdges());
+    expect(charController.GenerateEdges()).toEqual(expectedEdges);
+  });
+  
+  it("must receive 2 nodes and generate an edge of these chars", () => {
+    const charController = new CharacterManagerClass();
+    
+    charController.TryAddCharacter({ name: "Dinah" });
+    charController.TryAddCharacter({ name: "Becky" });
+    
+    const nodes = charController.GenerateNodes();
+    charController.AddNodesMomentum(nodes);
+    
+    const actualEdges = charController.GenerateEdges();
+    const expectedEdges: Array<Edges> = [
+      { from: 2, to: 1, value: 1 },
+    ];
+    expect(actualEdges).toEqual(expectedEdges);
+    
   });
   
   it("must receive 3 nodes and generate an edge of these chars", () => {
@@ -125,9 +188,9 @@ describe("Dumbing of Age Graph Char Controller", () => {
     
     const actualEdges = charController.GenerateEdges();
     const expectedEdges: Array<Edges> = [
+      { from: 2, to: 1, value: 1 },
       { from: 3, to: 1, value: 1 },
       { from: 3, to: 2, value: 1 },
-      { from: 2, to: 1, value: 1 },
     ];
     expect(actualEdges).toEqual(expectedEdges);
     
@@ -147,18 +210,50 @@ describe("Dumbing of Age Graph Char Controller", () => {
     
     const actualEdges = charController.GenerateEdges();
     const expectedEdges: Array<Edges> = [
-      { from: 5, to: 1, value: 1 },
-      { from: 5, to: 2, value: 1 },
-      { from: 5, to: 3, value: 1 },
-      { from: 5, to: 4, value: 1 },
+      { from: 2, to: 1, value: 1 },
+      { from: 3, to: 1, value: 1 },
+      { from: 3, to: 2, value: 1 },
       { from: 4, to: 1, value: 1 },
       { from: 4, to: 2, value: 1 },
       { from: 4, to: 3, value: 1 },
-      { from: 3, to: 1, value: 1 },
-      { from: 3, to: 2, value: 1 },
+      { from: 5, to: 1, value: 1 },
+      { from: 5, to: 2, value: 1 },
+      { from: 5, to: 3, value: 1 },
+      { from: 5, to: 4, value: 1 }
+    ];
+    
+    expect(actualEdges).toEqual(expectedEdges);
+  });
+  
+  it("must add 2 nodes, once and more once, and must return edges with value 2 for their", () => {
+    const charController = new CharacterManagerClass();
+     
+    charController.TryAddCharacter({ name: "Toedad" });
+    charController.TryAddCharacter({ name: "Blaine" });
+    charController.TryAddCharacter({ name: "Carol" });
+    
+    const nodes = charController.GenerateNodes();
+    charController.AddNodesMomentum(nodes);
+    
+    const nodeIndexToedad = 0;
+    const nodeIndexCarol = 2;
+    const newMomentumNodes: Array<Nodes> = [
+      nodes[nodeIndexToedad],
+      nodes[nodeIndexCarol],
+    ];
+    
+    charController.AddNodesMomentum(newMomentumNodes);
+    
+    const actualEdges = charController.GenerateEdges();
+    const expectedEdges: Array<Edges> = [
       { from: 2, to: 1, value: 1 },
+      { from: 3, to: 1, value: 2 },
+      { from: 3, to: 2, value: 1 },
     ];
     expect(actualEdges).toEqual(expectedEdges);
+  });
+  
+  it.skip("must add 3 nodes, after 5 nodes with these 3 and other with first 2, and must return the respective edges", () => {
     
   });
 });
