@@ -254,6 +254,19 @@ describe("Dumbing of Age Graph Char Controller", () => {
   });
   
   it.skip("must add 3 nodes, after 5 nodes with these 3 and other with first 2, and must return the respective edges", () => {
+    const charController = new CharacterManagerClass();
+     
+    charController.TryAddCharacter({ name: "Joe" });
+    charController.TryAddCharacter({ name: "Jacob" });
+    charController.TryAddCharacter({ name: "Ethan" });
     
+    const firstMomentumNodes = charController.GenerateNodes();
+    charController.AddNodesMomentum(firstMomentumNodes);
+    
+    charController.TryAddCharacter({ name: "Jpyce" });
+    charController.TryAddCharacter({ name: "Dorothy" });
+    
+    const secondMomentumNodes = charController.GenerateNodes();
+    charController.AddNodesMomentum(secondMomentumNodes);
   });
 });
