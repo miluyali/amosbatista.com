@@ -2,7 +2,48 @@
   .doa
     h1
       | Dumbing of Age - The graph
+    p.desciption
+      | In this 11 years old dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between then? This graph will help. 
+    p.description
+      |Zoom-in inside this image, and click in each character, to see who people passed in its life, and how often.
     graph-component
+    
+    .questions-zone
+      .questions
+        p.question What's Dumbing of Age?
+        p.answer It's a webcomic, created by David M Willis in September 10th, 2010. You can read it by this link:
+          a(href="https://www.dumbingofage.com/") https://www.dumbingofage.com/
+      
+      .questions
+        p.question What's this "graph"? 
+        p.answer It's a kind of computer drawing that shows 
+          b nodes
+          | (in this case, the characters), and
+          b edges
+          | that shows the relations between two persons. An thicker edge show that these 2 characters have been talked often.
+      
+      .questions
+        p.question How did you make it?
+        p.answer I created a 
+         b crawler,
+         | a bot that read each Dumbing of Age's page, and read the tag area that shows all character name that have been appeared in this respective page. I could enter in more details, but I'm afraid it could be very technical and boring.
+        
+      .questions
+        p.question So, it's not a "relationship" graph, but only a counter of how many characters has been showed in each page?
+        p.answer Kind of. But it can be for relationship too, because it's rare 2 characters appearing in one page and not talking to each other. 
+        
+      .questions
+        p.question That's only shows the main characters. There's more...
+        p.answer I have to limit the character list to those that appeared at least 5 pages. Showing all persons could make this graph even more slow. 
+      
+      .questions
+        p.question Why did you make it?
+        p.answer I love Dumbing of Age, graphs and front-end development. So I have to make this work together.
+        
+      .questions
+        p.question Where I can find this crawler?
+        p.answer I gonna ask the author if he don't have any problem in show the code repository. 
+        
 </template>
 
 <script>
@@ -13,7 +54,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+  @import '../../assets/generic.less';
+  @import '../../assets/variables.less';
+  @import '../../assets/mixin.less';
+  @import '../../assets/objects.less';
+  @import '../../assets/base.less';
+
   graph-component {
     width: 100%;
   }
