@@ -13,30 +13,30 @@
       
       const container = document.getElementById("graphContainer");
       const formatter = new CharacterManagerFormatter(nodes.default, edges.default);
-      const formattedData = formatter.filterByMininalValue(10);
+      const formattedData = formatter.filterByMininalValue(5);
       const options = { 
         width: "100%",
         height: "500px",
         autoResize: true,
         layout: {
-          randomSeed: 949843,
+          randomSeed: 949842,
         },
         nodes: {
-          scaling: {
-            min: 16,
-            max: 32,
-          },
+          color:  "#229db3",
+          font: {
+            size: 30,
+          }
         },
         edges: {
           smooth: false,
         },
         physics: {
-          //barnesHut: { gravitationalConstant: -50000 },
+          barnesHut: { gravitationalConstant: -400000 },
           stabilization: { iterations: 3500 },
           hierarchicalRepulsion: {
-            centralGravity: 5,
+            centralGravity: 500,
           },
-          solver: "forceAtlas2Based"
+          solver: "barnesHut"
         },
       };
       const nodesDataSet = new vis.DataSet(formattedData.nodes);
@@ -52,6 +52,7 @@
             
       //console.log("Cluster", chart.getSeed());
       const chartClick = function (params) {
+        
         const connectedNodeIds = chart.getConnectedNodes(params.nodes[0]);
         if(params.nodes.length <= 0) {
           renderReset();
@@ -61,15 +62,22 @@
         const nodesToChange = [];
         connectedNodeIds.push(params.nodes[0]);
         connectedNodeIds.forEach(nodeId => {
-          const nodeToChange = formattedData.nodes.find(node => {
+          const nodeToChange = formattedData.nodes.slice().find(node => {
             return node.id == nodeId
           })
           if(nodeToChange) {
-            nodeToChange.color = "rgba(150,150,150,0.75)";
-            nodesToChange.push(nodeToChange);  
+            nodesToChange.push({
+              color:  "#fe8786",
+              font: {
+                size: 35,
+                bold: { mod: 'bold'},
+              },
+              label: nodeToChange.label,
+              id: nodeToChange.id,
+            });  
           }
         });
-        const nodesToUpdate = formattedData.nodes.map(oldNodes => {
+        const nodesToUpdate = formattedData.nodes.slice().map(oldNodes => {
           const nodeToUpdate = nodesToChange.find( nodeToUpdate => {
             return nodeToUpdate.id == oldNodes.id
           });
