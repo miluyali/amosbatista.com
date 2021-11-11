@@ -4,31 +4,44 @@
 
 <script>
   import vis from 'vis';
-  import { CharacterManagerFacade } from './../../services/CharacterManagerFacade'
+  import { CharacterManagerFormatter } from '../../services/CharacterManagerFormatter'
+  import * as nodes from '../../data/nodes'
+  import * as edges from '../../data/edges'
 
   export default {
     mounted () {
-      const charController = new CharacterManagerFacade();
-      
-      charController.TryAddCharacterPage(["Dorotyh"]);
-      charController.TryAddCharacterPage(["Dorotyh", "Joyce", "Sarah"]);
-      charController.TryAddCharacterPage(["Joyce", "Sarah"]);
-      charController.TryAddCharacterPage(["Joyce", "Sarah"]);
-      charController.TryAddCharacterPage(["Joyce", "Joe"]);
-      charController.TryAddCharacterPage(["Joyce", "Jacob"]);
-      const nodesEdges = charController.GenerateNodesAndEdges();
       
       const container = document.getElementById("graphContainer");
-      const data = {
-        nodes: nodesEdges.nodes,
-        edges: nodesEdges.edges,
-      };
+      const formatter = new CharacterManagerFormatter(nodes.default, edges.default);
+      const formattedData = formatter.filterByMininalValue(10);
       const options = { 
         width: "100%",
         height: "500px",
         autoResize: true,
+        nodes: {
+          scaling: {
+            min: 16,
+            max: 32,
+          },
+        },
+        edges: {
+          smooth: false,
+        },
+        physics: {
+          //barnesHut: { gravitationalConstant: -50000 },
+          stabilization: { iterations: 3500 },
+          hierarchicalRepulsion: {
+            centralGravity: 5,
+          },
+          solver: "forceAtlas2Based"
+        },
       };
-      new vis.Network(container, data, options);
+      const chart = new vis.Network(container, {
+        nodes: formattedData.nodes,
+        edges: formattedData.edges
+      }, options);
+      
+      console.log("Cluster", chart.getSeed());
     }
   }
 </script>
