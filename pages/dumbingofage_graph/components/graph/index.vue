@@ -18,6 +18,9 @@
         width: "100%",
         height: "500px",
         autoResize: true,
+        layout: {
+          randomSeed: 949843,
+        },
         nodes: {
           scaling: {
             min: 16,
@@ -36,12 +39,51 @@
           solver: "forceAtlas2Based"
         },
       };
-      const chart = new vis.Network(container, {
-        nodes: formattedData.nodes,
-        edges: formattedData.edges
-      }, options);
+      const nodesDataSet = new vis.DataSet(formattedData.nodes);
+      let chart; 
       
-      console.log("Cluster", chart.getSeed());
+      const renderReset = function () {
+        chart = new vis.Network(container, {
+          nodes: nodesDataSet,
+          edges: new vis.DataSet(formattedData.edges)
+        }, options);
+        chart.on("click", chartClick);
+      }
+            
+      //console.log("Cluster", chart.getSeed());
+      const chartClick = function (params) {
+        const connectedNodeIds = chart.getConnectedNodes(params.nodes[0]);
+        if(params.nodes.length <= 0) {
+          renderReset();
+          
+          return;
+        }
+        const nodesToChange = [];
+        connectedNodeIds.push(params.nodes[0]);
+        connectedNodeIds.forEach(nodeId => {
+          const nodeToChange = formattedData.nodes.find(node => {
+            return node.id == nodeId
+          })
+          if(nodeToChange) {
+            nodeToChange.color = "rgba(150,150,150,0.75)";
+            nodesToChange.push(nodeToChange);  
+          }
+        });
+        const nodesToUpdate = formattedData.nodes.map(oldNodes => {
+          const nodeToUpdate = nodesToChange.find( nodeToUpdate => {
+            return nodeToUpdate.id == oldNodes.id
+          });
+          
+          return nodeToUpdate || oldNodes;
+        });
+        chart = new vis.Network(container, {
+          nodes: nodesToUpdate,
+          edges: new vis.DataSet(formattedData.edges)
+        }, options);
+        chart.on("click", chartClick);  
+      }
+      
+      renderReset();
     }
   }
 </script>
