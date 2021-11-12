@@ -94,7 +94,7 @@
     }
     
     .git {
-      background-image: url('../static/Octocat.JPG');
+      background-image: url('../static/Octocat.jpg');
     }
   }
 
