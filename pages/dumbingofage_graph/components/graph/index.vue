@@ -98,7 +98,8 @@
 
 <style>
   #graphContainer {
-    width: 100%;
+    width: 99%;
     height: 100%;
+    border: 2px solid sandybrown;
   }
 </style>

@@ -3,29 +3,29 @@
     h1
       | Dumbing of Age - The graph
     p.desciption
-      | In this 11 years old dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between then? This graph will help. 
+      | In 11 years full of dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between themselves? This graph will help. 
     p.description
-      |Zoom-in inside this image, and click in each character, to see who people passed in its life, and how often.
+      |Zoom-in inside this image, and click in each character, to see who interacted with him, and how often.
     graph-component
     
     .questions-zone
       .questions
         p.question What's Dumbing of Age?
-        p.answer It's a webcomic, created by David M Willis in September 10th, 2010. You can read it by this link:
+        p.answer It's a webcomic, created by David M Willis in September 10th, 2010. You can read it by this link: 
           a(href="https://www.dumbingofage.com/") https://www.dumbingofage.com/
       
       .questions
-        p.question What's this "graph"? 
+        p.question What's a "graph"? 
         p.answer It's a kind of computer drawing that shows 
-          b nodes
-          | (in this case, the characters), and
-          b edges
+          b nodes 
+          | (in this case, the characters), and 
+          b edges, 
           | that shows the relations between two persons. An thicker edge show that these 2 characters have been talked often.
       
       .questions
         p.question How did you make it?
         p.answer I created a 
-         b crawler,
+         b crawler, 
          | a bot that read each Dumbing of Age's page, and read the tag area that shows all character name that have been appeared in this respective page. I could enter in more details, but I'm afraid it could be very technical and boring.
         
       .questions
@@ -33,16 +33,20 @@
         p.answer Kind of. But it can be for relationship too, because it's rare 2 characters appearing in one page and not talking to each other. 
         
       .questions
-        p.question That's only shows the main characters. There's more...
-        p.answer I have to limit the character list to those that appeared at least 5 pages. Showing all persons could make this graph even more slow. 
+        p.question That's only shows the main characters. There's a lot more.
+        p.answer Yes, but I have to limit the character list to those that appeared at least 5 pages. Showing all people could make this graph even more slower. 
       
       .questions
         p.question Why did you make it?
-        p.answer I love Dumbing of Age, graphs and front-end development. So I have to make this work together.
+        p.answer I love Dumbing of Age, graphs and front-end development. So I wanted to make this work together.
         
       .questions
         p.question Where I can find this crawler?
-        p.answer I gonna ask the author if he don't have any problem in show the code repository. 
+        p.answer I gonna ask the author if he don't have any problem in show the code repository.
+      
+      .questions
+        p.return
+          a(href="/") Return to home 
         
 </template>
 
@@ -61,7 +65,46 @@ export default {
   @import '../../assets/objects.less';
   @import '../../assets/base.less';
 
-  graph-component {
-    width: 100%;
+  
+  h1 {
+    font-family: @title-font;
+    color: @color-primary;
+    line-height: 72px;
+    font-size: 300%;
+    letter-spacing: -10px;
+    text-align: center;
+  }
+  
+  p {
+    margin: 10px 5%;
+    text-indent: 20px;
+    font-family: @base-font;
+    color: @color-secundary;
+  }
+  
+  .questions-zone {
+    margin: 50px 0;
+    
+    .questions {
+      margin-bottom: 30px;
+    }
+    
+    .question {
+      color: @color-terciary;
+      font-style: italic;
+      &:before {
+        content: "Q: "
+      }
+    }
+    
+    .answer {
+      &:before {
+        content: "A: "
+      }
+    }
+    
+    .return {
+      color: @color-terciary;
+    }
   }
 </style>
