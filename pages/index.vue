@@ -41,7 +41,11 @@
     facebook-app
     link-style
     
-    .middle
+    .full-page
+      a.link-image.me(href="#")
+      a.link-image.censurador(href="/censurador")
+      a.link-image.git(href="https://github.com/amosbatista")
+    //--.middle
       h1 Amós Batista
       a.link(href="/censurador") Censure minha música
       a.link(href="https://github.com/amosbatista") github
@@ -67,20 +71,31 @@
     height: 100vh;
   }
 
-  .middle {
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-evenly;
-    align-items: flex-start;
-  }
-
-  h1 {
-    font-family: @title-font;
-    color: @color-primary;
-    line-height: 72px;
-    font-size: 300%;
+  .full-page {
+    width: 100vw;
+    height: 100vh; 
+    overflow: hidden;
+    
+    .link-image {
+      display: inline-block;
+      width: 33%;
+      height: 100vh;
+      background-position: center;
+    }
+    
+    .me {
+      background-image: url('../static/pessoal.JPG');
+      background-size: cover;
+      background-position: left;
+    }
+    
+    .censurador {
+      background-image: url('../pages/censurador/img/export-filtro.png');
+    }
+    
+    .git {
+      background-image: url('../static/Octocat.JPG');
+    }
   }
 
   .link {
