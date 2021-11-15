@@ -4,17 +4,17 @@
     h1
       | Dumbing of Age - The graph
     p.desciption
-      | In 11 years full of dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between themselves? This graph will help. 
+      | In 11 years full of dramatic webcomic, a lot of characters have passed through our lives. Loving, hating, playing, mocking... Exactly as our mundane lives. But, in this David M Willis modern-day soap opera, how much are they connected to each other? This graph will help. 
     p.description
       b
-        |Zoom-in inside this image and click in each character  
+        |Zoom-in inside this image and click on each character  
       |to see who interacted with who, and how often!!
     graph-component
     
     .questions-zone
       .questions
         p.question What's Dumbing of Age?
-        p.answer It's a webcomic, created by David M Willis in September 10th, 2010. You can read it by this link: 
+        p.answer It's a webcomic, created by David M Willis on September 10th, 2010. You can read it at this link: 
           a(href="https://www.dumbingofage.com/") https://www.dumbingofage.com/
       
       .questions
@@ -23,21 +23,21 @@
           b nodes 
           | (in this case, the characters), and 
           b edges, 
-          | that shows the relations between two persons. A thicker edge show that these 2 characters have been talked more often.
+          | that show the relations between two people. A thicker edge shows that these 2 characters have interacted more often.
       
       .questions
         p.question How did you make it?
         p.answer I created a 
          b crawler, 
-         | a bot that read each Dumbing of Age's page, and read the tag area that shows all character name that have been appeared in this respective page. I could enter in more details, but I'm afraid it could be very technical and boring.
+         | a bot that read every page of Dumbing of Age, and read the tag area that shows the names of all the characters that appear on any given page. I could enter into more detail, but I'm afraid it could be very technical and boring.
         
       .questions
-        p.question So, it's not a "relationship" graph, but only a counter of how many characters has been showed in each page?
-        p.answer Kind of. But it can be for relationship too, because it's rare 2 characters appearing in one page and not talking to each other. 
+        p.question So, it's not a "relationship" graph, but only a counter of how many characters have been shown in each page?
+        p.answer Kind of. But it can be for relationships too, because it's rare for 2 characters to appear in one page and not talk to each other. 
         
       .questions
-        p.question That's only shows the main characters. There's a lot more.
-        p.answer Yes, but I have to limit the character list to those that appeared at least 5 pages. Showing all people could make this graph even more slower. 
+        p.question That only shows the main characters. There are a lot more.
+        p.answer Yes, but I have to limit the character list to those that appear in at least 5 pages. Showing all the people could make this graph even slower.
       
       .questions
         p.question Why did you make it?
@@ -45,11 +45,11 @@
         
       .questions
         p.question Are you expanding this graph? Can I make a suggestion to you?
-        p.answer Yes, having some interest, I'll improve this graph.
+        p.answer Yes, if I'm interested in your idea, I'll improve this graph.
         
       .questions
-        p.question Where I can find this crawler?
-        p.answer I gonna ask the author if he don't have any problem in show the code repository.
+        p.question Where can I find this crawler?
+        p.answer I'm gonna ask the author if he doesn't mind showing the code repository.
       
       .questions
         p.return
