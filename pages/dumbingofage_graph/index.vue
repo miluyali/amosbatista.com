@@ -5,7 +5,9 @@
     p.desciption
       | In 11 years full of dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between themselves? This graph will help. 
     p.description
-      |Zoom-in inside this image, and click in each character, to see who interacted with him, and how often.
+      b
+        |Zoom-in inside this image, and click in each character, 
+      |to see who interacted with him, and how often.
     graph-component
     
     .questions-zone
@@ -41,6 +43,10 @@
         p.answer I love Dumbing of Age, graphs and front-end development. So I wanted to make this work together.
         
       .questions
+        p.question Are you expanding this graph? Can I make a suggestion to you?
+        p.answer Yes, having some interest, I'll improve this graph.
+        
+      .questions
         p.question Where I can find this crawler?
         p.answer I gonna ask the author if he don't have any problem in show the code repository.
       
@@ -65,7 +71,9 @@ export default {
   @import '../../assets/objects.less';
   @import '../../assets/base.less';
 
-  
+  .doa {
+    padding: 15px;
+  }
   h1 {
     font-family: @title-font;
     color: @color-primary;

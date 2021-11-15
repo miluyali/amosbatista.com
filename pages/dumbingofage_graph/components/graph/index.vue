@@ -1,5 +1,7 @@
 <template lang="pug">
-  #graphContainer
+  .comp
+    #graphContainer
+    |current minimal interaction: 5
 </template>
 
 <script>
@@ -32,7 +34,7 @@
         },
         physics: {
           barnesHut: { gravitationalConstant: -400000 },
-          stabilization: { iterations: 3500 },
+          stabilization: { iterations: 4500 },
           hierarchicalRepulsion: {
             centralGravity: 500,
           },
@@ -73,7 +75,10 @@
                 bold: { mod: 'bold'},
               },
               label: nodeToChange.label,
+              shape: nodeToChange.shape,
+              image: nodeToChange.image,
               id: nodeToChange.id,
+              opacity: 0.7
             });  
           }
         });
