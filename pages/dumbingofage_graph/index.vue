@@ -7,8 +7,8 @@
       | In 11 years full of dramatic webcomic, a lot of characters have been passed throught our lives. Loving, hating, playing, mocking... Exactly as our mundane lifes. But, in this David M Willis modern day soap opera, how much they are connected between themselves? This graph will help. 
     p.description
       b
-        |Zoom-in inside this image, and click in each character, 
-      |to see who interacted with him, and how often.
+        |Zoom-in inside this image and click in each character  
+      |to see who interacted with who, and how often!!
     graph-component
     
     .questions-zone
@@ -23,7 +23,7 @@
           b nodes 
           | (in this case, the characters), and 
           b edges, 
-          | that shows the relations between two persons. An thicker edge show that these 2 characters have been talked often.
+          | that shows the relations between two persons. A thicker edge show that these 2 characters have been talked more often.
       
       .questions
         p.question How did you make it?
