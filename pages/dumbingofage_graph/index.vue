@@ -1,5 +1,6 @@
 <template lang="pug">
   .doa
+    styles
     h1
       | Dumbing of Age - The graph
     p.desciption
@@ -58,9 +59,10 @@
 
 <script>
 import graphComponent from './components/graph';
+import styles from '../../components/external-link-style.vue'
 
 export default {
-  components: { graphComponent }
+  components: { graphComponent, styles }
 }
 </script>
 
@@ -79,7 +81,7 @@ export default {
     color: @color-primary;
     line-height: 72px;
     font-size: 300%;
-    letter-spacing: -10px;
+    letter-spacing: -5px;
     text-align: center;
   }
   
