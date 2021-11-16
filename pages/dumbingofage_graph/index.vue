@@ -33,14 +33,14 @@
          | a bot that read every page of Dumbing of Age, and read the tag area that shows the names of all the characters that appear on any given page.
         
       p.question Ok, you can make it more geeky...
-        p.answer This page and the crawler were made using javaScript. The crawler loads each page and specific HTML tags are search using 
+        p.answer This page and the crawler were made using javaScript. The crawler loads each page and specific HTML tags are searched using 
           b cheerio 
-          | library. After generated nodes and edges into 2 json files, I past these files into this graph, built by 
+          | library. After generating nodes and edges into 2 json files, I pasted these files into this graph, built by 
           b vis.js 
           | library. 
           
       .questions
-        p.question So, it's not a "relationship" graph, but only a counter of how many characters have been shown in each page?
+        p.question So, it's not a "relationship" graph, but only a counter of how many times characters have been shown in the same page?
         p.answer Kind of. But it can be for relationships too, because it's rare for 2 characters to appear in one page and not talk to each other. 
         
       .questions
@@ -53,7 +53,7 @@
         
       .questions
         p.question Are you expanding this graph? Can I make a suggestion to you?
-        p.answer Yes, if I have time, I'll improve it, for sure. And yes, you can make your sugestion. I'll hear and do it, if it is possible.
+        p.answer Yes, if I have time, I'll improve it, for sure. And yes, you can make your suggestion. I'll hear and do it, if it is possible.
           br 
           |You can even make your edition and open a Pull Request into the repository.
         
@@ -75,7 +75,7 @@
           a(href="https://github.com/miluyali") https://github.com/miluyali
           |,  
           a(href="https://miluburner@protonmail.com/") https://miluburner@protonmail.com
-          |) for taking the iniciative to review all text.
+          |) for taking the initiative to review all text.
     
     .update-note
       p.sub-title Updates
@@ -86,7 +86,7 @@
           li Thank note for user Milu.
           li Fixed some missed classes on style.
           li Inserted links to repository.
-          li Raised character threshould to 7.
+          li Raised character threshold to 7.
     
     .returning-home
       p.return.sub-title
