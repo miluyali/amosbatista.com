@@ -14,7 +14,7 @@
       
       const container = document.getElementById("graphContainer");
       const formatter = new CharacterManagerFormatter(nodes.default, edges.default);
-      const formattedData = formatter.filterByMininalValue(5);
+      const formattedData = formatter.filterByMininalValue(7);
       const options = { 
         width: "100%",
         height: "500px",

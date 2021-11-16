@@ -38,7 +38,7 @@
         
       .questions
         p.question That only shows the main characters. There are a lot more.
-        p.answer Yes, but I have to limit the character list to those that appear in at least 5 pages. Showing all the people could make this graph even slower.
+        p.answer Yes, but I have to limit the character list to those that appear in at least 7 pages. Showing all the people could make this graph even slower.
       
       .questions
         p.question Why did you make it?
