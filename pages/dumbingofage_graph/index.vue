@@ -30,8 +30,15 @@
         p.question How did you make it?
         p.answer I created a 
          b crawler, 
-         | a bot that read every page of Dumbing of Age, and read the tag area that shows the names of all the characters that appear on any given page. I could enter into more detail, but I'm afraid it could be very technical and boring.
+         | a bot that read every page of Dumbing of Age, and read the tag area that shows the names of all the characters that appear on any given page.
         
+      p.question Ok, you can make it more geeky...
+        p.answer This page and the crawler were made using javaScript. The crawler loads each page and specific HTML tags are search using 
+          b cheerio 
+          | library. After generated nodes and edges into 2 json files, I past these files into this graph, built by 
+          b vis.js 
+          | library. 
+          
       .questions
         p.question So, it's not a "relationship" graph, but only a counter of how many characters have been shown in each page?
         p.answer Kind of. But it can be for relationships too, because it's rare for 2 characters to appear in one page and not talk to each other. 
@@ -46,11 +53,18 @@
         
       .questions
         p.question Are you expanding this graph? Can I make a suggestion to you?
-        p.answer Yes, if I'm interested in your idea, I'll improve this graph.
+        p.answer Yes, if I have time, I'll improve it, for sure. And yes, you can make your sugestion. I'll hear and do it, if it is possible.
+          br 
+          |You can even make your edition and open a Pull Request into the repository.
         
       .questions
         p.question Where can I find this crawler?
-        p.answer I'm gonna ask the author if he doesn't mind showing the code repository.
+        p.answer
+          a(href="https://github.com/amosbatista/dumbingofage_thecrawler") You can find it here. 
+          
+      p.question And this page?
+        p.answer
+          a(href="https://github.com/amosbatista/amosbatista.com/tree/master/pages/dumbingofage_graph") It's inside my website's repo, but you can go directly to the page.
     
     .thank-notes
       p.sub-title Thank notes
@@ -62,7 +76,18 @@
           |,  
           a(href="https://miluburner@protonmail.com/") https://miluburner@protonmail.com
           |) for taking the iniciative to review all text.
-      
+    
+    .update-note
+      p.sub-title Updates
+      ul
+        li
+          i v1.1
+        ul.update
+          li Thank note for user Milu.
+          li Fixed some missed classes on style.
+          li Inserted links to repository.
+          li Raised character threshould to 7.
+    
     .returning-home
       p.return.sub-title
         a(href="/") Return to home 
@@ -123,6 +148,12 @@ export default {
       &:before {
         content: "A: "
       }
+    }
+  }
+  
+  .update-note {
+    .update li{
+     list-style: disc; 
     }
   }
   
