@@ -1,7 +1,6 @@
 <template lang="pug">
   .comp
     #graphContainer
-    |current minimal interaction: 5
 </template>
 
 <script>

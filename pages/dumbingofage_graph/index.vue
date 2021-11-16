@@ -12,6 +12,7 @@
     graph-component
     
     .questions-zone
+      p.sub-title Q & A
       .questions
         p.question What's Dumbing of Age?
         p.answer It's a webcomic, created by David M Willis on September 10th, 2010. You can read it at this link: 
@@ -50,10 +51,21 @@
       .questions
         p.question Where can I find this crawler?
         p.answer I'm gonna ask the author if he doesn't mind showing the code repository.
+    
+    .thank-notes
+      p.sub-title Thank notes
+      ul
+        li
+          b Milu 
+          |(
+          a(href="https://github.com/miluyali") https://github.com/miluyali
+          |,  
+          a(href="https://miluburner@protonmail.com/") https://miluburner@protonmail.com
+          |) for taking the iniciative to review all text.
       
-      .questions
-        p.return
-          a(href="/") Return to home 
+    .returning-home
+      p.return.sub-title
+        a(href="/") Return to home 
         
 </template>
 
@@ -85,7 +97,7 @@ export default {
     text-align: center;
   }
   
-  p {
+  p, ul {
     margin: 10px 5%;
     text-indent: 20px;
     font-family: @base-font;
@@ -112,9 +124,11 @@ export default {
         content: "A: "
       }
     }
-    
-    .return {
-      color: @color-terciary;
-    }
+  }
+  
+  .sub-title {
+    color: @color-terciary;
+    font-size: 130%;
+    margin: 35px 5%;
   }
 </style>
